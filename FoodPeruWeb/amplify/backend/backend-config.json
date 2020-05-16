@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"foodperuwebf8d40262": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

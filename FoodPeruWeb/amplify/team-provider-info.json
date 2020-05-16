@@ -1,0 +1,22 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-foodperuweb-dev-230616-authRole",
+            "UnauthRoleArn": "arn:aws:iam::021927626533:role/amplify-foodperuweb-dev-230616-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::021927626533:role/amplify-foodperuweb-dev-230616-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-foodperuweb-dev-230616-deployment",
+            "UnauthRoleName": "amplify-foodperuweb-dev-230616-unauthRole",
+            "StackName": "amplify-foodperuweb-dev-230616",
+            "StackId": "arn:aws:cloudformation:us-east-1:021927626533:stack/amplify-foodperuweb-dev-230616/9ddc1bd0-972a-11ea-9cf8-0a2f4587a347",
+            "AmplifyAppId": "d2etr1iswk0a30"
+        },
+        "categories": {
+            "auth": {
+                "foodperuwebf8d40262": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"246510886403014\",\"client_secret\":\"1b88d8d0224c022afa0819df530f2f31\"},{\"ProviderName\":\"Google\",\"client_id\":\"198525153505-lgs82m878q21o5mp8hare7b78l3gqgni.apps.googleusercontent.com\",\"client_secret\":\"kOrj5nFZSk-xxkXrGV6qEJW_\"}]"
+                }
+            }
+        }
+    }
+}

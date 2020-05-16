@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="row" *ngIf="!toVerifyEmail">
+    <div class="col-12 d-flex justify-content-around">
+      <div class="d-inline-block mb-5 text-center">
+        <h5 class="d-inline-block mr-2 text-uppercase pointer" [ngClass]="signInFlag ? 'text-orange' : ''" (click)="showLogInView()">Iniciar sesión</h5>
+        <div class="line-decorator" *ngIf="signInFlag"></div>
+      </div>
+      <div class="d-inline-block mb-5 text-center">
+        <h5 class="d-inline-block ml-2 text-uppercase pointer" [ngClass]="signUpFlag ? 'text-orange' : ''" (click)="showRegisterView()">Crear cuenta</h5>
+        <div class="line-decorator" *ngIf="signUpFlag"></div>
+      </div>
+    </div>
+  </div>
+
+
+<div *ngIf="signInFlag">
+<form action="" [formGroup]="loginForm" (ngSubmit)="signInToAWS(loginForm.value)" >
+  <div class="form-group">
+    <label for="user-email">Correo electrónico</label>
+    <input type="email"  formControlName="emailLogin" class="form-control" id="user-email" aria-describedby="emailHelp" #email>
+  </div>
+  <div class="form-group">
+    <label for="password">Contraseña</label>
+    <input type="password" formControlName="passwordLogin" class="form-control" id="password" #password>
+  </div>
+
+</form>
+<small id="emailHelp" class="form-text text-muted mb-3 pointer" style="text-decoration: underline;">Olvidé mi contraseña</small>
+<button role="button" class="btn btn-forms-submit w-100" (click)="signInToAWS(loginForm.value)">Iniciar sesión</button>
+
+</div>
+
+
+<div *ngIf="signUpFlag">
+<form [formGroup]="registerForm" action="" (ngSubmit)="singUpToAWS(registerForm.value)"  >
+  <div class="form-group">
+     <label for="name">Nombres</label>
+      <input class="form-control" type="text" name="" id="name" formControlName = "name">
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Apellidos</label>
+    <input class="form-control" type="text" name="" id="lastName" formControlName = "lastName">
+  </div>
+
+  <div class="form-group">
+    <label for="email" >Correo electrónico</label>
+    <input class="form-control" type="email" name="" id="email" formControlName = "email">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Contraseña</label>
+    <input class="form-control" type="password" name="" id="password" formControlName = "password">
+  </div>
+
+   <div class="form-group">
+    <label for="dni">DNI(opcional)</label>
+    <input class="form-control" type="text" name="" id="dni" formControlName = "dni">
+  </div>
+    <button type="submit" class="btn btn-forms-submit w-100"
+    [disabled]="registerForm.invalid" data-toggle="modal" data-target="#exampleModal"
+    >Completar registro</button>
+</form>
+
+</div>
+
+<div *ngIf="toVerifyEmail">
+<form action="" [formGroup]="verifyEmailForm">
+  <div class="form-group">
+    <label for="exampleInputverifycode1">Código de verificación</label>
+    <input type="text" class="form-control" id="exampleInputverifycode1" aria-describedby="verifyCodeHelp" #verifycode formControlName = "verifyEmail">
+</div>
+</form>
+<button role="button" class="btn btn-forms-submit w-100" (click)="onVerify(verifyEmailForm.value)">Verificar</button>
+</div>
+
+</div>
+
+<!-- VERIFICATION MODAL -->
+<p-dialog [(visible)]="displayVerificationModal" [modal]="true" [closable]="false">
+<p-header>
+Confirmación de envío de clave
+</p-header>
+Se le ha enviado una clave de verificacióna su correo electrónico
+<p-footer>
+<button type="button" class="btn btn-dark" (click)="closeVerificationModal()">Aceptar</button>
+</p-footer>
+</p-dialog>
+
+<!-- VERIFICATION SUCCESS MODAL -->
+<p-dialog [(visible)]="displayVerificationSuccessModal" [modal]="true" [closable]="false">
+<p-header>
+Confirmación de ingreso de clave éxitosa
+</p-header>
+Clave ingresada correctamente. Puede iniciar su sesión
+<p-footer>
+<button type="button" class="btn btn-dark" (click)="closeVerificationSuccessModal()">Ir a iniciar sesión</button>
+</p-footer>
+</p-dialog>
+
+<!-- VERIFICATION FAILED MODAL -->
+<p-dialog [(visible)]="displayVerificationFailedModal" [modal]="true" [closable]="false">
+<p-header>
+Ingreso de clave fallido
+</p-header>
+Clave ingresada incorrectamente
+<p-footer>
+<button type="button" class="btn btn-dark" (click)="closeVerificationFailedModal()">Aceptar</button>
+</p-footer>
+</p-dialog>
+
+<!-- LOGIN FAILED MODAL -->
+<p-dialog [(visible)]="displayLoginFailedModal" [modal]="true" [closable]="false">
+<p-header>
+Datos ingresados incorrectos
+</p-header>
+Dirección de correo o contraseña incorrecta(s)
+<p-footer>
+<button type="button" class="btn btn-dark" (click)="closeLoginFailedModal()">Aceptar</button>
+</p-footer>
+</p-dialog>
