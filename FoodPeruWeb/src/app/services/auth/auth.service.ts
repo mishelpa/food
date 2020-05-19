@@ -11,11 +11,16 @@ export class AuthService {
 
   constructor() {
     Hub.listen('auth', (data) => {
-      const { channel, payload } = data;
+      const { channel, payload} = data;
+      console.log(payload);
       if (channel === 'auth') {
         this._authState.next(payload.event);
       }
     });
+
+    /* Auth.currentAuthenticatedUser()
+    .then(user => this.storeSessionUserName(user.username)
+    ); */
   }
 
   public static SIGN_IN = 'signIn';
@@ -23,7 +28,7 @@ export class AuthService {
   public static GOOGLE = CognitoHostedUIIdentityProvider.Google;
   public static FACEBOOK = CognitoHostedUIIdentityProvider.Facebook;
   public loggedIn: boolean;
-  public storage: Storage = sessionStorage;
+  public storage: Storage = localStorage;
 
   private _authState: Subject<CognitoUser|any> = new Subject<CognitoUser|any>();
   authState: Observable<CognitoUser|any> = this._authState.asObservable();
@@ -34,12 +39,25 @@ export class AuthService {
   }
 
   socialSignIn(provider: CognitoHostedUIIdentityProvider): Promise<ICredentials> {
-    return Auth.federatedSignIn({
-      provider
-    });
+    return Auth.federatedSignIn({provider});
   }
 
-  storeSessionUserName(userName: any){
-this.storage.setItem('sesion un', userName);
+  storeSessionUserName(userName: any) {
+    this.storage.setItem('session un', userName);
+  }
+
+  getSessionUserName(): any | null {
+    console.log(this.storage.getItem('session un'));
+    return this.storage.getItem('CognitoIdentityServiceProvider.62n13nhk7bqnmd7qdr8vkbfgnk.LastAuthUser');
+  }
+
+  removeSessionUserName() {
+    this.storage.removeItem('session un');
+  }
+
+  currentUser() {
+    Auth.currentAuthenticatedUser()
+    .then(user => localStorage.setItem('currentUser', user.username)
+    );
   }
 }

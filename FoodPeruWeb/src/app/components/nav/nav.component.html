@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand navbar-dark mb-4" style="background-color: #1b222c;">
+  <div class="container">
+    <a class="navbar-brand logo">
+      <img class="pointer" src="assets/logo.PNG" routerLink="" alt="logo">
+    </a>
+    <a class="navbar-brand">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="pi pi-user text-white" style="font-size: 2em"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" *ngIf="this.authService.getSessionUserName() === null" routerLink="/login">Mi cuenta</a>
+            <a class="dropdown-item" *ngIf="this.authService.getSessionUserName() != null" routerLink="/account">Completar datos</a>
+            <a class="dropdown-item">Mis pedidos</a>
+            <div class="dropdown-divider" *ngIf="this.authService.getSessionUserName() != null"></div>
+            <a class="dropdown-item pointer" *ngIf="this.authService.getSessionUserName() != null" (click)="logOutSession()">
+              Cerrar sesión
+            </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart">
+            <i class="pi pi-shopping-cart text-white" style="font-size: 2em"></i>
+          </a>
+        </li>
+      </ul>
+    </a>
+  </div>
+</nav>

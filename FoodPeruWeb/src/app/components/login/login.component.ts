@@ -3,6 +3,7 @@ import { Auth } from 'aws-amplify';
 import { AuthService } from '../../services/auth/auth.service';
 // import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,10 +13,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 })
 export class LoginComponent {
 
-  constructor(
-    // public ng4LoadingSpinnerService :Ng4LoadingSpinnerService
-    public authUser: AuthService
-  ) {}
+  constructor( public authUser: AuthService, private router: Router ) {}
 
   signInFlag = true;
   signUpFlag = false;
@@ -73,7 +71,6 @@ showLogInView() {
       }
     };
 
-
   Auth.signUp(user)
       .then(data => {
         console.log(data);
@@ -96,10 +93,9 @@ showLogInView() {
 
       console.log(user);
     //   console.log(user['attributes'].name);
-
       this.userName = user.attributes.name;
       this.authUser.storeSessionUserName(this.userName);
-      //  this._router.navigate(['/home'])
+      this.router.navigate(['/account']);
     });
     //   .catch(err => {
     //     this._ng4LoadingSpinnerService.hide();
@@ -129,9 +125,9 @@ showLogInView() {
   }
 
   onVerify(verifycode) {
-   console.log(verifycode, this.userEmail);
+  console.log(verifycode, this.userEmail);
 
-   Auth.confirmSignUp(this.userEmail, verifycode.verifyEmail, {
+  Auth.confirmSignUp(this.userEmail, verifycode.verifyEmail, {
       forceAliasCreation: true
       }).then(data => {
         console.log(data);
@@ -147,8 +143,4 @@ showLogInView() {
   closeLoginFailedModal() {
     this.displayLoginFailedModal = false;
   }
-
-
-
-
 }

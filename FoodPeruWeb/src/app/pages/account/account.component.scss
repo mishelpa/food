@@ -1,0 +1,13 @@
+.list-group{
+  .active{
+    color: #FF9B00;
+    background-color: white;
+    border:0;
+    border-right: solid 1pt #CCCCCC;
+  }
+  a{
+    border: 0;
+    font-size: medium;
+    border-right: solid 1pt #CCCCCC;
+  }
+}

@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>MIS DIRECCIONES</h2>
+  <hr>
+  <div class="mt-5">
+    <form action="" [formGroup]="userForm" (ngSubmit)="save(userForm.value)" class="row">
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-name">Nombres</label>
+        <input type="text"  required formControlName="nameUser" class="form-control" id="user-name" aria-describedby="nameHelp" #name>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-lastname">Apellidos</label>
+        <input type="text" required formControlName="lastnameUser" class="form-control" id="user-lastname" #lastname>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-cel">Teléfono Celular</label>
+        <input type="number" required formControlName="celUser" class="form-control" id="user-cel" #cel>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-othercel">Otro Teléfono (Opcional)</label>
+        <input type="number" formControlName="othercelUser" class="form-control" id="user-othercel" #othercel>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-address">Dirección</label>
+        <input type="text" required formControlName="addressUser" class="form-control" id="user-address" #address>
+      </div>
+      <div class="form-group col-xs-6 col-md-3">
+        <label for="user-lote">Nro/Lote</label>
+        <input type="text" required formControlName="loteUser" class="form-control" id="user-lote" #lote>
+      </div>
+      <div class="form-group col-xs-6 col-md-3">
+        <label for="user-dpto">Dpto/Interior/Urb (Opcional)</label>
+        <input type="text" formControlName="dptoUser" class="form-control" id="user-dpto" #dpto>
+      </div>
+      <div class="col-md-12 text-right">
+        <button type="submit" [disabled]="userForm.invalid" class="btn">Agregar</button>
+      </div>
+    </form>
+  </div>
+</div>
+

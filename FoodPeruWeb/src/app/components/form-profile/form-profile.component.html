@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>MIS DATOS PERSONALES</h2>
+  <hr>
+  <div class="mt-5">
+    <form action="" [formGroup]="profileForm" (ngSubmit)="save(profileForm.value)" class="row">
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-name">Nombres</label>
+        <input type="text"  required formControlName="nameUser" class="form-control" id="user-name" aria-describedby="nameHelp" #name>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-lastname">Apellidos</label>
+        <input type="text" required formControlName="lastnameUser" class="form-control" id="user-lastname" #lastname>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-month">Dia</label>
+        <p-calendar formControlName="month" class="form-control" id="user-month" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2010"#month></p-calendar>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label>Sexo</label>
+        <div class="radioBtn">
+          <div>
+            <input id="male" type="radio" value="masculino" name="gender" formControlName="gender">
+            <label for="male">Masculino</label>
+          </div>
+          <div>
+            <input id="female" type="radio" value="femenino" name="gender" formControlName="gender">
+            <label for="female">Femenino</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-cel">Teléfono Celular</label>
+        <input type="text" required formControlName="celUser" class="form-control" id="user-cel" #cel>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-email">Email</label>
+        <input type="email" required formControlName="emailUser" class="form-control" id="user-email" #email>
+      </div>
+      <div class="col-md-12 text-right">
+        <button type="submit" [disabled]="profileForm.invalid" class="btn">Agregar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
