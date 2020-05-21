@@ -18,9 +18,7 @@ export class AuthService {
       }
     });
 
-    /* Auth.currentAuthenticatedUser()
-    .then(user => this.storeSessionUserName(user.username)
-    ); */
+
   }
 
   public static SIGN_IN = 'signIn';
@@ -47,8 +45,7 @@ export class AuthService {
   }
 
   getSessionUserName(): any | null {
-    console.log(this.storage.getItem('session un'));
-    return this.storage.getItem('CognitoIdentityServiceProvider.62n13nhk7bqnmd7qdr8vkbfgnk.LastAuthUser');
+    return this.storage.getItem('session un');
   }
 
   removeSessionUserName() {

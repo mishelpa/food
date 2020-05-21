@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -8,10 +8,18 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
 
   constructor(private router: Router,
               public authService: AuthService) { }
+
+  ngOnInit(): void {
+    Auth.currentUserInfo()
+    .then(user => console.log(user)
+    );
+    console.log(Auth.currentSession());
+
+  }
 
   logOutSession() {
     Auth.signOut()
@@ -23,4 +31,5 @@ export class NavComponent {
       })
       .catch(err => console.log(err));
   }
+
 }

@@ -94,7 +94,7 @@ showLogInView() {
       console.log(user);
     //   console.log(user['attributes'].name);
       this.userName = user.attributes.name;
-      this.authUser.storeSessionUserName(this.userName);
+      this.authUser.storeSessionUserName(user.attributes.name);
       this.router.navigate(['/account']);
     });
     //   .catch(err => {
