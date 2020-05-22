@@ -9,17 +9,20 @@ import { ProductsService } from '../../services/products/products.service';
 })
 export class ProductComponent implements OnInit {
 
+  product: any;
+
   constructor(private router: ActivatedRoute, private productsService: ProductsService) { }
 
   ngOnInit(): void {
-
+    const id = this.router.snapshot.params['id'];
+    this.getProductById(id);
   }
 
   getProductById(id) {
     this.productsService.getProduct(id).subscribe(
       response => {
         console.log(response);
-        // this.products = response;
+        this.product = response;
       }
     );
   }
