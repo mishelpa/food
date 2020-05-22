@@ -6,5 +6,19 @@
     <h3>{{product?.name}}</h3>
     <span>{{product?.marca}}</span>
     <h4>S/. {{product?.price}}</h4>
+    <div class="col-12 col-md-4">
+      <button type="submit" class="btn btn-forms-submit w-100" (click)="addToCart()">Añadir al carrito</button>
+    </div>
   </div>
 </div>
+
+<p-dialog [(visible)]="displayAddProductModal" [modal]="true" [closable]="false">
+  <p-header>
+    Tu producto se agregó al carrito
+  </p-header>
+    PRODUCTO
+  <p-footer>
+    <button type="button" class="btn btn-forms-submit" (click)="goToCart()">Ir al carrito</button>
+    <button type="button" class="btn btn-dark" (click)="closeAddProductModal()">Seguir comprando</button>
+  </p-footer>
+</p-dialog>

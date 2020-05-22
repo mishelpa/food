@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../services/products/products.service';
 
 @Component({
@@ -10,11 +10,12 @@ import { ProductsService } from '../../services/products/products.service';
 export class ProductComponent implements OnInit {
 
   product: any;
+  displayAddProductModal: boolean = false;
 
-  constructor(private router: ActivatedRoute, private productsService: ProductsService) { }
+  constructor(private routerActive: ActivatedRoute, private router: Router, private productsService: ProductsService) { }
 
   ngOnInit(): void {
-    const id = this.router.snapshot.params['id'];
+    const id = this.routerActive.snapshot.params['id'];
     this.getProductById(id);
   }
 
@@ -27,4 +28,15 @@ export class ProductComponent implements OnInit {
     );
   }
 
+  addToCart() {
+    this.displayAddProductModal = true;
+  }
+
+  goToCart() {
+    this.router.navigate(["/cart"]);
+  }
+
+  closeAddProductModal() {
+    this.displayAddProductModal = false;
+  }
 }
