@@ -23,7 +23,7 @@
         <input type="password" formControlName="passwordLogin" class="form-control" id="password" #password>
       </div>
     </form>
-    <small id="emailHelp" class="form-text text-muted mb-3 pointer" style="text-decoration: underline;">Olvidé mi contraseña</small>
+    <small id="emailHelp" class="form-text text-muted mb-3 pointer" style="text-decoration: underline;" (click)="forgotPassword()">Olvidé mi contraseña</small>
     <button role="button" [disabled]="loginForm.invalid" class="btn btn-forms-submit w-100" (click)="signInToAWS(loginForm.value)">Iniciar sesión</button>
   </div>
 
@@ -50,8 +50,7 @@
         <input class="form-control" type="text" name="" id="dni" formControlName = "dni">
       </div>
         <button type="submit" class="btn btn-forms-submit w-100"
-        [disabled]="registerForm.invalid" data-toggle="modal" data-target="#exampleModal"
-        >Completar registro</button>
+        [disabled]="registerForm.invalid" data-toggle="modal" data-target="#exampleModal">Completar registro</button>
     </form>
   </div>
 

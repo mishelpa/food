@@ -23,6 +23,8 @@ import { FormCardComponent } from './components/form-card/form-card.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { ProductComponent } from './components/product/product.component';
 import { PageProductComponent } from './pages/page-product/page-product.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { PageResetLoginComponent } from './pages/page-reset-login/page-reset-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { PageProductComponent } from './pages/page-product/page-product.componen
     FormCardComponent,
     ListProductsComponent,
     ProductComponent,
-    PageProductComponent
+    PageProductComponent,
+    ResetPasswordComponent,
+    PageResetLoginComponent
   ],
   imports: [
     BrowserModule,
