@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
@@ -19,6 +20,9 @@ import { AccountComponent } from './pages/account/account.component';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { FormProfileComponent } from './components/form-profile/form-profile.component';
 import { FormCardComponent } from './components/form-card/form-card.component';
+import { ListProductsComponent } from './components/list-products/list-products.component';
+import { ProductComponent } from './components/product/product.component';
+import { PageProductComponent } from './pages/page-product/page-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,10 @@ import { FormCardComponent } from './components/form-card/form-card.component';
     AccountComponent,
     PageLoginComponent,
     FormProfileComponent,
-    FormCardComponent
+    FormCardComponent,
+    ListProductsComponent,
+    ProductComponent,
+    PageProductComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,8 @@ import { FormCardComponent } from './components/form-card/form-card.component';
     DialogModule,
     MatFormFieldModule,
     MatInputModule,
-    InputTextModule
+    InputTextModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

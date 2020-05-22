@@ -1,0 +1,13 @@
+<div class="row listProduct">
+  <div class="col-6 col-md-2" *ngFor="let product of products">
+    <div class="product" (click)="getId(product.id)">
+      <div class ="img-product">
+        <img src="{{product.image}}" class="" alt="">
+      </div>
+      <div class="description-product">
+        <p>{{product.name}}</p>
+        <span>S/. {{product.price}}</span>
+      </div>
+    </div>
+  </div>
+</div>

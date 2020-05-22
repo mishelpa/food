@@ -1,0 +1,20 @@
+.product{
+  display: flex;
+  flex-direction: column;
+  .img-product{
+    display: flex;
+    align-items: center;
+    img{
+      width: 100%;
+    }
+  }
+  .description-product{
+    span{
+      color: #ea2840;
+      font-weight: 700;
+    }
+  }
+}
+.product:hover p{
+  text-decoration: underline;
+}
