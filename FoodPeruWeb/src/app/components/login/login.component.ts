@@ -55,7 +55,6 @@ showLogInView() {
     this.signUpFlag = true;
   }
 
-
   singUpToAWS(value) {
   console.log(value);
   this.userEmail = this.registerForm.value.email;
@@ -142,5 +141,9 @@ showLogInView() {
 
   closeLoginFailedModal() {
     this.displayLoginFailedModal = false;
+  }
+
+  forgotPassword(){
+    this.router.navigate(['/resetPassword'])
   }
 }
