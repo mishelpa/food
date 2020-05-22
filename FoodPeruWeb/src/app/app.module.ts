@@ -25,6 +25,7 @@ import { ProductComponent } from './components/product/product.component';
 import { PageProductComponent } from './pages/page-product/page-product.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { PageResetLoginComponent } from './pages/page-reset-login/page-reset-login.component';
+import { CartComponent } from './components/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { PageResetLoginComponent } from './pages/page-reset-login/page-reset-log
     ProductComponent,
     PageProductComponent,
     ResetPasswordComponent,
-    PageResetLoginComponent
+    PageResetLoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
