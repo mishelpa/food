@@ -1,13 +1,18 @@
-<div class="row listProduct">
-  <div class="col-6 col-md-2" *ngFor="let product of products">
-    <div class="product" (click)="getId(product.id)">
+<div class="listProduct">
+  <div class="product border" *ngFor="let product of products">
+    <div class="" (click)="getId(product.id)">
       <div class ="img-product">
-        <img src="{{product.image}}" class="" alt="">
+        <img src="{{product.image}}"class="card-img-top" alt="40">
       </div>
       <div class="description-product">
-        <p>{{product.name}}</p>
-        <span>S/. {{product.price}}</span>
+        <p class="card-text">{{product.name}}</p>
+        <span class="price-text">S/. {{product.price}}</span>
       </div>
     </div>
   </div>
-</div>
+</div> 
+
+
+
+
+

@@ -26,6 +26,7 @@ export class LoginComponent {
   displayVerificationFailedModal = false;
   displayLoginFailedModal = false;
   user: any;
+  displayFailedEmail = false;
 
   loginForm = new FormGroup({
     emailLogin: new FormControl('', [Validators.required, Validators.email]),
@@ -75,7 +76,11 @@ showLogInView() {
         console.log(data);
         this.displayVerificationModal = true;
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        this.displayFailedEmail = true;
+        console.log('ya hay una cuenta registrada con ese correo')
+      
+      });
   }
 
   signInToAWS(value) {
@@ -95,13 +100,12 @@ showLogInView() {
       this.userName = user.attributes.name;
       this.authUser.storeSessionUserName(user.attributes.name);
       this.router.navigate(['/account']);
-    });
-    //   .catch(err => {
+    })
+       .catch(err => {
     //     this._ng4LoadingSpinnerService.hide();
-    //     this.displayLoginFailedModal = true;
-    //     console.log(err)
-    //   }
-    // );
+         this.displayLoginFailedModal = true;
+         console.log(err)
+       });
   }
 
 
@@ -145,5 +149,8 @@ showLogInView() {
 
   forgotPassword(){
     this.router.navigate(['/resetPassword'])
+  }
+  closeFailedEmail(){
+this.displayFailedEmail = false
   }
 }
