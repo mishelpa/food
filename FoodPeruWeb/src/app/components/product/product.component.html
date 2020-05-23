@@ -7,7 +7,7 @@
     <span>{{product?.marca}}</span>
     <h4>S/. {{product?.price}}</h4>
     <div class="col-12 col-md-4">
-      <button type="submit" class="btn btn-forms-submit w-100" (click)="addToCart()">Añadir al carrito</button>
+      <button type="submit" class="btn btn-orange btn-forms-submit w-100" (click)="addToCart(product)">Añadir al carrito</button>
     </div>
   </div>
 </div>
@@ -16,7 +16,16 @@
   <p-header>
     Tu producto se agregó al carrito
   </p-header>
-    PRODUCTO
+  <div class="row">
+    <div class="col-4 col-md-2">
+      <img src="{{product?.image}}" class="img-fluid" alt=" {{product?.name}}">
+    </div>
+    <div class="col-8 col-md-10">
+      <h3>{{product?.name}}</h3>
+      <span>Cantidad: </span><br>
+      <span>Precio: S/. {{product?.price}}</span>
+    </div>
+  </div>
   <p-footer>
     <button type="button" class="btn btn-forms-submit" (click)="goToCart()">Ir al carrito</button>
     <button type="button" class="btn btn-dark" (click)="closeAddProductModal()">Seguir comprando</button>

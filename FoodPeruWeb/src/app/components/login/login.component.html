@@ -24,7 +24,7 @@
       </div>
     </form>
     <small id="emailHelp" class="form-text text-muted mb-3 pointer" style="text-decoration: underline;" (click)="forgotPassword()">Olvidé mi contraseña</small>
-    <button role="button" [disabled]="loginForm.invalid" class="btn btn-forms-submit w-100" (click)="signInToAWS(loginForm.value)">Iniciar sesión</button>
+    <button role="button" [disabled]="loginForm.invalid" class="btn  btn-orange btn-forms-submit w-100" (click)="signInToAWS(loginForm.value)">Iniciar sesión</button>
   </div>
 
   <div *ngIf="signUpFlag">
@@ -49,7 +49,7 @@
         <label for="dni">DNI(opcional)</label>
         <input class="form-control" type="text" name="" id="dni" formControlName = "dni">
       </div>
-        <button type="submit" class="btn btn-forms-submit w-100"
+        <button type="submit" class="btn btn-orange btn-forms-submit w-100"
         [disabled]="registerForm.invalid" data-toggle="modal" data-target="#exampleModal">Completar registro</button>
     </form>
   </div>
@@ -61,7 +61,7 @@
         <input type="text" class="form-control" id="exampleInputverifycode1" aria-describedby="verifyCodeHelp" #verifycode formControlName = "verifyEmail">
       </div>
     </form>
-    <button role="button" class="btn btn-forms-submit w-100" (click)="onVerify(verifyEmailForm.value)">Verificar</button>
+    <button role="button" class="btn btn-forms-submit btn-orange w-100" (click)="onVerify(verifyEmailForm.value)">Verificar</button>
   </div>
 </div>
 

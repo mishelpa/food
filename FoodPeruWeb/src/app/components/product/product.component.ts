@@ -9,10 +9,14 @@ import { ProductsService } from '../../services/products/products.service';
 })
 export class ProductComponent implements OnInit {
 
+  listProduct: any = [];
   product: any;
   displayAddProductModal: boolean = false;
 
-  constructor(private routerActive: ActivatedRoute, private router: Router, private productsService: ProductsService) { }
+  constructor(
+    private routerActive: ActivatedRoute,
+    private router: Router,
+    private productsService: ProductsService) { }
 
   ngOnInit(): void {
     const id = this.routerActive.snapshot.params['id'];
@@ -28,12 +32,14 @@ export class ProductComponent implements OnInit {
     );
   }
 
-  addToCart() {
+  addToCart(product) {
     this.displayAddProductModal = true;
+    this.productsService.addListProducts(product);
+    console.log(this.productsService.products);
   }
 
   goToCart() {
-    this.router.navigate(["/cart"]);
+    this.router.navigate(['/cart']);
   }
 
   closeAddProductModal() {
