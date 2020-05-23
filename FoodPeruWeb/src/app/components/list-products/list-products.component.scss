@@ -1,20 +1,36 @@
-.product{
+// {
+//   margin: 0px;
+//   padding: 0px;
+// }
+.listProduct{
   display: flex;
-  flex-direction: column;
-  .img-product{
-    display: flex;
-    align-items: center;
-    img{
-      width: 100%;
+  flex-wrap: wrap;
+  padding-left: 10%;
+  padding-right: 10%;
+  .product{
+    padding: 12px;
+    width: 22.64%;
+    margin: 1em auto;
+    .img-product{
+      img{
+        width: 100%;
+      }
+    }
+    .description-product{
+      .card-text{
+        font-weight: bolder;
+      }
+      .price-text{
+        color: #ea2840;
+        font-weight: bolder;
+        font-size: 1.1rem;
+      }
     }
   }
-  .description-product{
-    span{
-      color: #ea2840;
-      font-weight: 700;
-    }
+  .product:hover p{
+    text-decoration: underline;
   }
-}
-.product:hover p{
-  text-decoration: underline;
+  .product:hover{
+    cursor: pointer;
+  }
 }

@@ -22,13 +22,15 @@ export class ListProductsComponent implements OnInit {
   getAllProducts() {
     this.productsService.getListProducts().subscribe(
       response => {
-        console.log(response);
+        console.log(response + 'aqui');
         this.products = response.products;
       }
     );
   }
 
   getId(id) {
+    console.log(id + 'aqui');
+    
     this.router.navigate(['/products', id]);
   }
 

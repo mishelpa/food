@@ -109,4 +109,14 @@
   </p-footer>
 </p-dialog>
 
+<!-- VERIFICATION EMAIL -->
+<p-dialog [(visible)]="displayFailedEmail" [modal]="true" [closable]="false">
+  <p-header>
+    Datos ingresados incorrectos
+  </p-header>
+  Ya existe una cuenta con el correo electrónico proporcionado
+  <p-footer>
+    <button type="button" class="btn btn-dark" (click)="closeFailedEmail()">Aceptar</button>
+  </p-footer>
+</p-dialog>
 <app-social-button></app-social-button>
