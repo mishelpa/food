@@ -1,4 +1,39 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+// .product{
+//   display: flex;
+//   justify-content: space-around;
+// }
 button{
   background-color: #FF5500;
   color: white;
+  }
+ 
+  .quantityProduct{
+    display: flex;
+  }
+  .nameProduct{
+    font-weight: bolder;
+  }
+  h2{
+    margin: 0em;
+    margin-bottom: 4px;
+  }
+
+  .priceProduct{
+    color: #ee3037;
+    font-size: 20px;
+    font-size: 23px; 
+     line-height: 15px; 
+
+    
+  }
+  .countProduct{
+    display: flex;
+    flex-direction: row;
+  }
+  .imgProduct{
+    width: 74%;
   }
