@@ -13,6 +13,11 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {
     this.url = environment.apiUrl;
+    if (JSON.parse(localStorage.getItem('product'))) {
+      this.products = JSON.parse(localStorage.getItem('product'));
+    } else {
+      this.products = [];
+    }
   }
 
   private listProducts = new BehaviorSubject([]);
