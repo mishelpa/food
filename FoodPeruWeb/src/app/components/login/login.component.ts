@@ -151,6 +151,6 @@ showLogInView() {
     this.router.navigate(['/resetPassword'])
   }
   closeFailedEmail(){
-this.displayFailedEmail = false
+    this.displayFailedEmail = false
   }
 }
