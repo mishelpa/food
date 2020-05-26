@@ -14,11 +14,9 @@
               </div>
               <div class="col-md-8">
                 <h3>{{product.name}}</h3>
-                <label>
-                  Cantidad:
-                  <input type="number" value="{{product.quantity}}" [formControl]="qty">
-                </label>
-                <span>{{product.quantity}}</span>
+                <span>{{product.quantity}}</span>-
+                <span>{{product.price}}</span>
+                <span (click)="deleteProduct(product)">Eliminar</span>
               </div>
             </div>
           </div>

@@ -26,6 +26,8 @@ import { PageProductComponent } from './pages/page-product/page-product.componen
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { PageResetLoginComponent } from './pages/page-reset-login/page-reset-login.component';
 import { CartComponent } from './components/cart/cart.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,9 @@ import { CartComponent } from './components/cart/cart.component';
     MatFormFieldModule,
     MatInputModule,
     InputTextModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

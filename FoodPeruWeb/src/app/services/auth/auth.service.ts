@@ -18,7 +18,6 @@ export class AuthService {
       }
     });
 
-
   }
 
   public static SIGN_IN = 'signIn';
@@ -54,7 +53,11 @@ export class AuthService {
 
   currentUser() {
     Auth.currentAuthenticatedUser()
-    .then(user => localStorage.setItem('currentUser', user.username)
+    .then(user => localStorage.setItem('currentUser', user.attributes.name)
     );
+  }
+
+  getQtyOfCart() {
+    return JSON.parse(localStorage.getItem('cart'));
   }
 }

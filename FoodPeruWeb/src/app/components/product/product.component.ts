@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../services/products/products.service';
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -11,7 +11,7 @@ import { FormBuilder } from "@angular/forms";
 export class ProductComponent implements OnInit {
 
   listProduct: any = [];
-  qtyProduct: number[] = [1,2,3,4,5,6]
+  qtyProduct: number[] = [1, 2, 3, 4, 5, 6];
   product: any;
   displayAddProductModal: boolean = false;
 
@@ -23,7 +23,7 @@ export class ProductComponent implements OnInit {
 
   qtyForm = this.fb.group({
     qtySelected: []
-  })
+  });
 
   ngOnInit(): void {
     const id = this.routerActive.snapshot.params['id'];
@@ -33,7 +33,6 @@ export class ProductComponent implements OnInit {
   getProductById(id) {
     this.productsService.getProduct(id).subscribe(
       response => {
-        console.log(response);
         this.product = response;
       }
     );
@@ -42,7 +41,7 @@ export class ProductComponent implements OnInit {
   addToCart(product) {
     // product.quantity = this.qtyForm.value;
     this.displayAddProductModal = true;
-    this.productsService.addListProducts(product, this.qtyForm.value);
+    this.productsService.addListProducts(product, parseInt(this.qtyForm.value.qtySelected));
   }
 
   goToCart() {

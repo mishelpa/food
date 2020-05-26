@@ -20,11 +20,11 @@ export class ProductsService {
     }
   }
 
-  private listProducts = new BehaviorSubject([]);
-  public currentListProducts = this.listProducts.asObservable();
+  public cartProducts = new BehaviorSubject(0);
+  public currentCartProducts = this.cartProducts.asObservable();
 
-  updateListProduct(product) {
-    return this.listProducts.next(product);
+  updateCartProduct(qty) {
+    return this.cartProducts.next(qty);
   }
 
   addListProducts(objProduct, qtyProduct) {
@@ -36,8 +36,6 @@ export class ProductsService {
     } else {
       this.products[indexProduct].quantity += qtyProduct;
     }
-
-    this.listProducts.next(this.products);
   }
 
   getListProducts(): Observable<any> {

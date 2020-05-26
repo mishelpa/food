@@ -78,8 +78,8 @@ showLogInView() {
       })
       .catch(err => {
         this.displayFailedEmail = true;
-        console.log('ya hay una cuenta registrada con ese correo')
-      
+        console.log('ya hay una cuenta registrada con ese correo');
+
       });
   }
 
@@ -101,11 +101,11 @@ showLogInView() {
       this.authUser.storeSessionUserName(user.attributes.name);
       this.router.navigate(['/account']);
     })
-       .catch(err => {
+    .catch(err => {
     //     this._ng4LoadingSpinnerService.hide();
-         this.displayLoginFailedModal = true;
-         console.log(err)
-       });
+    this.displayLoginFailedModal = true;
+    console.log(err);
+    });
   }
 
 
@@ -147,10 +147,10 @@ showLogInView() {
     this.displayLoginFailedModal = false;
   }
 
-  forgotPassword(){
-    this.router.navigate(['/resetPassword'])
+  forgotPassword() {
+    this.router.navigate(['/resetPassword']);
   }
-  closeFailedEmail(){
-    this.displayFailedEmail = false
+  closeFailedEmail() {
+    this.displayFailedEmail = false;
   }
 }

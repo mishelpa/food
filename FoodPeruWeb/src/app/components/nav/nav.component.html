@@ -8,7 +8,7 @@
         <li *ngIf="this.authService.getSessionUserName() !== null">{{this.authService.getSessionUserName()}}</li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="pi pi-user text-white" style="font-size: 2em"></i>
+            <mat-icon class="icon">person_outline</mat-icon>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" *ngIf="this.authService.getSessionUserName() === null" routerLink="/login">Mi cuenta</a>
@@ -22,7 +22,7 @@
         </li>
         <li class="nav-item cart">
           <a class="nav-link" routerLink="/cart">
-            <i class="pi pi-shopping-cart text-white " style="font-size: 2em"></i>
+            <mat-icon class="icon" matBadge="{{this.authService.getQtyOfCart()}}" matBadgeColor="warn">shopping_cart</mat-icon>
           </a>
         </li>
       </ul>

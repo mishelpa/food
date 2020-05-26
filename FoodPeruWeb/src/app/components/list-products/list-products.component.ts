@@ -29,8 +29,6 @@ export class ListProductsComponent implements OnInit {
   }
 
   getId(id) {
-    console.log(id + 'aqui');
-    
     this.router.navigate(['/products', id]);
   }
 
