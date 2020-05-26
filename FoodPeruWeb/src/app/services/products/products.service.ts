@@ -9,7 +9,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class ProductsService {
 
   private url: string;
-  products: any[] = [];
+  products: any[] = JSON.parse(localStorage.getItem('product'));
 
   constructor(private http: HttpClient) {
     this.url = environment.apiUrl;

@@ -35,7 +35,6 @@ export class ProductComponent implements OnInit {
   addToCart(product) {
     this.displayAddProductModal = true;
     this.productsService.addListProducts(product);
-    console.log(this.productsService.products);
   }
 
   goToCart() {

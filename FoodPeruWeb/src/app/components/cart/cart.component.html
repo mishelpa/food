@@ -16,9 +16,9 @@
                 <h3>{{product.name}}</h3>
                 <label>
                   Cantidad:
-                  <input type="number" [formControl]="qty">
+                  <input type="number" value="{{product.quantity}}" [formControl]="qty">
                 </label>
-                <span>{{qty.value}}</span>
+                <span>{{product.quantity}}</span>
               </div>
             </div>
           </div>
@@ -28,25 +28,24 @@
       </div>
     </div>
 
-    <button (click)="ver()">ver</button>
     <!-- RESUMEN DEL PEDIDO -->
     <div class="col-12 col-md-4">
       <div class="brief-box border py-3 px-4">
         <p class="font-weight-bold">RESUMEN DE TU PEDIDO</p>
         <hr>
         <div class="d-flex justify-content-between">
-          <p class="fs-14">Subtotal</p>
-          <p>0</p>
+          <p class="fs-14">Subtotal({{quantityCart}})</p>
+          <p>S/ {{totalCart | number: '0.2'}}</p>
         </div>
         <hr>
         <div class="d-flex justify-content-between">
           <p class="fs-14">Envio</p>
-          <p></p>
+          <p>total </p>
         </div>
         <hr>
         <div class="d-flex justify-content-between">
           <p>TOTAL</p>
-          <p>S/ 0.00</p>
+          <p>S/ {{totalCart | number: '0.2' }}</p>
         </div>
         <button type="submit" class="btn w-100">Procesar compra</button>
       </div>
