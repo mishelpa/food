@@ -27,7 +27,13 @@
         <p class="text-secondary m-0 mb-1">MARCA: <span class="text-secondary">{{product?.marca}}</span></p>
         <p class="pt-2 priceProduct">S/. {{product?.price}}</p>
         <div class="countProduct mt-4">
-          <input type="number" class="form-control mr-2" id="usr">
+          <form [formGroup]="qtyForm">
+            <select formControlName="qtySelected">
+              <option value="">Elige una cantidad</option>
+              <option *ngFor="let qty of qtyProduct">{{qty}}</option>
+            </select>
+          </form>
+         <!--  <input type="" value="{{product.quantity}}" [formControl]="qty" class="form-control mr-2"> -->
           <button type="submit" class="btn btn-orange btn-forms-submit w-100" (click)="addToCart(product)">Añadir al carrito</button>
         </div>
       </div>

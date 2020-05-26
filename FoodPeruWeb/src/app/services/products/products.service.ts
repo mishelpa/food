@@ -27,14 +27,14 @@ export class ProductsService {
     return this.listProducts.next(product);
   }
 
-  addListProducts(objProduct) {
+  addListProducts(objProduct, qtyProduct) {
     const indexProduct = this.products.findIndex(product => product.name === objProduct.name);
 
     if (indexProduct < 0 ) {
-      const newOrder = {...objProduct, quantity: 1};
+      const newOrder = {...objProduct, quantity: qtyProduct};
       this.products.push(newOrder);
     } else {
-      this.products[indexProduct].quantity += 1;
+      this.products[indexProduct].quantity += qtyProduct;
     }
 
     this.listProducts.next(this.products);
