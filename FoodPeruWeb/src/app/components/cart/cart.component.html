@@ -9,12 +9,13 @@
           <p *ngIf="productsCart.length===0" class="my-4">Encuentra los mejores productos a los mejores precios</p>
           <div *ngIf="productsCart.length>0">
             <div *ngFor="let product of productsCart" class="row">
+              <hr>
               <div class="col-md-4">
                 <img src="{{product.image}}" class="img-fluid" alt="{{product.name}}">
               </div>
               <div class="col-md-8">
                 <h3>{{product.name}}</h3>
-                <p class="text-secondary">UNID: <span>{{product.quantity}}</span></p>
+                <p class="text-secondary">Cantidad: <span>{{product.quantity}}</span></p>
                 <p class="text-danger">S/ {{product.price}}</p>
                 <p class="remove-product" (click)="deleteProduct(product)">Eliminar</p>
               </div>
