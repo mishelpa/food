@@ -84,25 +84,16 @@ showLogInView() {
   }
 
   signInToAWS(value) {
-    console.log(value + 'aqui');
-    // e.preventDefault();
-    // this.ng4LoadingSpinnerService.show();
     const authInfo = {
       username: this.loginForm.value.emailLogin,
       password: this.loginForm.value.passwordLogin
     };
 
     Auth.signIn(authInfo).then(user => {
-      console.log(authInfo);
-
-      console.log(user);
-    //   console.log(user['attributes'].name);
       this.userName = user.attributes.name;
-      this.authUser.storeSessionUserName(user.attributes.name);
       this.router.navigate(['/account']);
     })
     .catch(err => {
-    //     this._ng4LoadingSpinnerService.hide();
     this.displayLoginFailedModal = true;
     console.log(err);
     });

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand mb-4" style="background-color: #1b222c;">
+<nav class="navbar navbar-expand" [ngClass]="{'mb-4':userName==null}" style="background-color: #1b222c;">
   <div class="container">
     <a class="navbar-brand logo">
       <img class="pointer" src="assets/logo.PNG" width="150px" routerLink="" alt="logo">
@@ -11,10 +11,10 @@
             <mat-icon class="icon">person</mat-icon>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" *ngIf="this.authService.getSessionUserName() === null" routerLink="/login">Mi cuenta</a>
-            <a class="dropdown-item" *ngIf="this.authService.getSessionUserName() != null" routerLink="/account">Completar datos</a>
+            <a class="dropdown-item" *ngIf="userName==null" routerLink="/login">Mi cuenta</a>
+            <a class="dropdown-item" *ngIf="userName!=null" routerLink="/account">Completar datos</a>
             <a class="dropdown-item">Mis pedidos</a>
-            <a class="dropdown-item pointer" *ngIf="this.authService.getSessionUserName() != null" (click)="logOutSession()">
+            <a class="dropdown-item pointer" *ngIf="userName!=null" (click)="logOutSession()">
               Cerrar sesión
             </a>
           </div>
@@ -28,3 +28,4 @@
     </a>
   </div>
 </nav>
+<div *ngIf="userName!=null" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4">¡Hola {{userName}}!</div>

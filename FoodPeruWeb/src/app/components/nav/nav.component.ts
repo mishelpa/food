@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
 import { AuthService } from '../../services/auth/auth.service';
@@ -8,24 +8,23 @@ import { AuthService } from '../../services/auth/auth.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit {
+export class NavComponent{
+  userName: string;
 
   constructor(private router: Router,
-              public authService: AuthService) { }
-
-  ngOnInit(): void {
-    Auth.currentUserInfo()
-    .then(user => console.log(user)
-    );
-    console.log(Auth.currentSession());
-
+              public authService: AuthService) {
+                Auth.currentUserInfo()
+                .then(user => this.userName = user.attributes.name
+                );
+                console.log(Auth.currentSession());
   }
 
   logOutSession() {
     Auth.signOut()
       .then(() => {
-        this.authService.removeSessionUserName();
-        if (this.router.url === '/home') {
+        console.log(this.router.url);
+
+        if (this.router.url === '/') {
           window.location.reload();
         } else { this.router.navigate(['/']); }
       })
