@@ -1,10 +1,10 @@
-<div class="container pt-5">
+<div class="container">
   <div class="row my-5">
-    <div class="col-12 col-md-8">
+    <div class="">
       <div class="row">
-        <div class="col-12 col-md-8 offset-md-2 text-center">
+        <div class="">
           <p *ngIf="productsCart.length===0" class="font-weight-bold text-uppercase fs-18">No tienes productos en tu carrito</p>
-          <p *ngIf="productsCart.length>0" class="font-weight-bold text-uppercase fs-18">Carrito de compras</p>
+          <h2 *ngIf="productsCart.length>0" class="font-weight-bold text-uppercase fs-18"> Carrito de compras</h2>
           <hr>
           <p *ngIf="productsCart.length===0" class="my-4">Encuentra los mejores productos a los mejores precios</p>
           <div *ngIf="productsCart.length>0">
@@ -14,9 +14,9 @@
               </div>
               <div class="col-md-8">
                 <h3>{{product.name}}</h3>
-                <span>{{product.quantity}}</span>-
-                <span>{{product.price}}</span>
-                <span (click)="deleteProduct(product)">Eliminar</span>
+                <p class="text-secondary">UNID: <span>{{product.quantity}}</span></p>
+                <p class="text-danger">S/ {{product.price}}</p>
+                <p class="remove-product" (click)="deleteProduct(product)">Eliminar</p>
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@
     </div>
 
     <!-- RESUMEN DEL PEDIDO -->
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4 ml-4">
       <div class="brief-box border py-3 px-4">
         <p class="font-weight-bold">RESUMEN DE TU PEDIDO</p>
         <hr>
