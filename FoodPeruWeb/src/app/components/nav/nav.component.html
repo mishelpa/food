@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand navbar-dark mb-4" style="background-color: #1b222c;">
+<nav class="navbar navbar-expand mb-4" style="background-color: #1b222c;">
   <div class="container">
     <a class="navbar-brand logo">
-      <img class="pointer" src="assets/logo.PNG" routerLink="" alt="logo">
+      <img class="pointer" src="assets/logo.PNG" width="150px" routerLink="" alt="logo">
     </a>
     <a class="navbar-brand">
       <ul class="navbar-nav mr-auto">
-        <li *ngIf="this.authService.getSessionUserName() !== null">{{this.authService.getSessionUserName()}}</li>
+        <!-- <li *ngIf="this.authService.getSessionUserName() !== null">{{this.authService.getSessionUserName()}}</li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <mat-icon class="icon">person_outline</mat-icon>
