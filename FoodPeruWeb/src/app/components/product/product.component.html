@@ -5,7 +5,9 @@
       <div class="ml-5 mr-5 col-xs-12 pb-1">
         <h2>{{product?.name}}</h2>
         <p class="text-secondary m-0 mb-1">MARCA: <span class="text-secondary">{{product?.marca}}</span></p>
-        <p class="pt-2 priceProduct">S/. {{product?.price}}</p>
+        <div>
+          <p class="pt-2 priceProduct"> S/. {{product?.price}}</p>
+        </div>
         <div class="countProduct mt-4">
           <form [formGroup]="qtyForm" class="w-50 mr-1">
             <select formControlName="qtySelected" class="form-control ">
@@ -25,19 +27,20 @@
 
 <p-dialog [(visible)]="displayAddProductModal" [modal]="true" [closable]="false">
   <p-header>
-    <h2 class="header-modal">Tu producto se agregó al carrito</h2> 
+    <h2 class="header-modal bg-bg-white ">Tu producto se agregó al carrito</h2> 
   </p-header>
   <div class="row mt-3">
     <div class="col-4 col-md-2">
       <img src="{{product?.image}}" class="img-fluid" alt=" {{product?.name}}">
     </div>
     <div class="col-8 col-md-10 pl-3">
-      <dt>{{product?.name}}</dt>
-      <dd>Cantidad: </dd>
-      <dd>Precio: S/. {{product?.price}} </dd>
+      <dt class="mb-2">{{product?.name}}</dt>
+      <dd class="mb-2">Cantidad: </dd>
+      <dd class="mb-2">Precio por unidad:</dd>
+      <p class="price-product mb-2"> S/. {{product?.price}} </p>
     </div>
   </div>
-  <p-footer class="d-flex-column">
+  <p-footer class="d-flex-column mt-2">
     <button type="button" class="btn btn-orange btn-forms-submit w-100 md-2 p-1"  (click)="goToCart()">Ir al carrito</button>
     <button type="button" class="btn  btn-forms-submit w-100 btn-close mt-2"  (click)="closeAddProductModal()"> <p>Seguir comprando</p> </button>
   </p-footer>

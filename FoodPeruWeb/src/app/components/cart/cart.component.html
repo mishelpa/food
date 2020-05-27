@@ -13,8 +13,9 @@
                 <img src="{{product.image}}" class="img-fluid text-center" alt="{{product.name}}">
               </div>
               <div class="col-md-8 ">
-                <h3>{{product.name}}</h3>
-                <p class="text-secondary">UNID: <span>{{product.quantity}}</span></p>
+                <h3 class="text-uppercase">{{product.name}}</h3>
+                <p class="text-secondary">cantidad: <span>{{product.quantity}}</span></p>
+                <p>Precio por unidad</p>
                 <p class="text-danger">S/ {{product.price}}</p>
                 <p class="remove-product" (click)="deleteProduct(product)">Eliminar</p>
               </div>
