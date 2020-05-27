@@ -4,25 +4,41 @@ nav{
 
   .logo{
     display: flex;
-
   }
 
 }
 .icon{
   color: white;
-  width: 120%;
+  font-size: xx-large;
 }
-.navbar{
+.navbar, .navbar-brand{
   padding: 0% !important;
+}
+.main-icon{
+  margin: 0%;
+  width: 60px;
+  text-align: center;
+  padding-top: 15px;
+}
+.main-icon:hover{
+  background-color: white;
+  }
+.main-icon:hover .icon{
+color: #FF5500;
+}
+.dropdown-item{
+  color:#666666;
+  font-size: small;
+}
+.dropdown-item:hover{
+  color: #FF5500;
+  cursor: pointer;
 }
 
-.navbar-brand{
-  padding: 0% !important;
-}
 
 @media (max-width: 768px) {
   img{
-    width: 80px;
+    width: 100px;
   }
 }
 

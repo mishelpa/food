@@ -7,22 +7,21 @@
       <ul class="navbar-nav mr-auto">
         <!-- <li *ngIf="this.authService.getSessionUserName() !== null">{{this.authService.getSessionUserName()}}</li> -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <mat-icon class="icon">person_outline</mat-icon>
+          <a class="nav-link main-icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <mat-icon class="icon">person</mat-icon>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" *ngIf="this.authService.getSessionUserName() === null" routerLink="/login">Mi cuenta</a>
             <a class="dropdown-item" *ngIf="this.authService.getSessionUserName() != null" routerLink="/account">Completar datos</a>
             <a class="dropdown-item">Mis pedidos</a>
-            <div class="dropdown-divider" *ngIf="this.authService.getSessionUserName() != null"></div>
             <a class="dropdown-item pointer" *ngIf="this.authService.getSessionUserName() != null" (click)="logOutSession()">
               Cerrar sesión
             </a>
           </div>
         </li>
         <li class="nav-item cart">
-          <a class="nav-link" routerLink="/cart">
-            <mat-icon class="icon" matBadge="{{this.authService.getQtyOfCart()}}" matBadgeColor="warn">shopping_cart</mat-icon>
+          <a class="nav-link main-icon" routerLink="/cart">
+            <mat-icon class="icon" matBadgeSize="medium" matBadge="{{this.authService.getQtyOfCart()}}" matBadgeColor="warn">shopping_cart</mat-icon>
           </a>
         </li>
       </ul>
