@@ -37,4 +37,8 @@ ngOnInit(): void {
 payment() {
   this.culqiService.payorder(this.product[0].description, this.product[0].amount);
 }
+
+get() {
+  this.culqiService.getToken().subscribe((data) => console.log(data));
+}
 }

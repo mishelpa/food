@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 export declare let Culqi;
 
 @Injectable({
@@ -46,6 +46,9 @@ export class CulqiService {
   }
 
   getToken() {
-    this.http.get('https://api.culqi.com/v2/tokens/pk_test_WkOlOvuX4C3asoLB')
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Bearer ' + 'sk_test_3mWmJRwXPw7OfJJq')
+    return this.http.get('https://api.culqi.com/v2/tokens', {headers});
   }
 }
