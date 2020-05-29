@@ -1,40 +1,14 @@
-<form>
-    <div>
-      <label>
-        <span>Correo Electrónico</span>
-        <input type="text" size="50" data-culqi="card[email]" id="card[email]">
-      </label>
+<div >
+  <h2 class="mb-4"> pago con Culqi</h2>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center">Carrito de Compra</h5>
+      <ul *ngFor="let item of product">
+        <li>{{ item.description }}  => {{ item.amount }}</li>
+      </ul>
+      <section class=" text-center">
+        <button (click)="payment()" class="text-white btn btn-sm btn-success">Total a Pagar: {{ product[0]["amount"] }}</button>
+      </section>
     </div>
-    <div>
-      <label>
-        <span>Número de tarjeta</span>
-        <input type="text" size="20" data-culqi="card[number]" id="card[number]">
-      </label>
-    </div>
-    <div>
-      <label>
-        <span>CVV</span>
-        <input type="text" size="4" data-culqi="card[cvv]" id="card[cvv]">
-      </label>
-    </div>
-    <div>
-      <label>
-        <span>Fecha expiración (MM/YYYY)</span>
-        <input size="2" data-culqi="card[exp_month]" id="card[exp_month]">
-        <span>/</span>
-        <input size="4" data-culqi="card[exp_year]" id="card[exp_year]">
-      </label>
-    </div>
-  </form>
-  <button id="btn_pagar" (click)="getCredentials($event)">Pagar</button>
-
-
-  <!-- Incluyendo .js de Culqi JS -->
-<script src="https://checkout.culqi.com/v2"></script>
-<script>
-  window.Culqi.publicKey = 'pk_test_WkOlOvuX4C3asoLB';
-  window.Culqi.init();
-
-</script>
-
-  
+  </div>
+</div>

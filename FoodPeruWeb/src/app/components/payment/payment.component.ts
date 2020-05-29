@@ -11,6 +11,10 @@ declare var $: any;
 })
 export class PaymentComponent implements OnInit {
 
+  product = [{
+    description : "Polo Culqi Lover",
+    amount: 100
+  }];
   constructor(
     // private culqiSrv: CulqiService
     private culqi: CulqiService
@@ -18,15 +22,19 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     // this.culqiSrv.configCulqi('food Peru', 'pk_test_WkOlOvuX4C3asoLB');
-
+    this.culqi.initCulqi();
   }
 
-  getCredentials(e){
-    e.preventDefault();
+  payment(){
+    this.culqi.payorder(this.product[0]["description"],this.product[0]["amount"]);
+  }
+
+  // getCredentials(e){
+  //   e.preventDefault();
     
-    this.culqi.getToken()
+  //   this.culqi.getToken()
 
     
-  }
+  // }
 
 }
