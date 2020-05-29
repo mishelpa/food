@@ -41,4 +41,8 @@ payment() {
 get() {
   this.culqiService.getToken().subscribe((data) => console.log(data));
 }
+
+post() {
+  this.culqiService.postToken().subscribe((data) => console.log(data));
+}
 }
