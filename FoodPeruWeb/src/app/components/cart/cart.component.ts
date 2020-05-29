@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,7 @@ export class CartComponent implements OnInit {
   productsCart: any[] = [];
   quantityCart = 0;
   totalCart = 0;
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService, private router: Router) {
     this.productsCart = this.productsService.products;
     this.getStatsProducts();
     localStorage.setItem('product', JSON.stringify(this.productsCart));
@@ -35,6 +36,13 @@ ngOnInit(): void {
       this.totalCart += (product.quantity * product.price);
     });
     localStorage.setItem('cart', JSON.stringify(this.quantityCart));
+  }
+
+  processPayment(){
+    console.log('aqui');
+this.router.navigate(['/payment'])
+
+
   }
 
 }

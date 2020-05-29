@@ -65,3 +65,10 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 (window as any).process = {
   env: { DEBUG: undefined },
 };
+
+
+declare global {
+  interface Window { Culqi:ReturnType<typeof Object>; }
+}
+
+window.Culqi = window.Culqi || {};
