@@ -59,10 +59,10 @@ export class CulqiService {
     headers = headers.append('Authorization', 'Bearer ' + 'sk_test_3mWmJRwXPw7OfJJq');
     console.log(headers);
     const obj = {
-      "amount": "10000",
+      "amount": "20000",
       "currency_code": "PEN",
       "email": "judith.paredesartica@gmail.com",
-      "source_id":"tkn_test_KhxZZrEa2VTfBrEI"
+      "source_id":"tkn_test_PkP4ou2ndqMoFvgG"
     };
     return this.http.post('https://api.culqi.com/v2/charges', obj, {headers});
   }
