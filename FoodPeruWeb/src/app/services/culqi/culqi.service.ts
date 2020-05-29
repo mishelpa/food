@@ -46,9 +46,10 @@ export class CulqiService {
   }
 
   getToken() {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Bearer ' + 'sk_test_3mWmJRwXPw7OfJJq')
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('Authorization', 'Bearer ' + 'sk_test_3mWmJRwXPw7OfJJq');
+    console.log(headers);
     return this.http.get('https://api.culqi.com/v2/tokens', {headers});
   }
 }
