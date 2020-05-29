@@ -28,6 +28,9 @@ import { PageResetLoginComponent } from './pages/page-reset-login/page-reset-log
 import { CartComponent } from './components/cart/cart.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+// Importamos el módulo de ng-culqi
+import { NgCulqiModule } from 'ng-culqi';
+import { PaymentComponent } from './pages/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +48,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     PageProductComponent,
     ResetPasswordComponent,
     PageResetLoginComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     InputTextModule,
     HttpClientModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgCulqiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
