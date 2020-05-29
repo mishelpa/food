@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
 export declare let Culqi;
 
+
+
 @Injectable({
     providedIn: 'root'
   })
 
 export class CulqiService {
   token_id: string;
-   
+
   constructor() {
     document.addEventListener ('payment_event', (token: any) => {
     this.token_id = token.detail;
-    console.log(this.token_id);
+    console.log(this.token_id)
   });
 }
     
     initCulqi () {
-      Culqi.publicKey = "pk_test_WkOlOvuX4C3asoLB"
+      Culqi.publicKey  = "pk_test_WkOlOvuX4C3asoLB"
     }
 
     payorder(description: string, amount: number) {
@@ -36,8 +38,8 @@ export class CulqiService {
     Culqi.open ();
   
     }
-
-    open() {
+  
+    open () {
       Culqi.open ();
     }
     // async getToken(){
