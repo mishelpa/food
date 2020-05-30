@@ -36,11 +36,12 @@ ngOnInit(): void {
       this.totalCart += (product.quantity * product.price);
     });
     localStorage.setItem('cart', JSON.stringify(this.quantityCart));
+    localStorage.setItem('amount', JSON.stringify(this.totalCart));
   }
 
   processPayment(){
     console.log('aqui');
-this.router.navigate(['/payment'])
+  this.router.navigate(['/payment'])
 
 
   }

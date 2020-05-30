@@ -14,8 +14,12 @@ export class NavComponent{
   constructor(private router: Router,
               public authService: AuthService) {
                 Auth.currentUserInfo()
-                .then(user => this.userName = user.attributes.name
+                .then(user => {
+                  this.userName = user.attributes.name;
+                  localStorage.setItem('email', JSON.stringify(user.attributes.email));
+                }
                 );
+                
                 console.log(Auth.currentSession());
   }
 
