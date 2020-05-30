@@ -38,7 +38,7 @@ export class CulqiService {
         installments: false,
         customButton:"",
     });
-    Culqi.open ();
+    Culqi.open();
 
     }
 

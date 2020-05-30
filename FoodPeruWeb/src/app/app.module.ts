@@ -28,9 +28,9 @@ import { PageResetLoginComponent } from './pages/page-reset-login/page-reset-log
 import { CartComponent } from './components/cart/cart.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import { PaymentComponent } from './components/payment/payment.component';
 // Importamos el módulo de ng-culqi
 import { NgCulqiModule } from 'ng-culqi';
-import { PaymentComponent } from './pages/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
