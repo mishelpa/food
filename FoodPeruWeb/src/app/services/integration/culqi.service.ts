@@ -14,9 +14,10 @@ export class CulqiService {
     document.addEventListener ('payment_event', (token: any) => {
     this.token_id = token.detail;
     console.log(this.token_id)
+    localStorage.setItem('token', this.token_id);
   });
 }
-    
+
     initCulqi () {
       Culqi.publicKey  = "pk_test_WkOlOvuX4C3asoLB"
     }
@@ -28,7 +29,7 @@ export class CulqiService {
         description: description,
         amount: amount*100
       });
-  
+
       Culqi.options({
         lang: 'auto',
         modal: true,
@@ -36,9 +37,9 @@ export class CulqiService {
         customButton:"",
     });
     Culqi.open ();
-  
+
     }
-  
+
     open () {
       Culqi.open ();
     }
@@ -49,7 +50,7 @@ export class CulqiService {
     //   console.log(window.Culqi.token);
     // } catch (error) {
     //   console.log(error);
-      
+
     // }
     // }
 }
