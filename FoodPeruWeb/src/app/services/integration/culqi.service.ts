@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders} from '@angular/common/http'
 export declare let Culqi;
 
 
@@ -10,11 +11,12 @@ export declare let Culqi;
 export class CulqiService {
   token_id: string;
 
-  constructor() {
+  constructor( private http: HttpClient) {
     document.addEventListener ('payment_event', (token: any) => {
     this.token_id = token.detail;
-    console.log(this.token_id)
-    localStorage.setItem('token', this.token_id);
+    console.log(this.token_id);
+    localStorage.setItem('token', JSON.stringify(this.token_id));
+
   });
 }
 
@@ -42,6 +44,16 @@ export class CulqiService {
 
     open () {
       Culqi.open ();
+    }
+
+    createCharge(obj) {
+      let headers: HttpHeaders = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      headers = headers.append('Authorization', 'Bearer ' + 'sk_test_3mWmJRwXPw7OfJJq');
+      console.log(headers);
+
+      return this.http.post('https://api.culqi.com/v2/charges', obj, {headers});
+
     }
     // async getToken(){
     // console.log('aqui');
