@@ -18,7 +18,6 @@ export class SocialButtonComponent {
     await this.auth.socialSignIn(AuthService.GOOGLE);
     Auth.currentUserInfo()
     .then(user => {
-      this.auth.storeSessionUserName(user.attributes.name);
       console.log(user);
     }
     );
@@ -28,7 +27,6 @@ export class SocialButtonComponent {
     await this.auth.socialSignIn(AuthService.FACEBOOK);
     Auth.currentUserInfo()
     .then(user => {
-      this.auth.storeSessionUserName(user.attributes.name);
       console.log(user);
     }
     );

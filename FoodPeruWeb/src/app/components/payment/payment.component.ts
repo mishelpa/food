@@ -14,50 +14,29 @@ export class PaymentComponent implements OnInit {
 
   products: any;
   product = [{
-    description : "Polo Culqi Lover",
+    description : 'FOOD PERÚ',
     amount: 100
   }];
-  constructor(
-    // private culqiSrv: CulqiService
-    private productsService: ProductsService,
-    private culqi: CulqiService
-    ) {
+  constructor( private productsService: ProductsService, private culqi: CulqiService ) {
       this.products = this.productsService.products;
-console.log(this.products);
-
-     }
+    }
 
   ngOnInit(): void {
-    // this.culqiSrv.configCulqi('food Peru', 'pk_test_WkOlOvuX4C3asoLB');
     this.culqi.initCulqi();
   }
 
-  payment(){
-    this.culqi.payorder(this.product[0]["description"], this.product[0]["amount"]);
-
+  payment() {
+    this.culqi.payorder(this.product[0].description, this.product[0].amount);
   }
 
-  createChargeCart(){
+  createChargeCart() {
       const obj = {
-        "amount": JSON.parse(localStorage.getItem('amount')) * 100,
-        "currency_code": "PEN",
-        "email":  JSON.parse(localStorage.getItem('email')),
-        "source_id":  JSON.parse(localStorage.getItem('token'))
+        amount: JSON.parse(localStorage.getItem('amount')) * 100,
+        currency_code: 'PEN',
+        email: JSON.parse(localStorage.getItem('email')),
+        source_id: JSON.parse(localStorage.getItem('token'))
       };
-        console.log(obj);
 
-        this.culqi.createCharge(obj).subscribe((response)=> console.log(response)
-         );
+      this.culqi.createCharge(obj).subscribe();
   }
-
-
-
-  // getCredentials(e){
-  //   e.preventDefault();
-    
-  //   this.culqi.getToken()
-
-    
-  // }
-
 }

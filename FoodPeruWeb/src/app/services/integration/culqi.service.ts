@@ -7,12 +7,12 @@ export declare let Culqi;
   })
 
 export class CulqiService {
-  token_id: string;
+  tokenId: string;
 
   constructor( private http: HttpClient) {
     document.addEventListener ('payment_event', (token: any) => {
-    this.token_id = token.detail;
-    localStorage.setItem('token', JSON.stringify(this.token_id));
+    this.tokenId = token.detail;
+    localStorage.setItem('token', JSON.stringify(this.tokenId));
   });
 }
 
@@ -22,7 +22,7 @@ export class CulqiService {
 
     payorder(description: string, amount: number) {
       Culqi.settings ({
-        title: 'Culqi Store',
+        title: 'FOOD PERÚ',
         currency: 'PEN',
         description,
         amount: amount * 100

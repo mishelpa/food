@@ -8,25 +8,16 @@ import { AuthService } from '../../services/auth/auth.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent{
+export class NavComponent {
   userName: string;
-
-  constructor(private router: Router,
-              public authService: AuthService) {
-                Auth.currentUserInfo()
-                .then(user => {
-                  this.userName = user.attributes.name;
-                  console.log(user.attributes);
-                  localStorage.setItem('email', JSON.stringify(user.attributes.email));
-                }
-                );
+  constructor(private router: Router, public authService: AuthService) {
+    this.authService.currentUserOb.subscribe((data) => this.userName = data);
   }
 
   logOutSession() {
     Auth.signOut()
       .then(() => {
         console.log(this.router.url);
-
         if (this.router.url === '/') {
           window.location.reload();
         } else { this.router.navigate(['/']); }
