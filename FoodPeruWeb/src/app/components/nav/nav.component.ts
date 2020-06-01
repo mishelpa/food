@@ -16,11 +16,10 @@ export class NavComponent{
                 Auth.currentUserInfo()
                 .then(user => {
                   this.userName = user.attributes.name;
+                  console.log(user.attributes);
                   localStorage.setItem('email', JSON.stringify(user.attributes.email));
                 }
                 );
-                
-                console.log(Auth.currentSession());
   }
 
   logOutSession() {
