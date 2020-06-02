@@ -9,15 +9,21 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-  userName: string;
+userName: string;
   constructor(private router: Router, public authService: AuthService) {
-    this.authService.currentUserOb.subscribe((data) => this.userName = data);
+
+    this.authService.currentUserOb.subscribe((data) => {
+      this.userName = data;
+      if (this.userName === null) {
+        this.userName = '';
+      }
+    });
   }
 
   logOutSession() {
     Auth.signOut()
       .then(() => {
-        console.log(this.router.url);
+        localStorage.setItem('user', '');
         if (this.router.url === '/') {
           window.location.reload();
         } else { this.router.navigate(['/']); }

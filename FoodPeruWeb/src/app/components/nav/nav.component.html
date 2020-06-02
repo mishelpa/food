@@ -12,9 +12,9 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" *ngIf="userName===''" routerLink="/login">Mi cuenta</a>
-            <a class="dropdown-item" *ngIf="userName!=''" routerLink="/account">Completar datos</a>
+            <a class="dropdown-item" *ngIf="userName!==''" routerLink="/account">Completar datos</a>
             <a class="dropdown-item">Mis pedidos</a>
-            <a class="dropdown-item pointer" *ngIf="userName!=''" (click)="logOutSession()">
+            <a class="dropdown-item pointer" *ngIf="userName!==''" (click)="logOutSession()">
               Cerrar sesión
             </a>
           </div>
@@ -28,4 +28,4 @@
     </a>
   </div>
 </nav>
-<div *ngIf="userName!=''" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4">¡Hola {{userName}}!</div>
+<div *ngIf="userName!==''" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4">¡Hola {{userName}}!</div>

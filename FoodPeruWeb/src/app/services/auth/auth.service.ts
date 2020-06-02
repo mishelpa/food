@@ -9,10 +9,7 @@ import { CognitoUser } from 'amazon-cognito-identity-js';
 })
 export class AuthService {
 
-
-
   constructor() {
-    localStorage.setItem('user', '');
     Hub.listen('auth', (data) => {
       const { channel, payload} = data;
       Auth.currentUserInfo()
@@ -27,6 +24,8 @@ export class AuthService {
     });
   }
 
+  public static SIGN_IN = 'signIn';
+  public static SIGN_OUT = 'signOut';
   public static GOOGLE = CognitoHostedUIIdentityProvider.Google;
   public static FACEBOOK = CognitoHostedUIIdentityProvider.Facebook;
   public currentUser = new BehaviorSubject(localStorage.getItem('user'));

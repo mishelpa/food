@@ -10,12 +10,12 @@
     </div>
     <div class="countProduct mt-4">
       <form [formGroup]="qtyForm" class="w-50 mr-1">
-        <select formControlName="qtySelected" class="form-control ">
+        <select formControlName="qtySelected" class="form-control" required>
           <option value="">Cantidad</option>
           <option *ngFor="let qty of qtyProduct">{{qty}}</option>
         </select>
       </form>
-      <button type="submit" class="btn btn-orange btn-forms-submit w-100" (click)="addToCart(product)">Añadir al carrito</button>
+      <button type="submit" [disabled]="qtyForm.invalid" class="btn btn-orange btn-forms-submit w-100" (click)="addToCart(product)">Añadir al carrito</button>
     </div>
   </div>
 
