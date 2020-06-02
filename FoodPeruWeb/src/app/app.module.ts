@@ -6,7 +6,6 @@ import { DialogModule } from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SocialButtonComponent } from './components/social-button/social-button.component';
 import { LoginComponent } from './components/login/login.component';
@@ -26,8 +25,10 @@ import { PageProductComponent } from './pages/page-product/page-product.componen
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { PageResetLoginComponent } from './pages/page-reset-login/page-reset-login.component';
 import { CartComponent } from './components/cart/cart.component';
-import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 import { PaymentComponent } from './components/payment/payment.component';
 // Importamos el módulo de ng-culqi
 import { NgCulqiModule } from 'ng-culqi';
@@ -65,6 +66,7 @@ import { NgCulqiModule } from 'ng-culqi';
     HttpClientModule,
     MatIconModule,
     MatBadgeModule,
+    MatSelectModule,
     NgCulqiModule
   ],
   providers: [],

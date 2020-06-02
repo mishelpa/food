@@ -2,57 +2,71 @@
   margin: 0px;
   padding: 0px;
 }
-// .product{
-//   display: flex;
-//   justify-content: space-around;
-// }
-button{
+
+  button{
   background-color: #FF5500;
   color: white;
   }
- 
+
+  button:hover{
+    color: white;
+    background-color: #CC4400;
+  }
+
   .quantityProduct{
     display: flex;
   }
-  .nameProduct{
-    font-weight: bolder;
-  }
+
   h2{
     margin: 0em;
     margin-bottom: 4px;
   }
 
   .priceProduct{
-    color: #ee3037;
     font-size: 20px;
-    font-size: 23px; 
-     line-height: 15px; 
-
-    
+    font-size: 23px;
+    line-height: 15px;
+  }
+  .font-large{
+    font-size: x-large;
   }
   .countProduct{
     display: flex;
     flex-direction: row;
+    .form{
+      width: 30%;
+      .label{
+        color: black;
+      }
+    }
+    button{
+      width: 70%;
+    }
   }
   .imgProduct{
     width: 74%;
   }
   .header-modal{
     color: #f50;
-    border-color: #f50;
-  } 
+  }
   .btn-close{
     background-color: white;
     p{
-      color: #f50;
+      color: #7A797D;
     }
   }
-  .price-product{
-    color: #ee3037;
-    font-size: 20px;
-    line-height: 15px;
+
+  .btn-close:hover{
+    background-color: white !important;
+  }
+
+  .btn-close:hover p{
+    color: #f50;
+    text-decoration: underline;
   }
   .footerModal{
     background: white;
   }
- 
+
+
+

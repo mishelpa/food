@@ -1,46 +1,42 @@
 <div class="row t-5">
-  <div class="col-md-6 text-center">
+  <div class="col-12 col-md-7 text-center">
     <img class="imgProduct"src="{{product?.image}}" alt="{{product?.name}}">
   </div>
-  <div class="ml-5 mr-5 col-xs-12 pb-1">
-    <h2>{{product?.name}}</h2>
-    <p class="text-secondary m-0 mb-1">MARCA: <span class="text-secondary">{{product?.marca}}</span></p>
+  <div class="col-12 col-md-4 pt-5 pb-1">
+    <h2 class="pb-3">{{product?.name}}</h2>
+    <p class="text-secondary pb-3 m-0 mb-1">Marca: <span class="text-secondary">{{product?.marca}}</span></p>
     <div>
-      <p class="pt-2 priceProduct"> S/. {{product?.price}}</p>
+      <p class="pt-2 priceProduct text-danger font-weight-bold"> S/. {{product?.price}}</p>
     </div>
     <div class="countProduct mt-4">
-      <form [formGroup]="qtyForm" class="w-50 mr-1">
-        <select formControlName="qtySelected" class="form-control" required>
-          <option value="">Cantidad</option>
-          <option *ngFor="let qty of qtyProduct">{{qty}}</option>
-        </select>
-      </form>
-      <button type="submit" [disabled]="qtyForm.invalid" class="btn btn-orange btn-forms-submit w-100" (click)="addToCart(product)">Añadir al carrito</button>
+      <mat-form-field class="form mr-2" [formGroup]="qtyForm">
+        <mat-label class="label">Elija cantidad</mat-label>
+        <mat-select formControlName="qtySelected" required>
+          <mat-option *ngFor="let qty of qtyProduct" [value]="qty">
+            {{qty}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="submit" [disabled]="qtyForm.invalid" class="btn btn-orange btn-forms-submit" (click)="addToCart(product)">Añadir al carrito</button>
     </div>
   </div>
-
-
-
 </div>
-
-
 
 <p-dialog [(visible)]="displayAddProductModal" [modal]="true" [closable]="false">
-<p-header>
-<h2 class="header-modal bg-bg-white ">Tu producto se agregó al carrito</h2>
-</p-header>
-<div class="row mt-3">
-<div class="col-4 col-md-2">
-  <img src="{{product?.image}}" class="img-fluid" alt=" {{product?.name}}">
-</div>
-<div class="col-8 col-md-10 pl-3">
-  <dt>{{product?.name}}</dt>
-  <dd>Cantidad: {{qtyForm.value.qtySelected}}</dd>
-  <dd>Precio: S/. {{product?.price}} </dd>
-</div>
-</div>
-<p-footer class="d-flex-column mt-2">
-<button type="button" class="btn btn-orange btn-forms-submit w-100 md-2 p-1"  (click)="goToCart()">Ir al carrito</button>
-<button type="button" class="btn  btn-forms-submit w-100 btn-close mt-2"  (click)="closeAddProductModal()"> <p>Seguir comprando</p> </button>
-</p-footer>
+  <h2 class="header-modal">Tu producto se agregó al carrito</h2>
+  <div class="row mt-3">
+    <div class="col-5 col-md-2">
+      <img src="{{product?.image}}" class="img-fluid" alt=" {{product?.name}}">
+    </div>
+    <div class="col-7 col-md-10 pl-3">
+      <dt class="pb-2">{{product?.name}}</dt>
+      <dd class="pb-2">Cantidad: {{qtyForm.value.qtySelected}}</dd>
+      <dd class="pb-2">Precio por unidad</dd>
+      <dd class="text-danger font-weight-bold font-large">S/. {{product?.price}}</dd>
+    </div>
+  </div>
+  <p-footer class="d-flex-column mt-2">
+    <button type="button" class="btn btn-orange btn-forms-submit w-100 md-2 p-1"  (click)="goToCart()">Ir al carrito</button>
+    <button type="button" class="btn btn-forms-submit w-100 btn-close mt-2"  (click)="closeAddProductModal()"> <p>Seguir comprando</p> </button>
+  </p-footer>
 </p-dialog>
