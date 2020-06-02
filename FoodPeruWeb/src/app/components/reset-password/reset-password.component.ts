@@ -24,87 +24,82 @@ export class ResetPasswordComponent implements OnInit {
 
 
 
-  constructor(private fb:FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.passwordForm = this.fb.group({
       code: ['', [Validators.required]],
-      password: ['', [Validators.required,Validators.minLength(8)]],
-      passwordRepeat: ['', [Validators.required,Validators.minLength(8), this.passwordMatcher.bind(this)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      passwordRepeat: ['', [Validators.required, Validators.minLength(8), this.passwordMatcher.bind(this)]]
     });
   }
   emailReset = new FormControl('', [Validators.required, Validators.email]);
- 
 
   resetField() {
     this.emailReset.reset();
     this.errorMessage = '';
-    
   }
   restorePasswordForm = new FormGroup({
     email: new FormControl('')
   })
 
-  private passwordMatcher(control: FormControl): { [s: string]: boolean }{
+  private passwordMatcher(control: FormControl): { [s: string]: boolean } {
 
-    if(
+    if (
       this.passwordForm && (control.value !== this.passwordForm.controls.password.value)
-    ){
+    ) {
       return { passwordNotMatch: true };
     }
     return null;
   }
 
-  sendPasswordCode(value){
-    this.restorePassword = false
+  sendPasswordCode(value) {
+    this.restorePassword = false;
     Auth.forgotPassword(value)
-    .then((data) => {
-      console.log(data);
-      
-      this.newPassword =true;
-    })
-    .catch(err => {
-      this.displayEmailFailedModal = true;
-      this.emailReset.reset();
-      console.log(err);
+      .then((data) => {
+        console.log(data);
+        this.newPassword = true;
+      })
+      .catch(err => {
+        this.displayEmailFailedModal = true;
+        this.emailReset.reset();
+        console.log(err);
 
       });
   }
 
-       closeEmailFailedModal(){
-        this.displayEmailFailedModal = false;
-       }
+  closeEmailFailedModal() {
+    this.displayEmailFailedModal = false;
+  }
 
-       closeVerificationSuccessModal(){
-        this.router.navigate(['/login'])
-        this.displayVerificationSuccessModal = false;
+  closeVerificationSuccessModal() {
+    this.router.navigate(['/login']);
+    this.displayVerificationSuccessModal = false;
 
-       }
+  }
 
-       closeVerificationFailedModal(){
-        this.displayVerificationFailedModal = false;
+  closeVerificationFailedModal() {
+    this.displayVerificationFailedModal = false;
 
-       }
-
-       
-  verifyPassword(value){
+  }
+  verifyPassword(value) {
     console.log(value);
     this.userEmail = this.emailReset.value;
-console.log(this.userEmail,value.code,value.password);
+    console.log(this.userEmail, value.code, value.password);
 
 
-       Auth.forgotPasswordSubmit(this.userEmail,value.code,value.password)
+    Auth.forgotPasswordSubmit(this.userEmail, value.code, value.password)
 
-         .then(data=> {
-          this.displayVerificationSuccessModal = true;
-           console.log(data+'entro')
-          })
-          .catch(err => {
-            this.displayVerificationFailedModal = true;
-            console.log(err);
-          });
-          
-       }
+      .then(data => {
+        this.displayVerificationSuccessModal = true;
+        console.log(data + 'entro');
+      })
+      .catch(err => {
+        this.displayVerificationFailedModal = true;
+        console.log(err);
+      });
+
+  }
 
 
 }

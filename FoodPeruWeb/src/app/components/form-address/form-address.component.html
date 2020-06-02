@@ -4,32 +4,69 @@
   <div class="mt-5">
     <form action="" [formGroup]="userForm" (ngSubmit)="save(userForm.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-name">Nombres</label>
-        <input type="text"  required formControlName="nameUser" class="form-control" id="user-name" aria-describedby="nameHelp" #name>
+        <label for="address">Dirección</label>
+        <input type="text"  required formControlName="address" class="form-control" id="user-address" aria-describedby="nameHelp" #name>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-lastname">Apellidos</label>
-        <input type="text" required formControlName="lastnameUser" class="form-control" id="user-lastname" #lastname>
+        <label for="userDNI">DNI</label>
+        <input type="number" formControlName="userDNI" class="form-control" id="userDNI" #dpto>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-cel">Teléfono Celular</label>
-        <input type="number" required formControlName="celUser" class="form-control" id="user-cel" #cel>
+        <label for="streetName">Calle</label>
+        <input type="text" formControlName="streetName" class="form-control" id="streetName" #othercel>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-othercel">Otro Teléfono (Opcional)</label>
-        <input type="number" formControlName="othercelUser" class="form-control" id="user-othercel" #othercel>
+        <label for="streetTypeCode">Tipo/Calle</label>
+        <input type="text" required formControlName="streetTypeCode" class="form-control" id="streetTypeCode" #cel>
+      </div>
+     
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="streetNumber">Nro/Calle</label>
+        <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber" #othercel>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-address">Dirección</label>
-        <input type="text" required formControlName="addressUser" class="form-control" id="user-address" #address>
+        <label for="buildingType">Tipo/Edificio</label>
+        <input type="text" required formControlName="buildingType" class="form-control" id="buildingType" #lote>
       </div>
-      <div class="form-group col-xs-6 col-md-3">
-        <label for="user-lote">Nro/Lote</label>
-        <input type="text" required formControlName="loteUser" class="form-control" id="user-lote" #lote>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="buildingNumber">Nro/Edificio</label>
+        <input type="number" required formControlName="buildingNumber" class="form-control" id="buildingNumber" #lote>
       </div>
-      <div class="form-group col-xs-6 col-md-3">
-        <label for="user-dpto">Dpto/Interior/Urb (Opcional)</label>
-        <input type="text" formControlName="dptoUser" class="form-control" id="user-dpto" #dpto>
+
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="blockCode">blockCode</label>
+        <input type="number" formControlName="blockCode" class="form-control" id="blockCode" #dpto>
+      </div>
+     
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="lotNumber">Nro/Lote</label>
+        <input type="number" formControlName="lotNumber" class="form-control" id="lotNumber" #dpto>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="urbanizationName">Urb</label>
+        <input type="text" formControlName="urbanizationName" class="form-control" id="urbanizationName" #dpto>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="urbanizationTypeCode">Tipo/Urb</label>
+        <input type="text" formControlName="urbanizationTypeCode" class="form-control" id="urbanizationTypeCode" #dpto>
+      </div>
+ 
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="zoneName">zona</label>
+        <input type="text" formControlName="zoneName" class="form-control" id="zoneName" #dpto>
+      </div>
+      <div class="form-group col-xs-3 col-md-6">
+        <span class="icon icon-sm"></span>
+        <label for="" class="mr-2">Usar como dirección predeterminada</label>
+        <input type="Checkbox">
+      </div>
+      <div class="form-group col-xs-3 col-md-6">
+        <label for="" class="mr-2">activo</label>
+        <input type="Checkbox">
+      </div>
+      <div class="form-group col-xs-3 col-md-6">
+        <label for="" class="mr-2">Dirección principal</label>
+        <input type="Checkbox">
       </div>
       <div class="col-md-12 text-right">
         <button type="submit" [disabled]="userForm.invalid" class="btn btn-orange">Agregar</button>
