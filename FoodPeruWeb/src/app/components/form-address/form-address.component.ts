@@ -11,13 +11,19 @@ export class FormAddressComponent implements OnInit {
   constructor() { }
 
   userForm = new FormGroup({
-    nameUser: new FormControl(''),
-    lastnameUser: new FormControl (''),
-    celUser: new FormControl (''),
-    othercelUser: new FormControl (''),
-    addressUser: new FormControl (''),
-    loteUser: new FormControl(''),
-    dptoUser: new FormControl (''),
+    address: new FormControl(''),
+    userDNI: new FormControl (''),
+    streetTypeCode: new FormControl (''),
+    streetName: new FormControl (''),
+    streetNumber: new FormControl (''),
+    buildingType: new FormControl(''),
+    buildingNumber: new FormControl (''),
+    blockCode: new FormControl (''),
+    lotNumber: new FormControl (''),
+    urbanizationTypeCode: new FormControl (''),
+    urbanizationName: new FormControl (''),
+    zoneName: new FormControl ('')
+
   });
 
   ngOnInit(): void {

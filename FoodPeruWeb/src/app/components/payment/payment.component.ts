@@ -1,6 +1,6 @@
 import { ProductsService } from './../../services/products/products.service';
 import { Component, OnInit } from '@angular/core';
-import {CulqiService } from '../../services/integration/culqi.service';
+import { CulqiService } from '../../services/integration/culqi.service';
 import { from } from 'rxjs';
 // import { CulqiService } from 'ng-culqi';
 declare var $: any;
@@ -14,8 +14,8 @@ export class PaymentComponent implements OnInit {
 
   products: any;
   product = [{
-    description : 'FOOD PERÚ',
-    amount: 100
+  description : 'FOOD PERÚ',
+   amount: 100
   }];
   constructor( private productsService: ProductsService, private culqi: CulqiService ) {
       this.products = this.productsService.products;
@@ -27,6 +27,7 @@ export class PaymentComponent implements OnInit {
 
   payment() {
     this.culqi.payorder(this.product[0].description, this.product[0].amount);
+
   }
 
   createChargeCart() {
@@ -39,4 +40,5 @@ export class PaymentComponent implements OnInit {
 
       this.culqi.createCharge(obj).subscribe();
   }
+
 }
