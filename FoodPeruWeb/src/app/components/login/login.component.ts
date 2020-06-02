@@ -61,36 +61,34 @@ export class LoginComponent {
   }
 
   singUpToAWS(value) {
-    console.log(value);
-    this.userEmail = this.registerForm.value.email;
-    const user = {
-      username: this.registerForm.value.email,
-      password: this.registerForm.value.password,
+  console.log(value);
+  this.userEmail = value.email;
+  const user = {
+      username: value.email,
+      password: value.password,
 
       attributes: {
-        name: this.registerForm.value.name,
-        email: this.registerForm.value.email,
-        // dni: this.registerForm.value.dni,
-        // lastName:  this.registerForm.value.lastName
+          name:  value.name,
+          email: value.email,
+          'custom:dni': value.dni,
+          'custom:lastName': value.lastName
       }
     };
 
-    Auth.signUp(user)
-      .then(data => {
-        console.log(data);
+  Auth.signUp(user)
+      .then(() => {
         this.displayVerificationModal = true;
       })
       .catch(err => {
         this.displayFailedEmail = true;
-        console.log('ya hay una cuenta registrada con ese correo');
-
+        console.log(err);
       });
   }
 
   signInToAWS(value) {
     const authInfo = {
-      username: this.loginForm.value.emailLogin,
-      password: this.loginForm.value.passwordLogin
+      username: value.emailLogin,
+      password: value.passwordLogin
     };
 
     Auth.signIn(authInfo).then(user => {
@@ -127,12 +125,13 @@ export class LoginComponent {
 
     Auth.confirmSignUp(this.userEmail, verifycode.verifyEmail, {
       forceAliasCreation: true
-    }).then(data => {
-      this.displayVerificationSuccessModal = true;
-    })
-      .catch(err => {
-        this.displayVerificationFailedModal = true;
-      }
+      }).then(() => {
+        this.displayVerificationSuccessModal = true;
+      })
+        .catch(err => {
+          this.displayVerificationFailedModal = true;
+          console.log(err);
+        }
       );
   }
 

@@ -1,48 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 export declare let Culqi;
-
-
 
 @Injectable({
     providedIn: 'root'
   })
 
 export class CulqiService {
-  token_id: string;
+  tokenId: string;
 
   constructor( private http: HttpClient) {
     document.addEventListener ('payment_event', (token: any) => {
-    this.token_id = token.detail;
-    console.log(this.token_id);
-    localStorage.setItem('token', JSON.stringify(this.token_id));
-
+    this.tokenId = token.detail;
+    localStorage.setItem('token', JSON.stringify(this.tokenId));
   });
 }
 
-    initCulqi () {
-      Culqi.publicKey  = "pk_test_WkOlOvuX4C3asoLB"
+    initCulqi() {
+      Culqi.publicKey  = 'pk_test_WkOlOvuX4C3asoLB';
     }
 
     payorder(description: string, amount: number) {
       Culqi.settings ({
-        title: 'Culqi Store',
+        title: 'FOOD PERÚ',
         currency: 'PEN',
-        description: description,
-        amount: amount*100
+        description,
+        amount: amount * 100
       });
 
       Culqi.options({
         lang: 'auto',
         modal: true,
         installments: false,
-        customButton:"",
+        customButton: '',
     });
-    Culqi.open();
+      Culqi.open();
 
     }
 
-    open () {
+    open() {
       Culqi.open ();
     }
 
@@ -50,19 +46,6 @@ export class CulqiService {
       let headers: HttpHeaders = new HttpHeaders();
       headers = headers.append('Content-Type', 'application/json');
       headers = headers.append('Authorization', 'Bearer ' + 'sk_test_3mWmJRwXPw7OfJJq');
-      console.log(headers);
-
       return this.http.post('https://api.culqi.com/v2/charges', obj, {headers});
-
     }
-    // async getToken(){
-    // console.log('aqui');
-    // try {
-    //   await window.Culqi.createToken();
-    //   console.log(window.Culqi.token);
-    // } catch (error) {
-    //   console.log(error);
-
-    // }
-    // }
 }

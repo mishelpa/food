@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products/products.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -39,11 +38,8 @@ ngOnInit(): void {
     localStorage.setItem('amount', JSON.stringify(this.totalCart));
   }
 
-  processPayment(){
-    console.log('aqui');
-  this.router.navigate(['/payment'])
-
-
+  processPayment() {
+  this.router.navigate(['/payment']);
   }
 
 }

@@ -14,21 +14,14 @@ export class PaymentComponent implements OnInit {
 
   products: any;
   product = [{
-    description: 'Polo Culqi Lover',
-    amount: 100
+  description : 'FOOD PERÚ',
+   amount: 100
   }];
-  constructor(
-    // private culqiSrv: CulqiService
-    private productsService: ProductsService,
-    private culqi: CulqiService
-  ) {
-    this.products = this.productsService.products;
-    console.log(this.products);
-
-  }
+  constructor( private productsService: ProductsService, private culqi: CulqiService ) {
+      this.products = this.productsService.products;
+    }
 
   ngOnInit(): void {
-    // this.culqiSrv.configCulqi('food Peru', 'pk_test_WkOlOvuX4C3asoLB');
     this.culqi.initCulqi();
   }
 
@@ -38,26 +31,14 @@ export class PaymentComponent implements OnInit {
   }
 
   createChargeCart() {
-    const obj = {
-      amount: JSON.parse(localStorage.getItem('amount')) * 100,
-      currency_code: 'PEN',
-      email: JSON.parse(localStorage.getItem('email')),
-      source_id: JSON.parse(localStorage.getItem('token'))
-    };
-    console.log(obj);
+      const obj = {
+        amount: JSON.parse(localStorage.getItem('amount')) * 100,
+        currency_code: 'PEN',
+        email: JSON.parse(localStorage.getItem('email')),
+        source_id: JSON.parse(localStorage.getItem('token'))
+      };
 
-    this.culqi.createCharge(obj).subscribe((response) => console.log(response)
-    );
+      this.culqi.createCharge(obj).subscribe();
   }
-
-
-
-  // getCredentials(e){
-  //   e.preventDefault();
-
-  //   this.culqi.getToken()
-
-
-  // }
 
 }
