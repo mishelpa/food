@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FoodPeruWeb</title>
+  <base href="https://mishelpa.github.io/food/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    if(global === undefined) {
+        var global=window
+    }
+    </script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="styles.d46f91504915f524f1f0.css"></head>
+<body class="mat-typography">
+  <app-root></app-root>
+
+ <!-- Incluyendo .js de Culqi JS -->
+ <script src="https://checkout.culqi.com/js/v3"></script>
+ <script>
+   function culqi(){
+     if(Culqi.token) {
+       var token = Culqi.token.id;
+       var payment_event = new CustomEvent ('payment_event', {detail: token});
+       document.dispatchEvent (payment_event);
+     }
+   };
+     </script>
+
+
+  
+<script src="runtime-es2015.0811dcefd377500b5b1a.js" type="module"></script><script src="runtime-es5.0811dcefd377500b5b1a.js" nomodule defer></script><script src="polyfills-es5.ed1a8cb4226298e3d7f3.js" nomodule defer></script><script src="polyfills-es2015.8f923187dfaf414181e5.js" type="module"></script><script src="scripts.9cebaee71c6a248e3324.js" defer></script><script src="main-es2015.ab23e0ae3237f3e2508b.js" type="module"></script><script src="main-es5.ab23e0ae3237f3e2508b.js" nomodule defer></script></body>
+</html>
