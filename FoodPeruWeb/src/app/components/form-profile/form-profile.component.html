@@ -1,7 +1,7 @@
 <div class="container">
   <h2>MIS DATOS PERSONALES</h2>
   <hr>
-  <div class="mt-5">
+  <div class="mt-1 container">
     <form action="" [formGroup]="profileForm" (ngSubmit)="save(profileForm.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
         <label for="user-name">Nombres</label>
@@ -11,11 +11,15 @@
         <label for="user-lastname">Apellidos</label>
         <input type="text" required formControlName="lastnameUser" class="form-control" id="user-lastname" #lastname>
       </div>
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="user-month">Dia</label>
-        <p-calendar formControlName="month" class="form-control" id="user-month" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2010"#month></p-calendar>
+      <div class="form-group col-xs-6 col-md-3">
+        <label for="documentType">Tipo/Documento</label>
+        <input class="form-control" type="number" id="documentType" formControlName = "documentType">
       </div>
-      <div class="form-group col-xs-12 col-md-6">
+      <div class="form-group col-xs-6 col-md-3">
+        <label for="dni">DNI</label>
+        <input class="form-control" type="number" id="dni" formControlName = "dni">
+      </div>
+      <!--  <div class="form-group col-xs-12 col-md-6">
         <label>Sexo</label>
         <div class="radioBtn">
           <div>
@@ -27,7 +31,7 @@
             <label for="female">Femenino</label>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="form-group col-xs-12 col-md-6">
         <label for="user-cel">Teléfono Celular</label>
         <input type="text" required formControlName="celUser" class="form-control" id="user-cel" #cel>
@@ -36,8 +40,16 @@
         <label for="user-email">Email</label>
         <input type="email" required formControlName="emailUser" class="form-control" id="user-email" #email>
       </div>
+      <div class="form-check form-check-inline col-12 m-3 checkbox">
+        <input  class="form-check-input mr-2" type="checkbox" id="agreePromotions" formControlName = "agreePromotions">
+        <label class="form-check-label" for="agreePromotions">Autorizo recibir comunicaciones promocionales y autorizo el uso de mi información para fines adicionales.</label>
+      </div>
+      <div class="form-check form-check-inline col-12 m-3 checkbox">
+        <input class="form-check-input mr-2 " type="checkbox" id="agreeTermsAndConditions" formControlName = "agreeTermsAndConditions">
+        <label class="form-check-label" for="agreeTermsAndConditions">Declaro que he leído y acepto la nueva Política de Privacidad y los Términos y Condiciones de Linio.</label>
+      </div>
       <div class="col-md-12 text-right">
-        <button type="submit" [disabled]="profileForm.invalid" class="btn btn-orange">Agregar</button>
+        <button type="submit" [disabled]="profileForm.invalid" class="btn btn-orange">Guardar datos</button>
       </div>
     </form>
   </div>

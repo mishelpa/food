@@ -1,22 +1,19 @@
-<div class="row">
-  <div class="col-3">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Mis Datos Personales</a>
-      <a class="list-group-item list-group-item-action" id="list-address-list" data-toggle="list" href="#list-address" role="tab" aria-controls="address">Mi direccíon</a>
-      <a class="list-group-item list-group-item-action" id="list-card-list" data-toggle="list" href="#list-card" role="tab" aria-controls="card">Mi tarjeta guardada</a>
-    </div>
-  </div>
-  <div class="col-9">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-        <app-form-profile></app-form-profile>
-      </div>
-      <div class="tab-pane fade" id="list-address" role="tabpanel" aria-labelledby="list-address-list">
-        <app-form-address></app-form-address>
-      </div>
-      <div class="tab-pane fade" id="list-card" role="tabpanel" aria-labelledby="list-card-list">
-        <app-form-card></app-form-card>
-      </div>
-    </div>
-  </div>
-</div>
+<mat-horizontal-stepper class="container" linear #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Datos personales</ng-template>
+      <app-form-profile></app-form-profile>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Dirección</ng-template>
+      <app-form-address></app-form-address>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Método de pago</ng-template>
+    <app-payment></app-payment>
+  </mat-step>
+</mat-horizontal-stepper>
+

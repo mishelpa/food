@@ -24,8 +24,8 @@ export class CulqiService {
       Culqi.settings ({
         title: 'FOOD PERÚ',
         currency: 'PEN',
-        description,
-        amount: amount * 100
+        description: '',
+        amount: ''
       });
 
       Culqi.options({

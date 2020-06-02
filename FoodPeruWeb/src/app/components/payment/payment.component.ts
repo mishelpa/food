@@ -13,12 +13,14 @@ declare var $: any;
 export class PaymentComponent implements OnInit {
 
   products: any;
+  totalCart: any;
   product = [{
   description : 'FOOD PERÚ',
-   amount: 100
+  amount: 100
   }];
   constructor( private productsService: ProductsService, private culqi: CulqiService ) {
       this.products = this.productsService.products;
+      this.totalCart = localStorage.getItem('amount');
     }
 
   ngOnInit(): void {
@@ -27,7 +29,6 @@ export class PaymentComponent implements OnInit {
 
   payment() {
     this.culqi.payorder(this.product[0].description, this.product[0].amount);
-
   }
 
   createChargeCart() {

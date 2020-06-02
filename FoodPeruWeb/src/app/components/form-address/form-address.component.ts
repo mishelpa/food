@@ -7,9 +7,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
   styleUrls: ['./form-address.component.scss']
 })
 export class FormAddressComponent implements OnInit {
-
   constructor() { }
-
   userForm = new FormGroup({
     address: new FormControl(''),
     userDNI: new FormControl (''),
@@ -22,8 +20,10 @@ export class FormAddressComponent implements OnInit {
     lotNumber: new FormControl (''),
     urbanizationTypeCode: new FormControl (''),
     urbanizationName: new FormControl (''),
-    zoneName: new FormControl ('')
-
+    zoneName: new FormControl (''),
+    addresspred: new FormControl (''),
+    active: new FormControl (''),
+    addressmain: new FormControl ('')
   });
 
   ngOnInit(): void {

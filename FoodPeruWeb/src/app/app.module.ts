@@ -30,6 +30,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { PaymentComponent } from './components/payment/payment.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatCardModule} from '@angular/material/card';
 // Importamos el módulo de ng-culqi
 import { NgCulqiModule } from 'ng-culqi';
 @NgModule({
@@ -67,7 +69,9 @@ import { NgCulqiModule } from 'ng-culqi';
     MatIconModule,
     MatBadgeModule,
     MatSelectModule,
-    NgCulqiModule
+    NgCulqiModule,
+    MatStepperModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

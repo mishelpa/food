@@ -16,9 +16,11 @@ export class FormProfileComponent implements OnInit {
     nameUser: new FormControl(''),
     lastnameUser: new FormControl (''),
     celUser: new FormControl(''),
-    month: new FormControl(new Date()),
+    dni: new FormControl(''),
+    documentType: new FormControl(''),
     emailUser: new FormControl(''),
-    gender: new FormControl('')
+    agreePromotions: new FormControl(''),
+    agreeTermsAndConditions: new FormControl('')
   });
 
   ngOnInit(): void {
