@@ -16,6 +16,7 @@ export class AuthService {
     .then(user => {
       this.currentUser.next(user.attributes.name);
       localStorage.setItem('user', user.attributes.name);
+      localStorage.setItem('email', JSON.stringify(user.attributes.email));
     }
     );
       if (channel === 'auth') {

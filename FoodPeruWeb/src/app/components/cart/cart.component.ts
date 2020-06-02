@@ -39,7 +39,7 @@ ngOnInit(): void {
   }
 
   processPayment() {
-  this.router.navigate(['/payment']);
+  this.router.navigate(['/account']);
   }
 
 }
