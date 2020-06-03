@@ -33,6 +33,13 @@ export class CulqiService {
         modal: true,
         installments: false,
         customButton: '',
+        style: {
+          logo: 'https://culqi.com/LogoCulqi.png',
+          maincolor: '#FF5500',
+          buttontext: '#ffffff',
+          maintext: '#4A4A4A',
+          desctext: '#4A4A4A'
+        }
     });
       Culqi.open();
 
@@ -41,6 +48,7 @@ export class CulqiService {
     open() {
       Culqi.open ();
     }
+
 
     createCharge(obj) {
       let headers: HttpHeaders = new HttpHeaders();

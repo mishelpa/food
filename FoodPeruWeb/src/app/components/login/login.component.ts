@@ -71,7 +71,7 @@ export class LoginComponent {
           name:  value.name,
           email: value.email,
           'custom:dni': value.dni,
-          'custom:lastName': value.lastName
+          'custom:lastName': value.fatherLastName
       }
     };
 
