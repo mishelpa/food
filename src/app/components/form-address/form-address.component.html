@@ -4,8 +4,8 @@
   <div class="mt-1 container">
     <form action="" [formGroup]="userForm" (ngSubmit)="save(userForm.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
-        <label for="userDNI">DNI</label>
-        <input type="number" formControlName="userDNI" class="form-control" id="userDNI" #dpto>
+        <label for="userDNI">Calle</label>
+        <input type="text" formControlName="userDNI" class="form-control" id="userDNI" #dpto>
       </div>
       <div class="form-group col-xs-12 col-md-1">
         <label for="streetTypeCode">Tipo/Calle</label>
@@ -17,7 +17,7 @@
       </div>
       <div class="form-group col-xs-12 col-md-1">
         <label for="streetNumber">Nro/Calle</label>
-        <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber" #othercel>
+        <input type="text" formControlName="streetNumber" class="form-control" id="streetNumber" #othercel>
       </div>
       <div class="form-group col-xs-12 col-md-3">
         <label for="buildingType">Tipo/Edificio</label>
@@ -25,24 +25,24 @@
       </div>
       <div class="form-group col-xs-12 col-md-3">
         <label for="buildingNumber">Nro/Edificio</label>
-        <input type="number" formControlName="buildingNumber" class="form-control" id="buildingNumber" #lote>
+        <input type="text" formControlName="buildingNumber" class="form-control" id="buildingNumber" #lote>
       </div>
 
       <div class="form-group col-xs-12 col-md-6">
         <label for="blockCode">Bloque</label>
-        <input type="number" formControlName="blockCode" class="form-control" id="blockCode" #dpto>
+        <input type="text" formControlName="blockCode" class="form-control" id="blockCode" #dpto>
       </div>
 
       <div class="form-group col-xs-12 col-md-6">
         <label for="lotNumber">Nro/Lote</label>
-        <input type="number" formControlName="lotNumber" class="form-control" id="lotNumber" #dpto>
+        <input type="text" formControlName="lotNumber" class="form-control" id="lotNumber" #dpto>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="urbanizationName">Urb</label>
+        <label for="urbanizationName">Urbanizacion</label>
         <input type="text" formControlName="urbanizationName" class="form-control" id="urbanizationName" #dpto>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="urbanizationTypeCode">Tipo/Urb</label>
+        <label for="urbanizationTypeCode">Tipo/Urbanizacion</label>
         <input type="text" formControlName="urbanizationTypeCode" class="form-control" id="urbanizationTypeCode" #dpto>
       </div>
 

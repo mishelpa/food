@@ -11,27 +11,20 @@
         <label for="user-lastname">Apellidos</label>
         <input type="text" required formControlName="lastnameUser" class="form-control" id="user-lastname" #lastname>
       </div>
-      <div class="form-group col-xs-6 col-md-3">
+      <!-- <div class="form-group col-xs-6 col-md-3">
         <label for="documentType">Tipo/Documento</label>
         <input class="form-control" type="number" id="documentType" formControlName = "documentType">
+      </div> -->
+      <div class="form-group col-xs-6 col-md-3">
+        <label for="sel1">Tipo/Documento</label>
+        <select class="form-control" id="sel1">
+          <option>DNI</option>
+        </select>
       </div>
       <div class="form-group col-xs-6 col-md-3">
         <label for="dni">DNI</label>
-        <input class="form-control" type="number" id="dni" formControlName = "dni">
+        <input class="form-control cursor" type="text" id="dni" formControlName = "dni">
       </div>
-      <!--  <div class="form-group col-xs-12 col-md-6">
-        <label>Sexo</label>
-        <div class="radioBtn">
-          <div>
-            <input id="male" type="radio" value="masculino" name="gender" formControlName="gender">
-            <label for="male">Masculino</label>
-          </div>
-          <div>
-            <input id="female" type="radio" value="femenino" name="gender" formControlName="gender">
-            <label for="female">Femenino</label>
-          </div>
-        </div>
-      </div> -->
       <div class="form-group col-xs-12 col-md-6">
         <label for="user-cel">Teléfono Celular</label>
         <input type="text" required formControlName="celUser" class="form-control" id="user-cel" #cel>
