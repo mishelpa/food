@@ -7,7 +7,7 @@
       <ul class="navbar-nav mr-auto">
         <!-- <li *ngIf="this.authService.getSessionUserName() !== null">{{this.authService.getSessionUserName()}}</li> -->
         <li class="nav-item dropdown">
-          <a class="nav-link main-icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link main-icon pointer" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <mat-icon class="icon">person</mat-icon>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -28,4 +28,4 @@
     </a>
   </div>
 </nav>
-<div *ngIf="userName!==''" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4">¡Hola {{userName}}!</div>
+<div *ngIf="userName!==''" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4 py-1">¡Hola {{userName}}!</div>

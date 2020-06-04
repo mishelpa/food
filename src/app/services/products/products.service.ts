@@ -39,10 +39,10 @@ export class ProductsService {
   }
 
   getListProducts(): Observable<any> {
-    return this.http.get(`${this.url}products`);
+    return this.http.get(`${this.url}/foodperu-products`);
   }
 
   getProduct(idProduct): Observable<any> {
-    return this.http.get(`${this.url}products/${idProduct}`);
+    return this.http.get(`${this.url}/foodperu-products/${idProduct}`);
   }
 }

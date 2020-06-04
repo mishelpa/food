@@ -9,7 +9,6 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 export class FormAddressComponent implements OnInit {
   constructor() { }
   userForm = new FormGroup({
-    address: new FormControl(''),
     userDNI: new FormControl (''),
     streetTypeCode: new FormControl (''),
     streetName: new FormControl (''),

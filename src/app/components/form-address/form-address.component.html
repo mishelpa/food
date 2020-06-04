@@ -4,23 +4,18 @@
   <div class="mt-1 container">
     <form action="" [formGroup]="userForm" (ngSubmit)="save(userForm.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
-        <label for="address">Dirección</label>
-        <input type="text" formControlName="address" class="form-control" id="user-address" aria-describedby="nameHelp" #name>
-      </div>
-      <div class="form-group col-xs-12 col-md-6">
         <label for="userDNI">DNI</label>
         <input type="number" formControlName="userDNI" class="form-control" id="userDNI" #dpto>
       </div>
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="streetName">Calle</label>
-        <input type="text" formControlName="streetName" class="form-control" id="streetName" #othercel>
-      </div>
-      <div class="form-group col-xs-12 col-md-3">
+      <div class="form-group col-xs-12 col-md-1">
         <label for="streetTypeCode">Tipo/Calle</label>
         <input type="text" formControlName="streetTypeCode" class="form-control" id="streetTypeCode" #cel>
       </div>
-
-      <div class="form-group col-xs-12 col-md-3">
+      <div class="form-group col-xs-12 col-md-4">
+        <label for="streetName">Calle</label>
+        <input type="text" formControlName="streetName" class="form-control" id="streetName" #othercel>
+      </div>
+      <div class="form-group col-xs-12 col-md-1">
         <label for="streetNumber">Nro/Calle</label>
         <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber" #othercel>
       </div>
