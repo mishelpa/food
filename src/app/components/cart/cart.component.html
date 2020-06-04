@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row my-5">
-    <div class="col-12 resumen col-md-8">
-      <div class="row">
-        <div class="">
+    <div class="col-12 col-md-8" [ngClass]="{'text-center':productsCart.length===0}">
           <p *ngIf="productsCart.length===0" class="font-weight-bold text-uppercase fs-18">No tienes productos en tu carrito</p>
           <h2 *ngIf="productsCart.length>0" class="font-weight-bold text-uppercase fs-18 pl-4c"> Carrito de compras</h2>
           <hr>
@@ -25,16 +23,12 @@
                       <span>Eliminar</span>
                     </p>
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
           <hr>
           <button *ngIf="productsCart.length===0" type="submit" class="btn btn-forms-submit btn-orange" routerLink="/">Comprar ahora</button>
-        </div>
-      </div>
     </div>
 
     <!-- RESUMEN DEL PEDIDO -->
