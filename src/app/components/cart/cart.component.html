@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="col-12 resumen col-md-8">
+      <div class="row">
+        <div class="">
+          <p *ngIf="productsCart.length===0" class="font-weight-bold text-uppercase fs-18">No tienes productos en tu carrito</p>
+          <h2 *ngIf="productsCart.length>0" class="font-weight-bold text-uppercase fs-18 pl-4c"> Carrito de compras</h2>
+          <hr>
+          <p *ngIf="productsCart.length===0" class="my-4">Encuentra los mejores productos a los mejores precios</p>
+          <div *ngIf="productsCart.length>0">
+            <div *ngFor="let product of productsCart" class="row">
+              <div class="col-md-4 p-5">
+                <img src="{{product.image}}" class="img-fluid text-center" alt="{{product.name}}">
+              </div>
+              <div class="col-md-8">
+                <h3 class="text-uppercase font-weight-bold">{{product.name}}</h3>
+                <div class= "row">
+                  <div class="col-7">
+                    <p class="text-danger font-large font-weight-bold">S/ {{product.price}}</p>
+                  <p class="text-secondary qty">Cantidad: <span>{{product.quantity}}</span></p>
+                  </div>
+                  <div class="col-5">
+                    <p class="remove-product" (click)="deleteProduct(product)">
+                      <mat-icon class="icon">cancel</mat-icon>
+                      <span>Eliminar</span>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <hr>
+          <button *ngIf="productsCart.length===0" type="submit" class="btn btn-forms-submit btn-orange" routerLink="/">Comprar ahora</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESUMEN DEL PEDIDO -->
+    <div class="col-12 col-md-4">
+      <div class="brief-box border py-3 px-4">
+        <p class="font-weight-bold font-large">RESUMEN DE TU PEDIDO</p>
+        <hr>
+        <div class="d-flex justify-content-between">
+          <p class="fs-14">Subtotal({{quantityCart}})</p>
+          <p class="font-large text-danger font-weight-bold">S/ {{totalCart | number: '0.2'}}</p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-between">
+          <p class="fs-14">Envio</p>
+          <p>total </p>
+        </div>
+        <hr>
+        <div class="font-large font-weight-bold d-flex justify-content-between">
+          <p>TOTAL</p>
+          <p class="text-danger">S/ {{totalCart | number: '0.2' }}</p>
+        </div>
+        <button type="submit" class="btn w-100" (click)="processPayment()">Procesar compra</button>
+      </div>
+    </div>
+  </div>
+</div>

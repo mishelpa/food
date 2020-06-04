@@ -1,0 +1,29 @@
+<div >
+  <h2>PAGO CON CULQI</h2>
+  <hr>
+  <div class="">
+    <div class="">
+      <h3 class="card-title pt-3 text-center font-weight-normal">RESUMEN DE COMPRA</h3>
+      <div class="row container pb-2" *ngFor="let item of products">
+        <div class="col-3 text-center ">
+          <span>{{item.quantity}}</span>
+        </div>
+        <div class="col-6">
+          <span>{{item.name}}</span>
+        </div>
+        <div class="col-3 text-center">
+          <span>S/.{{item.price}} x unidad</span>
+        </div>
+      </div>
+      <section class="text-center pb-3">
+        <button (click)="payment()" class="btn btn-payment font-weight-bold">Ingresar datos de la tarjeta</button>
+      </section>
+    </div>
+  </div>
+</div>
+
+<mat-card class="text-center pb-3">
+  <p class="font-weight-bold text-danger">S/. {{totalCart}}</p>
+  <button class="btn btn-end w-100" (click)="createChargeCart()">Finalizar compra</button>
+</mat-card>
+
