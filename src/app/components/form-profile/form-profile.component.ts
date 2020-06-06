@@ -13,14 +13,14 @@ export class FormProfileComponent implements OnInit {
   constructor() { }
 
   profileForm = new FormGroup({
-    nameUser: new FormControl(''),
-    lastnameUser: new FormControl (''),
-    celUser: new FormControl(''),
-    dni: new FormControl(''),
+    UserName: new FormControl('',[Validators.required]),
+    lastnameUser: new FormControl ('', [Validators.required]),
+    celUser: new FormControl('',[Validators.required]),
+    dni: new FormControl('',[Validators.required, Validators.minLength(8)]),
     documentType: new FormControl(''),
-    emailUser: new FormControl(''),
-    agreePromotions: new FormControl(''),
-    agreeTermsAndConditions: new FormControl('')
+    emailUser: new FormControl('', [Validators.required, Validators.email]),
+    agreePromotions: new FormControl('', [Validators.required, Validators.requiredTrue]),
+    agreeTermsAndConditions: new FormControl('', [Validators.required, Validators.requiredTrue])
   });
 
   ngOnInit(): void {
@@ -29,4 +29,9 @@ export class FormProfileComponent implements OnInit {
   save(a) {
     console.log(a);
   }
+  get UserName(){return this.profileForm.get('UserName')}
+  get lastnameUser(){return this.profileForm.get('lastnameUser')}
+  get dni(){return this.profileForm.get('dni')}
+  get emailUser(){ return this.profileForm.get('emailUser')}
+  get celUser(){return this.profileForm.get('celUser')}
 }

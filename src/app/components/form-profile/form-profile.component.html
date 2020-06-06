@@ -4,34 +4,61 @@
   <div class="mt-1 container">
     <form action="" [formGroup]="profileForm" (ngSubmit)="save(profileForm.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-name">Nombres</label>
-        <input type="text"  required formControlName="nameUser" class="form-control" id="user-name" aria-describedby="nameHelp" #name>
+        <label for="user-name"><span>*</span> Nombres</label>
+        <input type="text"  required formControlName="UserName" class="form-control" id="user-name" aria-describedby="nameHelp" #name>
+        <div class="alert-danger" *ngIf="UserName.invalid && (UserName.dirty || UserName.touched)">
+        <div class="container-error-message">
+          Este campo es obligatorio
+        </div>
       </div>
+    </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-lastname">Apellidos</label>
+        <label for="user-lastname"><span>*</span> Apellidos</label>
         <input type="text" required formControlName="lastnameUser" class="form-control" id="user-lastname" #lastname>
+        <div class="alert-danger" *ngIf="lastnameUser.invalid && (lastnameUser.dirty || lastnameUser.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
       </div>
-      <!-- <div class="form-group col-xs-6 col-md-3">
-        <label for="documentType">Tipo/Documento</label>
-        <input class="form-control" type="number" id="documentType" formControlName = "documentType">
-      </div> -->
       <div class="form-group col-xs-6 col-md-3">
-        <label for="sel1">Tipo/Documento</label>
+        <label for="sel1"><span>*</span> Tipo/Documento</label>
         <select class="form-control" id="sel1">
           <option>DNI</option>
         </select>
       </div>
       <div class="form-group col-xs-6 col-md-3">
-        <label for="dni">DNI</label>
-        <input class="form-control cursor" type="text" id="dni" formControlName = "dni">
+        <label for="dni"><span>*</span> DNI</label>
+        <input class="form-control cursor" type="number" id="dni" formControlName = "dni">
+        <div class="alert-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
+          <div class="container-error-message" *ngIf="dni.errors.required">
+            Este campo es obligatorio
+          </div>
+          <div class="container-error-message" *ngIf="dni.errors.minlength">
+            Mínimo 8 caracteres
+          </div>
+        </div>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-cel">Teléfono Celular</label>
-        <input type="text" required formControlName="celUser" class="form-control" id="user-cel" #cel>
+        <label for="user-cel"><span>*</span> Teléfono Celular</label>
+        <input type="number" required formControlName="celUser" class="form-control" id="user-cel" #cel>
+        <div class="alert-danger" *ngIf="celUser.invalid && (celUser.dirty || celUser.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-email">Email</label>
+        <label for="user-email"><span>*</span> Email</label>
         <input type="email" required formControlName="emailUser" class="form-control" id="user-email" #email>
+        <div class="alert-danger" *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)">
+          <div class="container-error-message" *ngIf="emailUser.errors.required">
+            Este campo es obligatorio
+          </div>
+          <div class="container-error-message" *ngIf="(emailUser.dirty || emailUser.touched) && emailUser.invalid && emailUser.errors.email">
+            Correo invalido
+          </div>
+        </div>
       </div>
       <div class="form-check form-check-inline col-12 m-3 checkbox">
         <input  class="form-check-input mr-2" type="checkbox" id="agreePromotions" formControlName = "agreePromotions">
