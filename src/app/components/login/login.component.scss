@@ -1,10 +1,3 @@
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
-}
-
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-}
 
 input{
   background-color: #FDF7ED;
@@ -55,11 +48,6 @@ $color-orange:  #FF5500;
         margin-bottom: 0;
         font-weight: normal;
         cursor: pointer;
-        // span {
-        //     position: absolute;
-        //     top: 50%;
-        //     transform: translateY(-50%);
-        // }
         &:before {
             content: '';
             position: absolute;
@@ -104,4 +92,23 @@ $color-orange:  #FF5500;
             outline: 0;
         }
     }
+}
+span{
+  color: #DC143C;
+}
+.alert-danger{
+  color: #721c24;
+  border-color: #f5c6cb;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+.container-error-message{
+  padding: 8px;
+  text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

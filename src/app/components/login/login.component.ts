@@ -34,12 +34,12 @@ export class LoginComponent {
 
   registerForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    fatherLastName: new FormControl('', [Validators.required]),
-    motherLastName: new FormControl('', [Validators.required]),
+    fatherLastName: new FormControl(''),
+    motherLastName: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-    dni: new FormControl('', [Validators.minLength(8), Validators.maxLength(8)]),
-    documentType: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    dni: new FormControl('', [Validators.minLength(8)]),
+    documentType: new FormControl(''),
     agreePromotions:  new FormControl('', [Validators.requiredTrue]),
     agreeTermsAndConditions: new FormControl('', [Validators.requiredTrue]),
 
@@ -145,4 +145,9 @@ export class LoginComponent {
   closeFailedEmail() {
     this.displayFailedEmail = false;
   }
+
+  get name(){return this.registerForm.get('name')}
+  get dni(){return this.registerForm.get('dni')}
+  get email(){return this.registerForm.get('email')}
+  get password(){return this.registerForm.get('password')}
 }

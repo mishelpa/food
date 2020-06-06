@@ -2,22 +2,37 @@
   <h2>MIS DIRECCIONES</h2>
   <hr>
   <div class="mt-1 container">
-    <form action="" [formGroup]="userForm" (ngSubmit)="save(userForm.value)" class="row">
+    <form action="" [formGroup]="userAddres" (ngSubmit)="save(userAddres.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
-        <label for="userDNI">DNI</label>
-        <input type="number" formControlName="userDNI" class="form-control" id="userDNI" #dpto>
+        <label for="streetName"><span>*</span> Calle</label>
+        <input type="text" formControlName="streetName" class="form-control" id="streetName" >
+        <div class="alert-danger" *ngIf="streetName.invalid && (streetName.dirty || streetName.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
       </div>
-      <div class="form-group col-xs-12 col-md-1">
-        <label for="streetTypeCode">Tipo/Calle</label>
-        <input type="text" formControlName="streetTypeCode" class="form-control" id="streetTypeCode" #cel>
+      <div class="form-group col-xs-12 col-md-3">
+        <label for="streetTypeCode"><span>*</span> Tipo/Calle</label>
+        <input type="text" formControlName="streetTypeCode" class="form-control" id="streetTypeCode">
+        <div class="alert-danger" *ngIf="streetTypeCode.invalid && (streetTypeCode.dirty || streetTypeCode.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
       </div>
-      <div class="form-group col-xs-12 col-md-4">
-        <label for="streetName">Calle</label>
+      <!-- <div class="form-group col-xs-12 col-md-4">
+        <label for="streetName"><span>*</span> Calle</label>
         <input type="text" formControlName="streetName" class="form-control" id="streetName" #othercel>
-      </div>
-      <div class="form-group col-xs-12 col-md-1">
-        <label for="streetNumber">Nro/Calle</label>
-        <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber" #othercel>
+      </div> -->
+      <div class="form-group col-xs-12 col-md-3">
+        <label for="streetNumber"><span>*</span> Nro/Calle</label>
+        <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber">
+        <div class="alert-danger" *ngIf="streetNumber.invalid && (streetNumber.dirty || streetNumber.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
       </div>
       <div class="form-group col-xs-12 col-md-3">
         <label for="buildingType">Tipo/Edificio</label>
@@ -30,7 +45,7 @@
 
       <div class="form-group col-xs-12 col-md-6">
         <label for="blockCode">Bloque</label>
-        <input type="number" formControlName="blockCode" class="form-control" id="blockCode" #dpto>
+        <input type="text" formControlName="blockCode" class="form-control" id="blockCode" #dpto>
       </div>
 
       <div class="form-group col-xs-12 col-md-6">
@@ -38,11 +53,16 @@
         <input type="number" formControlName="lotNumber" class="form-control" id="lotNumber" #dpto>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="urbanizationName">Urb</label>
-        <input type="text" formControlName="urbanizationName" class="form-control" id="urbanizationName" #dpto>
+        <label for="urbanizationName"><span>*</span> Urbanizacion</label>
+        <input type="text" formControlName="urbanizationName" class="form-control" id="urbanizationName">
+        <div class="alert-danger" *ngIf="urbanizationName.invalid && (urbanizationName.dirty || urbanizationName.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
       </div>
       <div class="form-group col-xs-12 col-md-6">
-        <label for="urbanizationTypeCode">Tipo/Urb</label>
+        <label for="urbanizationTypeCode">Tipo/Urbanizacion</label>
         <input type="text" formControlName="urbanizationTypeCode" class="form-control" id="urbanizationTypeCode" #dpto>
       </div>
 
@@ -63,7 +83,7 @@
         <label class="form-check-label" for="addressmain">Dirección principal</label>
       </div>
       <div class="col-md-12 text-right">
-        <button type="submit" [disabled]="userForm.invalid" class="btn btn-orange">Agregar</button>
+        <button type="submit" [disabled]="userAddres.invalid" class="btn btn-orange">Agregar</button>
       </div>
     </form>
   </div>
