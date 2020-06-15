@@ -18,13 +18,14 @@ export class PaymentComponent implements OnInit {
   description : 'FOOD PERÚ',
   amount: 100
   }];
-  constructor( private productsService: ProductsService, private culqi: CulqiService ) {
+  constructor( private productsService: ProductsService, private culqi: CulqiService) {
       this.products = this.productsService.products;
       this.totalCart = localStorage.getItem('amount');
     }
 
   ngOnInit(): void {
-    this.culqi.initCulqi();
+
+   
   }
 
   payment() {

@@ -35,6 +35,7 @@ import {MatCardModule} from '@angular/material/card';
 // Importamos el módulo de ng-culqi
 import { NgCulqiModule } from 'ng-culqi';
 import { FooterComponent } from './components/footer/footer.component';
+import { CardAddressComponent } from './components/card-address/card-address.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { FooterComponent } from './components/footer/footer.component';
     PageResetLoginComponent,
     CartComponent,
     PaymentComponent,
-    FooterComponent
+    FooterComponent,
+    CardAddressComponent
   ],
   imports: [
     BrowserModule,
