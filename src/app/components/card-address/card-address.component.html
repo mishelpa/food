@@ -1,0 +1,14 @@
+<h2>MIS DIRECCIONES</h2>
+  <hr>
+  <div class="container" *ngFor="let item of addresses">
+  
+    <div class="card text-white  mb-3" style="max-width: 18rem;" >
+      <div class="card-body">
+        <p class="card-text">{{item.streetTypeCode}}</p>
+        <p class="card-text">{{item.streetName}}</p>
+        <p class="card-text">{{item.streetNumber}}</p>
+        <p class="card-text">{{item.buildingType}}</p>
+        <p class="card-text">{{item.urbanizationName}}</p>
+      </div>
+  
+</div>

@@ -3,6 +3,7 @@ import { Auth } from 'aws-amplify';
 import { AuthService } from '../../services/auth/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 
 @Component({
@@ -10,9 +11,13 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent  implements OnInit{
 
   constructor(public authUser: AuthService, private router: Router) { }
+  ngOnInit(): void {
+
+  }
+
 
   signInFlag = true;
   signUpFlag = false;
