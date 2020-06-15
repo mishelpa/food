@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {UserService} from 'src/app/services/user/user.service';
+import { from } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-address',
@@ -7,7 +10,8 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
   styleUrls: ['./form-address.component.scss']
 })
 export class FormAddressComponent implements OnInit {
-  constructor() { }
+  
+  constructor( private userService :UserService, private router: Router) { }
   userAddres = new FormGroup({
     userDNI: new FormControl (''),
     streetTypeCode: new FormControl ('',[Validators.required]),
@@ -28,12 +32,16 @@ export class FormAddressComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save(a) {
-    console.log(a);
+  save(address) {
+    this.userService.addAddres(address);
+    this.router.navigate(['/cardAddress']);
+   
   }
   get streetName(){return this.userAddres.get('streetName')}
   get streetTypeCode(){return this.userAddres.get('streetTypeCode')}
   get streetNumber(){return this.userAddres.get('streetNumber')}
   get urbanizationName(){return this.userAddres.get('urbanizationName')}
+
+
 
 }

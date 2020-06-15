@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageProductComponent } from './pages/page-product/page-product.component';
 import { PageResetLoginComponent} from './pages/page-reset-login/page-reset-login.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CardAddressComponent } from "./components/card-address/card-address.component";
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent},
   {path: 'resetPassword', component: PageResetLoginComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'payment', component: PaymentComponent}
+  {path: 'payment', component: PaymentComponent},
+  {path: 'cardAddress', component: CardAddressComponent},
 ];
 
 @NgModule({
