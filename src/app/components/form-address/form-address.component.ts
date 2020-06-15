@@ -18,7 +18,7 @@ export class FormAddressComponent implements OnInit {
     blockCode: new FormControl (''),
     lotNumber: new FormControl (''),
     urbanizationTypeCode: new FormControl (''),
-    urbanizationName: new FormControl ('',[Validators.required]),
+    urbanizationName: new FormControl ('', [Validators.required]),
     zoneName: new FormControl (''),
     addresspred: new FormControl (''),
     active: new FormControl (''),
