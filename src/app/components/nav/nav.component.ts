@@ -24,6 +24,7 @@ userName: string;
     Auth.signOut()
       .then(() => {
         localStorage.setItem('user', '');
+        localStorage.removeItem('infoUser');
         if (this.router.url === '/') {
           window.location.reload();
         } else { this.router.navigate(['/']); }

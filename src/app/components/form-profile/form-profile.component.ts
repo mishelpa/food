@@ -30,10 +30,18 @@ export class FormProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('infoUser'));
-    console.log(this.user.middle_name);
-    this.names.setValue(this.user.middle_name);
-    this.lastName.setValue(this.user.family_name);
     this.userEmail.setValue(this.user.email);
+    if (localStorage.getItem('CognitoIdentityServiceProvider.62n13nhk7bqnmd7qdr8vkbfgnk.LastAuthUser').includes('Facebook')) {
+      this.names.setValue(this.user.given_name);
+      this.lastName.setValue(this.user.family_name);
+    } else if (localStorage.getItem('CognitoIdentityServiceProvider.62n13nhk7bqnmd7qdr8vkbfgnk.LastAuthUser').includes('Google') ) {
+      this.names.setValue(this.user.middle_name);
+      this.lastName.setValue(this.user.family_name);
+    } else {
+      this.names.setValue(this.user.name);
+      this.lastName.setValue(this.user['custom:family_name']);
+      this.dni.setValue(this.user['custom:dni']);
+    }
   }
 
   save(a) {

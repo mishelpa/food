@@ -11,6 +11,7 @@ export class AuthService {
 
   constructor() {
     Hub.listen('auth', (data) => {
+      console.log(data);
       const { channel, payload} = data;
       Auth.currentUserInfo()
     .then(user => {

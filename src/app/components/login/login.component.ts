@@ -39,8 +39,7 @@ export class LoginComponent  implements OnInit{
 
   registerForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    fatherLastName: new FormControl(''),
-    motherLastName: new FormControl(''),
+    lastName: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     dni: new FormControl('', [Validators.minLength(8)]),
@@ -76,7 +75,7 @@ export class LoginComponent  implements OnInit{
           name:  value.name,
           email: value.email,
           'custom:dni': value.dni,
-          'custom:lastName': value.fatherLastName
+          'custom:family_name': value.lastName
       }
     };
 
@@ -98,7 +97,7 @@ export class LoginComponent  implements OnInit{
 
     Auth.signIn(authInfo).then(user => {
       this.userName = user.attributes.name;
-      this.router.navigate(['/account']);
+      this.router.navigate(['/']);
     })
       .catch(err => {
         this.displayLoginFailedModal = true;
@@ -151,8 +150,8 @@ export class LoginComponent  implements OnInit{
     this.displayFailedEmail = false;
   }
 
-  get name(){return this.registerForm.get('name')}
-  get dni(){return this.registerForm.get('dni')}
-  get email(){return this.registerForm.get('email')}
-  get password(){return this.registerForm.get('password')}
+  get name() {return this.registerForm.get('name'); }
+  get dni() {return this.registerForm.get('dni'); }
+  get email() {return this.registerForm.get('email'); }
+  get password() {return this.registerForm.get('password'); }
 }
