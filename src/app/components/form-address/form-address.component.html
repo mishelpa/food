@@ -21,6 +21,15 @@
           </div>
         </div>
       </div>
+         <div class="form-group col-xs-12 col-md-3">
+        <label for="streetNumber"><span>*</span> Nro/Calle</label>
+        <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber">
+        <div class="alert-danger" *ngIf="streetNumber.invalid && (streetNumber.dirty || streetNumber.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
+      </div>
       <div class="form-group col-xs-12 col-md-6">
         <label for="streetName"><span>*</span> Calle</label>
         <input type="text" formControlName="streetName" class="form-control" id="streetName" >
@@ -30,15 +39,7 @@
           </div>
         </div>
       </div>
-      <div class="form-group col-xs-12 col-md-3">
-        <label for="streetNumber"><span>*</span> Nro/Calle</label>
-        <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber">
-        <div class="alert-danger" *ngIf="streetNumber.invalid && (streetNumber.dirty || streetNumber.touched)">
-          <div class="container-error-message">
-            Este campo es obligatorio
-          </div>
-        </div>
-      </div>
+   
       <div class="form-group col-xs-12 col-md-3">
         <label for="buildingType">Tipo/Edificio</label>
         <input type="text" formControlName="buildingType" class="form-control" id="buildingType" #lote>
