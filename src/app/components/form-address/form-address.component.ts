@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-address.component.scss']
 })
 export class FormAddressComponent implements OnInit {
+
   constructor( private userService: UserService, private router: Router) { }
   userAddres = new FormGroup({
-    userDni: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    userDNI: new FormControl ('', [Validators.required]),
     streetTypeCode: new FormControl ('', [Validators.required]),
     streetName: new FormControl ('', [Validators.required]),
     streetNumber: new FormControl ('', [Validators.required]),
@@ -25,7 +26,8 @@ export class FormAddressComponent implements OnInit {
     zoneName: new FormControl (''),
     addresspred: new FormControl (''),
     active: new FormControl (''),
-    addressmain: new FormControl ('')
+    mainAddress: new FormControl (''),
+    geolocationCode: new FormControl('')
   });
 
   ngOnInit(): void {
@@ -33,13 +35,17 @@ export class FormAddressComponent implements OnInit {
 
   save(address) {
     this.userService.addAddres(address);
+    console.log(address);
     this.router.navigate(['/cardAddress']);
+    this.userService.postAddress(address).subscribe(() => {
+      console.log('Direccion del usuario creado');
+    });
+
   }
   get streetName() {return this.userAddres.get('streetName'); }
   get streetTypeCode() {return this.userAddres.get('streetTypeCode'); }
   get streetNumber() {return this.userAddres.get('streetNumber'); }
   get urbanizationName() {return this.userAddres.get('urbanizationName'); }
-
-
+  get userDNI() {return this.userAddres.get('userDNI'); }
 
 }
