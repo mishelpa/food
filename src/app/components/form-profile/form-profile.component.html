@@ -4,9 +4,9 @@
   <div class="mt-1 container">
     <form action="" [formGroup]="profileForm" (ngSubmit)="save(profileForm.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
-        <label for="user-name"><span>*</span> Nombres</label>
-        <input type="text"  required formControlName="UserName" class="form-control" id="user-name" aria-describedby="nameHelp" #name>
-        <div class="alert-danger" *ngIf="UserName.invalid && (UserName.dirty || UserName.touched)">
+        <label for="names"><span>*</span> Nombres</label>
+        <input type="text"  required formControlName="names" class="form-control" id="names" aria-describedby="nameHelp" #name>
+        <div class="alert-danger" *ngIf="names.invalid && (names.dirty || names.touched)">
         <div class="container-error-message">
           Este campo es obligatorio
         </div>
@@ -14,13 +14,23 @@
     </div>
       <div class="form-group col-xs-12 col-md-6">
         <label for="user-lastname"><span>*</span> Apellidos</label>
-        <input type="text" required formControlName="lastnameUser" class="form-control" id="user-lastname" #lastname>
-        <div class="alert-danger" *ngIf="lastnameUser.invalid && (lastnameUser.dirty || lastnameUser.touched)">
+        <input type="text" required formControlName="lastName" class="form-control" id="lastName" #lastname>
+        <div class="alert-danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
           <div class="container-error-message">
             Este campo es obligatorio
           </div>
         </div>
       </div>
+ <!--      <div class="form-group col-xs-12 col-md-6">
+        <label for="user-lastname"><span>*</span> Apellido Materno</label>
+        <input type="text" required formControlName="motherLastName" class="form-control" id="motherLastName" #lastname>
+        <div class="alert-danger" *ngIf="motherLastName.invalid && (motherLastName.dirty || motherLastName.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
+      </div> -->
+
       <div class="form-group col-xs-6 col-md-3">
         <label for="sel1"><span>*</span> Tipo/Documento</label>
         <select class="form-control" id="sel1">
@@ -39,7 +49,7 @@
           </div>
         </div>
       </div>
-      <div class="form-group col-xs-12 col-md-6">
+     <!--  <div class="form-group col-xs-12 col-md-6">
         <label for="user-cel"><span>*</span> Teléfono Celular</label>
         <input type="number" required formControlName="celUser" class="form-control" id="user-cel" #cel>
         <div class="alert-danger" *ngIf="celUser.invalid && (celUser.dirty || celUser.touched)">
@@ -47,15 +57,15 @@
             Este campo es obligatorio
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="form-group col-xs-12 col-md-6">
         <label for="user-email"><span>*</span> Email</label>
-        <input type="email" required formControlName="emailUser" class="form-control" id="user-email" #email>
-        <div class="alert-danger" *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)">
-          <div class="container-error-message" *ngIf="emailUser.errors.required">
+        <input type="email" required formControlName="email" class="form-control" id="user-email" #email>
+        <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div class="container-error-message" *ngIf="email.errors.required">
             Este campo es obligatorio
           </div>
-          <div class="container-error-message" *ngIf="(emailUser.dirty || emailUser.touched) && emailUser.invalid && emailUser.errors.email">
+          <div class="container-error-message" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.email">
             Correo invalido
           </div>
         </div>

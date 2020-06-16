@@ -14,6 +14,8 @@ export class AuthService {
       const { channel, payload} = data;
       Auth.currentUserInfo()
     .then(user => {
+      console.log(user);
+      localStorage.setItem('infoUser', JSON.stringify(user.attributes))
       this.currentUser.next(user.attributes.name);
       localStorage.setItem('user', user.attributes.name);
       localStorage.setItem('email', JSON.stringify(user.attributes.email));
