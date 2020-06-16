@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService } from '../../services/user/user.service'
+import {UserService } from '../../services/user/user.service';
 
 
 @Component({
@@ -14,13 +14,8 @@ export class CardAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.currentAddres.subscribe(obj => this.addresses = obj
-     
-      
-)
+
+);
 
   }
-  getAddress(){
-    
-  }
-
 }

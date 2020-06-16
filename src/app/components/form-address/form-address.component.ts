@@ -10,19 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-address.component.scss']
 })
 export class FormAddressComponent implements OnInit {
-  
-  constructor( private userService :UserService, private router: Router) { }
+  constructor( private userService: UserService, private router: Router) { }
   userAddres = new FormGroup({
-    userDNI: new FormControl (''),
-    streetTypeCode: new FormControl ('',[Validators.required]),
-    streetName: new FormControl ('',[Validators.required]),
-    streetNumber: new FormControl ('',[Validators.required]),
+    userDni: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    streetTypeCode: new FormControl ('', [Validators.required]),
+    streetName: new FormControl ('', [Validators.required]),
+    streetNumber: new FormControl ('', [Validators.required]),
     buildingType: new FormControl(''),
     buildingNumber: new FormControl (''),
     blockCode: new FormControl (''),
     lotNumber: new FormControl (''),
     urbanizationTypeCode: new FormControl (''),
-    urbanizationName: new FormControl ('',[Validators.required]),
+    urbanizationName: new FormControl ('', [Validators.required]),
     zoneName: new FormControl (''),
     addresspred: new FormControl (''),
     active: new FormControl (''),
@@ -35,12 +34,11 @@ export class FormAddressComponent implements OnInit {
   save(address) {
     this.userService.addAddres(address);
     this.router.navigate(['/cardAddress']);
-   
   }
-  get streetName(){return this.userAddres.get('streetName')}
-  get streetTypeCode(){return this.userAddres.get('streetTypeCode')}
-  get streetNumber(){return this.userAddres.get('streetNumber')}
-  get urbanizationName(){return this.userAddres.get('urbanizationName')}
+  get streetName() {return this.userAddres.get('streetName'); }
+  get streetTypeCode() {return this.userAddres.get('streetTypeCode'); }
+  get streetNumber() {return this.userAddres.get('streetNumber'); }
+  get urbanizationName() {return this.userAddres.get('urbanizationName'); }
 
 
 
