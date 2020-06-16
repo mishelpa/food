@@ -23,15 +23,17 @@ export class FormProfileComponent implements OnInit {
     // celUser: new FormControl('', [Validators.required]),
     dni: new FormControl('', [Validators.required, Validators.minLength(8)]),
     documentType: new FormControl('1'),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    userEmail: new FormControl('', [Validators.required, Validators.email]),
     agreePromotions: new FormControl('', [Validators.required, Validators.requiredTrue]),
     agreeTermsAndConditions: new FormControl('', [Validators.required, Validators.requiredTrue])
   });
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('infoUser'));
-    console.log(this.user.email);
-
+    console.log(this.user.middle_name);
+    this.names.setValue(this.user.middle_name);
+    this.lastName.setValue(this.user.family_name);
+    this.userEmail.setValue(this.user.email);
   }
 
   save(a) {
@@ -44,6 +46,6 @@ export class FormProfileComponent implements OnInit {
   get lastName() {return this.profileForm.get('lastName'); }
   // get motherLastName() {return this.profileForm.get('motherLastName'); }
   get dni() {return this.profileForm.get('dni'); }
-  get email() { return this.profileForm.get('emailUser'); }
+  get userEmail() { return this.profileForm.get('userEmail'); }
   // get celUser(){return this.profileForm.get('celUser')}
 }
