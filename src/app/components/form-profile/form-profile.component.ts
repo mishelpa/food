@@ -29,7 +29,6 @@ export class FormProfileComponent implements OnInit {
   });
 
   ngOnInit(): void {
-   
     this.user = JSON.parse(localStorage.getItem('infoUser'));
     console.log(this.user.middle_name);
     this.names.setValue(this.user.middle_name);
