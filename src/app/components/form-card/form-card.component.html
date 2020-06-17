@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h2>MI TARJETA GUARDADA</h2>
   <hr>
   <span>Agregar una tarjeta de Crédito o débito</span>
@@ -29,6 +29,77 @@
       </div>
     </form>
   </div>
-</div>
+</div> -->
 
+<form action="" [formGroup]="cardForm" (ngSubmit)="createTokenOrder(cardForm.value)" class="row">
+  <div class="form-group col-12 col-md-6">
+    <label>Correo Electrónico</label>
+    <input class="form-control" formControlName="emailUser" type="email" data-culqi="card[email]" id="card[email]">
+    <div class="alert-danger" *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)">
+      <div class="container-error-message" *ngIf="emailUser.errors.required">
+        Este campo es obligatorio
+      </div>
+      <div class="container-error-message" *ngIf="emailUser.errors.email">
+        Ingresar un correo válido
+      </div>
+    </div>
+  </div>
+  <div class="form-group col-12 col-md-6">
+    <label>Número de tarjeta</label>
+    <input class="form-control" formControlName="numberCard" type="text" size="20" data-culqi="card[number]" id="card[number]">
+    <div class="alert-danger" *ngIf="numberCard.invalid && (numberCard.dirty || numberCard.touched)">
+      <div class="container-error-message" *ngIf="numberCard.errors.required">
+        Este campo es obligatorio
+      </div>
+      <div class="container-error-message" *ngIf="numberCard.errors.pattern">
+        Ingresar solo números
+      </div>
+    </div>
+  </div>
+  <div class="form-group col-12 col-md-6">
+    <label>CVV</label>
+    <input class="form-control" formControlName="cvvCard" type="text" size="4" data-culqi="card[cvv]" id="card[cvv]">
+    <div class="alert-danger" *ngIf="cvvCard.invalid && (cvvCard.dirty || cvvCard.touched)">
+      <div class="container-error-message" *ngIf="cvvCard.errors.required">
+        Este campo es obligatorio
+      </div>
+      <div class="container-error-message" *ngIf="cvvCard.errors.pattern">
+        Ingresar solo números
+      </div>
+    </div>
+  </div>
+  <div class="form-group col-6 col-md-3">
+    <label>Mes de expiración(MM)</label>
+    <input class="form-control" formControlName="monthCard" data-culqi="card[exp_month]" id="card[exp_month]">
+    <div class="alert-danger" *ngIf="monthCard.invalid && (monthCard.dirty || monthCard.touched)">
+      <div class="container-error-message" *ngIf="monthCard.errors.required">
+        Este campo es obligatorio
+      </div>
+      <div class="container-error-message" *ngIf="monthCard.errors.pattern">
+        Ingresar solo números
+      </div>
+      <div class="container-error-message" *ngIf="monthCard.errors.minlength || monthCard.errors.maxlength">
+        Ingresar dos digitos
+      </div>
+    </div>
+  </div>
+  <div class="form-group col-6 col-md-3">
+    <label>Año de expiración(YYYY) </label>
+    <input class="form-control" formControlName="yearCard" data-culqi="card[exp_year]" id="card[exp_year]">
+    <div class="alert-danger" *ngIf="yearCard.invalid && (yearCard.dirty || yearCard.touched)">
+      <div class="container-error-message" *ngIf="yearCard.errors.required">
+        Este campo es obligatorio
+      </div>
+      <div class="container-error-message" *ngIf="yearCard.errors.pattern">
+        Ingresar solo números
+      </div>
+      <div class="container-error-message" *ngIf="yearCard.errors.minlength || yearCard.errors.maxlength">
+        Ingresar cuatro digitos
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn" id="btn_pagar">Pagar</button>
+  </div>
+</form>
 

@@ -19,8 +19,6 @@ export class FormProfileComponent implements OnInit {
   profileForm = new FormGroup({
     names: new FormControl('', [Validators.required]),
     lastName: new FormControl ('', [Validators.required]),
-    // motherLastName: new FormControl ('', [Validators.required]),
-    // celUser: new FormControl('', [Validators.required]),
     dni: new FormControl('', [Validators.required, Validators.minLength(8)]),
     documentType: new FormControl('1'),
     userEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -52,8 +50,6 @@ export class FormProfileComponent implements OnInit {
   }
   get names() {return this.profileForm.get('names'); }
   get lastName() {return this.profileForm.get('lastName'); }
-  // get motherLastName() {return this.profileForm.get('motherLastName'); }
   get dni() {return this.profileForm.get('dni'); }
   get userEmail() { return this.profileForm.get('userEmail'); }
-  // get celUser(){return this.profileForm.get('celUser')}
 }

@@ -11,6 +11,7 @@ export class CulqiService {
 
   constructor( private http: HttpClient) {
     document.addEventListener ('payment_event', (token: any) => {
+    console.log(token);
     this.tokenId = token.detail;
     localStorage.setItem('token', JSON.stringify(this.tokenId));
   });
@@ -55,5 +56,9 @@ export class CulqiService {
       headers = headers.append('Content-Type', 'application/json');
       headers = headers.append('Authorization', 'Bearer ' + 'sk_test_3mWmJRwXPw7OfJJq');
       return this.http.post('https://api.culqi.com/v2/charges', obj, {headers});
+    }
+
+    createOrder() {
+      Culqi.createToken();
     }
 }
