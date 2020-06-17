@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CulqiService } from 'src/app/services/integration/culqi.service';
 
 @Component({
@@ -9,17 +9,25 @@ import { CulqiService } from 'src/app/services/integration/culqi.service';
 })
 export class FormCardComponent implements OnInit {
 
-  constructor(private culqi: CulqiService) { }
+  monthArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  yearArray: number[] = [];
+
+  constructor(private culqi: CulqiService, public fb: FormBuilder) { }
 
   cardForm = new FormGroup({
     emailUser: new FormControl('', [Validators.required, Validators.email]),
     numberCard: new FormControl ('', [Validators.required, Validators.pattern('^[0-9]+$')]),
     cvvCard: new FormControl ('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-    monthCard: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(2), Validators.maxLength(2)]),
-    yearCard: new FormControl ('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(4), Validators.maxLength(4)]),
+    monthCard: new FormControl('', [Validators.required]),
+    yearCard: new FormControl ('', [Validators.required]),
   });
 
+
+
   ngOnInit(): void {
+    for (let i = 2020; i < 2041; i++) {
+      this.yearArray.push(i);
+    }
   }
 
   createTokenOrder(a) {

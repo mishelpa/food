@@ -13,7 +13,7 @@
   </div>
   <div class="form-group col-12 col-md-6">
     <label>Número de tarjeta</label>
-    <input class="form-control" formControlName="numberCard" type="text" size="20" data-culqi="card[number]" id="card[number]">
+    <input class="form-control" maxlength="19" formControlName="numberCard" type="text" size="20" data-culqi="card[number]" id="card[number]">
     <div class="alert-danger" *ngIf="numberCard.invalid && (numberCard.dirty || numberCard.touched)">
       <div class="container-error-message" *ngIf="numberCard.errors.required">
         Este campo es obligatorio
@@ -36,32 +36,24 @@
     </div>
   </div>
   <div class="form-group col-6 col-md-3">
-    <label>Mes de expiración(MM)</label>
-    <input class="form-control" formControlName="monthCard" data-culqi="card[exp_month]" id="card[exp_month]">
+    <label>Mes de expiración</label>
+    <select class="custom-select" name="" id="" formControlName="monthCard" data-culqi="card[exp_month]" id="card[exp_month]">
+      <option *ngFor ="let month of monthArray" value={{month}} >{{month}}</option>
+    </select>
     <div class="alert-danger" *ngIf="monthCard.invalid && (monthCard.dirty || monthCard.touched)">
       <div class="container-error-message" *ngIf="monthCard.errors.required">
         Este campo es obligatorio
       </div>
-      <div class="container-error-message" *ngIf="monthCard.errors.pattern">
-        Ingresar solo números
-      </div>
-      <div class="container-error-message" *ngIf="monthCard.errors.minlength || monthCard.errors.maxlength">
-        Ingresar dos digitos
-      </div>
     </div>
   </div>
   <div class="form-group col-6 col-md-3">
-    <label>Año de expiración(YYYY) </label>
-    <input class="form-control" formControlName="yearCard" data-culqi="card[exp_year]" id="card[exp_year]">
+    <label>Año de expiración</label>
+    <select class="custom-select" name="" id="" formControlName="yearCard" data-culqi="card[exp_year]" id="card[exp_year]">
+      <option *ngFor ="let year of yearArray" value={{year}} >{{year}}</option>
+    </select>
     <div class="alert-danger" *ngIf="yearCard.invalid && (yearCard.dirty || yearCard.touched)">
       <div class="container-error-message" *ngIf="yearCard.errors.required">
         Este campo es obligatorio
-      </div>
-      <div class="container-error-message" *ngIf="yearCard.errors.pattern">
-        Ingresar solo números
-      </div>
-      <div class="container-error-message" *ngIf="yearCard.errors.minlength || yearCard.errors.maxlength">
-        Ingresar cuatro digitos
       </div>
     </div>
   </div>
