@@ -1,7 +1,10 @@
 
 <mat-form-field>
-  <input [formControl]="search" spellcheck="false" matInput placeholder="Busca Producto" >
-</mat-form-field>
+  <mat-label>Busca productos</mat-label> 
+  <input [formControl]="search" spellcheck="false" matInput placeholder="Buscar Producto" >
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field> 
+
 
 <div class="listProduct">
   <div class="product border" *ngFor="let product of products | search:filtroValue">
