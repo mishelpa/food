@@ -32,10 +32,12 @@ import {MatSelectModule} from '@angular/material/select';
 import { PaymentComponent } from './components/payment/payment.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatCardModule} from '@angular/material/card';
-// Importamos el módulo de ng-culqi
 import { NgCulqiModule } from 'ng-culqi';
 import { FooterComponent } from './components/footer/footer.component';
 import { CardAddressComponent } from './components/card-address/card-address.component';
+import {FormsModule} from '@angular/forms';
+import { from } from 'rxjs';
+import { SearchPipe } from './pipes/search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,8 @@ import { CardAddressComponent } from './components/card-address/card-address.com
     CartComponent,
     PaymentComponent,
     FooterComponent,
-    CardAddressComponent
+    CardAddressComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ import { CardAddressComponent } from './components/card-address/card-address.com
     MatSelectModule,
     NgCulqiModule,
     MatStepperModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
