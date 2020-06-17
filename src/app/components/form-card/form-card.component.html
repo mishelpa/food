@@ -1,36 +1,3 @@
-<!-- <div class="container">
-  <h2>MI TARJETA GUARDADA</h2>
-  <hr>
-  <span>Agregar una tarjeta de Crédito o débito</span>
-  <div class="mt-5">
-    <form action="" [formGroup]="userForm" class="row">
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="user-name">Nombre del titular</label>
-        <input type="text" required formControlName="nameUser" class="form-control" id="user-name" aria-describedby="nameHelp" #name>
-      </div>
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="user-lastname">Apellidos del titular</label>
-        <input type="text" required formControlName="lastnameUser" class="form-control" id="user-lastname" #lastname>
-      </div>
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="user-card">Número de tarjeta</label>
-        <input type="password" required formControlName="cardUser" class="form-control" id="user-card" #cel>
-      </div>
-      <div class="form-group col-xs-6 col-md-3">
-        <label for="user-lote">Mes de expiración</label>
-        <input type="text" required formControlName="loteUser" class="form-control" id="user-lote" #lote>
-      </div>
-      <div class="form-group col-xs-6 col-md-3">
-        <label for="user-dpto">Año de expiración</label>
-        <input type="text" formControlName="dptoUser" class="form-control" id="user-dpto" #dpto>
-      </div>
-      <div class="col-md-12 text-right">
-        <button type="submit" [disabled]="userForm.invalid" class="btn btn-orange">Guardar esta tarjeta para futuras compras</button>
-      </div>
-    </form>
-  </div>
-</div> -->
-
 <form action="" [formGroup]="cardForm" (ngSubmit)="createTokenOrder(cardForm.value)" class="row">
   <div class="form-group col-12 col-md-6">
     <label>Correo Electrónico</label>
