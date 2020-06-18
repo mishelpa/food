@@ -1,11 +1,12 @@
 <div class="container">
   <h2>MIS DIRECCIONES</h2>
   <hr>
+  <app-card-address></app-card-address>
   <div class="mt-1 container">
     <form action="" [formGroup]="userAddres" (ngSubmit)="save(userAddres.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
         <label for="userDNI"><span>*</span>DNI: </label>
-        <input type="text" formControlName="userDNI" class="form-control" id="userDNI" required>
+        <input type="text" maxlength="8" formControlName="userDNI" class="form-control" id="userDNI" required>
         <div class="alert-danger" *ngIf="userDNI.invalid && (userDNI.dirty || userDNI.touched)">
           <div class="container-error-message">
             Este campo es obligatorio
@@ -14,14 +15,16 @@
       </div>
       <div class="form-group col-xs-12 col-md-3">
         <label for="streetTypeCode"><span>*</span> Tipo/Calle</label>
-        <input type="text" formControlName="streetTypeCode" class="form-control" id="streetTypeCode">
+        <select class="custom-select" name="" id="" formControlName="streetTypeCode">
+          <option *ngFor ="let street of streetArray" value={{street}}>{{street}}</option>
+        </select>
         <div class="alert-danger" *ngIf="streetTypeCode.invalid && (streetTypeCode.dirty || streetTypeCode.touched)">
           <div class="container-error-message">
             Este campo es obligatorio
           </div>
         </div>
       </div>
-         <div class="form-group col-xs-12 col-md-3">
+        <div class="form-group col-xs-12 col-md-3">
         <label for="streetNumber"><span>*</span> Nro/Calle</label>
         <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber">
         <div class="alert-danger" *ngIf="streetNumber.invalid && (streetNumber.dirty || streetNumber.touched)">
@@ -49,12 +52,12 @@
         <input type="number" formControlName="buildingNumber" class="form-control" id="buildingNumber" #lote>
       </div>
 
-      <div class="form-group col-xs-12 col-md-6">
+      <div class="form-group col-xs-12 col-md-3">
         <label for="blockCode">Bloque</label>
         <input type="text" formControlName="blockCode" class="form-control" id="blockCode" #dpto>
       </div>
 
-      <div class="form-group col-xs-12 col-md-6">
+      <div class="form-group col-xs-12 col-md-3">
         <label for="lotNumber">Nro/Lote</label>
         <input type="number" formControlName="lotNumber" class="form-control" id="lotNumber" #dpto>
       </div>

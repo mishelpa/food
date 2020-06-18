@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class FormAddressComponent implements OnInit {
 
+  streetArray: string[] = ['Av.', 'Jr.', 'Psje.', 'Calle.', 'Otro' ]
+
   constructor( private userService: UserService, private router: Router) { }
   userAddres = new FormGroup({
     userDNI: new FormControl ('', [Validators.required]),
@@ -31,13 +33,10 @@ export class FormAddressComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    
+
   }
 
   save(address) {
-    this.userService.addAddres(address);
-    console.log(address);
-    this.router.navigate(['/cardAddress']);
     this.userService.postAddress(address).subscribe(() => {
       console.log('Direccion del usuario creado');
     });

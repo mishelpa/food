@@ -33,13 +33,23 @@ const newArrObj = [
 this.allAddress.next(newArrObj);
   }
 
+postUser(obj) {
+  return this.http.post(`${this.url}/foodperu-user`, obj);
+}
+
+getUserProfile(email) {
+  return this.http.get(`${this.url}/foodperu-user/${email}`);
+}
+
+putUser(email, obj) {
+  return this.http.put(`${this.url}/foodperu-user/${email}`, obj);
+}
 
 postAddress(obj) {
   return this.http.post(`${this.url}/foodperu-user/foodperu-useraddress`, obj);
 }
 
-postUser(obj) {
-  return this.http.post(`${this.url}/foodperu-user`, obj);
+getAddress() {
+  return this.http.get(`${this.url}/foodperu-user/foodperu-useraddress`);
 }
-
 }

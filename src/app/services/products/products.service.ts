@@ -45,6 +45,6 @@ export class ProductsService {
   getProduct(idProduct): Observable<any> {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('code', idProduct);
-    return this.http.get(`${this.url}/foodperu-products/`, {headers});
+    return this.http.get(`${this.url}/foodperu-products/${idProduct}`);
   }
 }

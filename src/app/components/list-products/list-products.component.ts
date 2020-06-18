@@ -34,8 +34,11 @@ export class ListProductsComponent implements OnInit {
   getAllProducts() {
     this.productsService.getListProducts().subscribe(
       response => {
-        console.log(JSON.parse(response.body));
-        this.products = JSON.parse(response.body);
+        // console.log(JSON.parse(response.body));
+        // this.products = JSON.parse(response.body);
+        this.products = response.body;
+        console.log(this.products);
+
       }
     );
   }

@@ -1,9 +1,9 @@
-input{
+input, select{
   background-color: #FDF7ED;
   border: solid #F0AD4E 1pt;
 }
 
-input:focus{
+input:focus, select:focus{
   border: solid #939393 1pt;
   background-color: white;
 }
@@ -100,10 +100,10 @@ $color-orange:  #FF5500;
 span{
   color: #DC143C;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .alert-danger{

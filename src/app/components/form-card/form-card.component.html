@@ -13,13 +13,10 @@
   </div>
   <div class="form-group col-12 col-md-6">
     <label>Número de tarjeta</label>
-    <input class="form-control" maxlength="19" formControlName="numberCard" type="text" size="20" data-culqi="card[number]" id="card[number]">
+    <input class="form-control" maxlength="19" (keypress)="validateCard($event)" formControlName="numberCard" type="text" size="20" data-culqi="card[number]" id="card[number]">
     <div class="alert-danger" *ngIf="numberCard.invalid && (numberCard.dirty || numberCard.touched)">
       <div class="container-error-message" *ngIf="numberCard.errors.required">
         Este campo es obligatorio
-      </div>
-      <div class="container-error-message" *ngIf="numberCard.errors.pattern">
-        Ingresar solo números
       </div>
     </div>
   </div>

@@ -35,6 +35,15 @@ export class FormCardComponent implements OnInit {
     console.log(a);
   }
 
+  validateCard(e) {
+
+      e.target.value = e.target.value
+    .replace(/\W/gi, '')
+    .replace(/(.{4})/g, '$1 ')
+    .trim();
+
+  }
+
   get emailUser() { return this.cardForm.get('emailUser'); }
   get numberCard() { return this.cardForm.get('numberCard'); }
   get cvvCard() { return this.cardForm.get('cvvCard'); }
