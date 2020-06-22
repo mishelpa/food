@@ -1,3 +1,10 @@
+
+.addresses{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
 input, select{
   background-color: #FDF7ED;
   border: solid #F0AD4E 1pt;
@@ -117,3 +124,12 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: center;
 }
 
+.card{
+  border-color: rgb(32, 36, 32);
+  p{
+  color: rgb(160, 150, 150);
+  }
+}
+.card:hover{
+  border-color: rgb(73, 197, 104);
+}

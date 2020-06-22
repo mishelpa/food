@@ -10,8 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-address.component.scss']
 })
 export class FormAddressComponent implements OnInit {
-
-  streetArray: string[] = ['Av.', 'Jr.', 'Psje.', 'Calle.', 'Otro' ]
+  public addresses: any;
+  streetArray: string[] = ['Av.', 'Jr.', 'Psje.', 'Calle.', 'Otro' ];
+  cardAddress = true;
+  addAddress = true;
 
   constructor( private userService: UserService, private router: Router) { }
   userAddres = new FormGroup({
@@ -33,9 +35,31 @@ export class FormAddressComponent implements OnInit {
   });
 
   ngOnInit(): void {
-
+    this.getAddressesUser();
   }
 
+
+  getAddressesUser() {
+    const dni = localStorage.getItem('dni');
+    this.userService.getAddress().subscribe((response) => {
+      if(response){
+        this.addresses = response['address'].filter((ele) => ele.userDNI === dni);
+        if(this.addresses.length===0){
+          // console.log("NADA");
+          this.addAddress = true;
+          this.cardAddress = false;
+        } else {
+          this.cardAddress = true;
+          this.addAddress = false;
+          // console.log(this.addresses);
+        }
+      }
+    });
+  }
+  addNewAddress(){
+    this.addAddress = true;
+    this.cardAddress = false;
+  }
   save(address) {
     this.userService.postAddress(address).subscribe(() => {
       console.log('Direccion del usuario creado');

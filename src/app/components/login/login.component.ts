@@ -101,7 +101,6 @@ export class LoginComponent  implements OnInit{
     })
       .catch(err => {
         this.displayLoginFailedModal = true;
-        console.log(err);
       });
   }
 
@@ -134,7 +133,6 @@ export class LoginComponent  implements OnInit{
       })
         .catch(err => {
           this.displayVerificationFailedModal = true;
-          console.log(err);
         }
       );
   }
