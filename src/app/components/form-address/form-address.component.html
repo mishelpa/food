@@ -1,8 +1,20 @@
 <div class="container">
   <h2>MIS DIRECCIONES</h2>
   <hr>
-  <app-card-address></app-card-address>
-  <div class="mt-1 container">
+  <div *ngIf="cardAddress"class="container" >
+    <div class="card text-white  mb-3" style="max-width: 18rem;" *ngFor="let item of addresses">
+        <div class="card-body">
+          <p class="card-text">{{item.streetTypeCode}}</p>
+          <p class="card-text">{{item.streetName}}</p>
+          <p class="card-text">{{item.streetNumber}}</p>
+          <p class="card-text">{{item.buildingType}}</p>
+          <p class="card-text">{{item.urbanizationName}}</p>
+        </div>
+    </div>
+    <button type="submit" (click)="addNewAddress()" class="btn btn-orange">Agregar</button>
+  </div>
+  
+  <div class="mt-1 container" *ngIf="addAddress">
     <form action="" [formGroup]="userAddres" (ngSubmit)="save(userAddres.value)" class="row">
       <div class="form-group col-xs-12 col-md-6">
         <label for="userDNI"><span>*</span>DNI: </label>

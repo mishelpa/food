@@ -33,13 +33,13 @@
 
       <div class="form-group col-xs-6 col-md-3">
         <label for="sel1"><span>*</span> Tipo/Documento</label>
-        <select class="form-control" id="sel1" formControlName = "documentType">
+        <select class="form-control" id="sel1">
           <option>DNI</option>
         </select>
       </div>
       <div class="form-group col-xs-6 col-md-3">
         <label for="dni"><span>*</span> DNI</label>
-        <input class="form-control cursor" maxlength="8" type="text" id="dni" formControlName = "dni">
+        <input class="form-control cursor" type="number" id="dni" formControlName = "dni">
         <div class="alert-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
           <div class="container-error-message" *ngIf="dni.errors.required">
             Este campo es obligatorio
@@ -49,15 +49,6 @@
           </div>
         </div>
       </div>
-     <!--  <div class="form-group col-xs-12 col-md-6">
-        <label for="user-cel"><span>*</span> Teléfono Celular</label>
-        <input type="number" required formControlName="celUser" class="form-control" id="user-cel" #cel>
-        <div class="alert-danger" *ngIf="celUser.invalid && (celUser.dirty || celUser.touched)">
-          <div class="container-error-message">
-            Este campo es obligatorio
-          </div>
-        </div>
-      </div> -->
       <div class="form-group col-xs-12 col-md-6">
         <label for="userEmail"><span>*</span> Email</label>
         <input type="userEmail" required formControlName="userEmail" class="form-control" id="userEmail" #email>
@@ -70,7 +61,7 @@
           </div>
         </div>
       </div>
-
+      
       <div class="form-check form-check-inline col-12 m-3 checkbox">
         <input  class="form-check-input mr-2" type="checkbox" id="agreePromotions" formControlName = "agreePromotions">
         <label class="form-check-label" for="agreePromotions">Autorizo recibir comunicaciones promocionales y autorizo el uso de mi información para fines adicionales.</label>
@@ -80,8 +71,7 @@
         <label class="form-check-label" for="agreeTermsAndConditions">Declaro que he leído y acepto la nueva Política de Privacidad y los Términos y Condiciones de Linio.</label>
       </div>
       <div class="col-md-12 text-right">
-        <button *ngIf="firstTime" type="submit" [disabled]="profileForm.invalid" class="btn btn-orange">Guardar datos</button>
-        <button *ngIf="!firstTime" type="submit" [disabled]="profileForm.invalid" class="btn btn-orange">Actualizar datos</button>
+        <button type="submit" [disabled]="profileForm.invalid" class="btn btn-orange">Guardar datos</button>
       </div>
     </form>
   </div>
