@@ -13,12 +13,21 @@
           </div>
         </div>
       </div>
-      <div class="form-group col-xs-12 col-md-3">
+      <div class="form-group col-xs-12 col-md-2">
         <label for="streetTypeCode"><span>*</span> Tipo/Calle</label>
         <select class="custom-select" name="" id="" formControlName="streetTypeCode">
           <option *ngFor ="let street of streetArray" value={{street}}>{{street}}</option>
         </select>
         <div class="alert-danger" *ngIf="streetTypeCode.invalid && (streetTypeCode.dirty || streetTypeCode.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-xs-12 col-md-4">
+        <label for="streetName"><span>*</span> Calle</label>
+        <input type="text" formControlName="streetName" class="form-control" id="streetName" >
+        <div class="alert-danger" *ngIf="streetName.invalid && (streetName.dirty || streetName.touched)">
           <div class="container-error-message">
             Este campo es obligatorio
           </div>
@@ -33,35 +42,25 @@
           </div>
         </div>
       </div>
-      <div class="form-group col-xs-12 col-md-6">
-        <label for="streetName"><span>*</span> Calle</label>
-        <input type="text" formControlName="streetName" class="form-control" id="streetName" >
-        <div class="alert-danger" *ngIf="streetName.invalid && (streetName.dirty || streetName.touched)">
-          <div class="container-error-message">
-            Este campo es obligatorio
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group col-xs-12 col-md-3">
+        <div class="form-group col-xs-12 col-md-3">
         <label for="buildingType">Tipo/Edificio</label>
         <input type="text" formControlName="buildingType" class="form-control" id="buildingType" #lote>
       </div>
-      <div class="form-group col-xs-12 col-md-3">
+      <div class="form-group col-xs-12 col-md-2">
         <label for="buildingNumber">Nro/Edificio</label>
         <input type="number" formControlName="buildingNumber" class="form-control" id="buildingNumber" #lote>
       </div>
 
-      <div class="form-group col-xs-12 col-md-3">
+      <div class="form-group col-xs-12 col-md-2">
         <label for="blockCode">Bloque</label>
         <input type="text" formControlName="blockCode" class="form-control" id="blockCode" #dpto>
       </div>
 
-      <div class="form-group col-xs-12 col-md-3">
+      <div class="form-group col-xs-12 col-md-2">
         <label for="lotNumber">Nro/Lote</label>
         <input type="number" formControlName="lotNumber" class="form-control" id="lotNumber" #dpto>
       </div>
-      <div class="form-group col-xs-12 col-md-6">
+      <div class="form-group col-xs-12 col-md-3">
         <label for="urbanizationName"><span>*</span> Urbanizacion</label>
         <input type="text" formControlName="urbanizationName" class="form-control" id="urbanizationName">
         <div class="alert-danger" *ngIf="urbanizationName.invalid && (urbanizationName.dirty || urbanizationName.touched)">
@@ -70,7 +69,7 @@
           </div>
         </div>
       </div>
-      <div class="form-group col-xs-12 col-md-6">
+      <div class="form-group col-xs-12 col-md-3">
         <label for="urbanizationTypeCode">Tipo/Urbanizacion</label>
         <input type="text" formControlName="urbanizationTypeCode" class="form-control" id="urbanizationTypeCode" #dpto>
       </div>

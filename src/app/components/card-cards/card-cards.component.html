@@ -1,0 +1,9 @@
+<div class="container" *ngFor="let item of cards">
+  <div class="card text-black  mb-3" style="max-width: 18rem;" >
+    <div class="card-body">
+      <p class="card-text">{{item.nameTitular}}</p>
+      <p class="card-text">{{item.lastNameTitular}}</p>
+      <p class="card-text">Terminación: {{item.numberCard.slice(15,19)}}</p>
+    </div>
+  </div>
+</div>

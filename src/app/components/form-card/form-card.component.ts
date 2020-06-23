@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CulqiService } from 'src/app/services/integration/culqi.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-form-card',
@@ -11,11 +12,22 @@ export class FormCardComponent implements OnInit {
 
   monthArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   yearArray: number[] = [];
+  numCard: number;
+  saveCard: number;
 
-  constructor(private culqi: CulqiService, public fb: FormBuilder) { }
+
+  constructor(private culqi: CulqiService, public fb: FormBuilder, private userService: UserService) {
+    this.userService.currentCards.subscribe((response) => {
+      this.saveCard = response.length;
+      this.numCard = this.saveCard;
+      console.log(this.numCard);
+    });
+  }
 
   cardForm = new FormGroup({
     emailUser: new FormControl('', [Validators.required, Validators.email]),
+    nameTitular: new FormControl('', [Validators.required]),
+    lastNameTitular: new FormControl('', [Validators.required]),
     numberCard: new FormControl ('', [Validators.required, Validators.pattern('^[0-9]+$')]),
     cvvCard: new FormControl ('', [Validators.required, Validators.pattern('^[0-9]+$')]),
     monthCard: new FormControl('', [Validators.required]),
@@ -31,20 +43,27 @@ export class FormCardComponent implements OnInit {
   }
 
   createTokenOrder(a) {
-    this.culqi.createOrder();
-    console.log(a);
+    // this.culqi.createOrder();
+    this.userService.postCard(a).subscribe((response) => {
+      console.log(response);
+    });
+    this.numCard = this.saveCard;
   }
 
   validateCard(e) {
-
-      e.target.value = e.target.value
+    e.target.value = e.target.value
     .replace(/\W/gi, '')
     .replace(/(.{4})/g, '$1 ')
     .trim();
+  }
 
+  addCard() {
+    this.numCard = 0;
   }
 
   get emailUser() { return this.cardForm.get('emailUser'); }
+  get nameTitular() { return this.cardForm.get('nameTitular'); }
+  get lastNameTitular() { return this.cardForm.get('lastNameTitular'); }
   get numberCard() { return this.cardForm.get('numberCard'); }
   get cvvCard() { return this.cardForm.get('cvvCard'); }
   get monthCard() { return this.cardForm.get('monthCard'); }

@@ -1,61 +1,90 @@
-<form action="" [formGroup]="cardForm" (ngSubmit)="createTokenOrder(cardForm.value)" class="row">
-  <div class="form-group col-12 col-md-6">
-    <label>Correo Electrónico</label>
-    <input class="form-control" formControlName="emailUser" type="email" data-culqi="card[email]" id="card[email]">
-    <div class="alert-danger" *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)">
-      <div class="container-error-message" *ngIf="emailUser.errors.required">
-        Este campo es obligatorio
-      </div>
-      <div class="container-error-message" *ngIf="emailUser.errors.email">
-        Ingresar un correo válido
-      </div>
-    </div>
-  </div>
-  <div class="form-group col-12 col-md-6">
-    <label>Número de tarjeta</label>
-    <input class="form-control" maxlength="19" (keypress)="validateCard($event)" formControlName="numberCard" type="text" size="20" data-culqi="card[number]" id="card[number]">
-    <div class="alert-danger" *ngIf="numberCard.invalid && (numberCard.dirty || numberCard.touched)">
-      <div class="container-error-message" *ngIf="numberCard.errors.required">
-        Este campo es obligatorio
+<div class="container">
+  <h2>MIS TARJETAS GUARDADAS</h2>
+<hr>
+<div *ngIf="numCard>0">
+  <app-card-cards></app-card-cards>
+</div>
+<button class="btn" (click)="addCard()">Agregar tarjeta</button>
+<div *ngIf="numCard === 0">
+  <form action="" [formGroup]="cardForm" (ngSubmit)="createTokenOrder(cardForm.value)" class="row">
+    <div class="form-group col-12 col-md-6">
+      <label>Nombres del Titular</label>
+      <input class="form-control" formControlName="nameTitular" type="text" placeholder="Como aparece en la tarjeta">
+      <div class="alert-danger" *ngIf="nameTitular.invalid && (nameTitular.dirty || nameTitular.touched)">
+        <div class="container-error-message" *ngIf="nameTitular.errors.required">
+          Este campo es obligatorio
+        </div>
       </div>
     </div>
-  </div>
-  <div class="form-group col-12 col-md-6">
-    <label>CVV</label>
-    <input class="form-control" formControlName="cvvCard" type="text" size="4" data-culqi="card[cvv]" id="card[cvv]">
-    <div class="alert-danger" *ngIf="cvvCard.invalid && (cvvCard.dirty || cvvCard.touched)">
-      <div class="container-error-message" *ngIf="cvvCard.errors.required">
-        Este campo es obligatorio
-      </div>
-      <div class="container-error-message" *ngIf="cvvCard.errors.pattern">
-        Ingresar solo números
+    <div class="form-group col-12 col-md-6">
+      <label>Apellidos del Titular</label>
+      <input class="form-control" formControlName="lastNameTitular" type="text" placeholder="Como aparece en la tarjeta">
+      <div class="alert-danger" *ngIf="lastNameTitular.invalid && (lastNameTitular.dirty || lastNameTitular.touched)">
+        <div class="container-error-message" *ngIf="lastNameTitular.errors.required">
+          Este campo es obligatorio
+        </div>
       </div>
     </div>
-  </div>
-  <div class="form-group col-6 col-md-3">
-    <label>Mes de expiración</label>
-    <select class="custom-select" name="" id="" formControlName="monthCard" data-culqi="card[exp_month]" id="card[exp_month]">
-      <option *ngFor ="let month of monthArray" value={{month}} >{{month}}</option>
-    </select>
-    <div class="alert-danger" *ngIf="monthCard.invalid && (monthCard.dirty || monthCard.touched)">
-      <div class="container-error-message" *ngIf="monthCard.errors.required">
-        Este campo es obligatorio
+    <div class="form-group col-12 col-md-6">
+      <label>Correo Electrónico</label>
+      <input class="form-control" formControlName="emailUser" type="email" data-culqi="card[email]" id="card[email]">
+      <div class="alert-danger" *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)">
+        <div class="container-error-message" *ngIf="emailUser.errors.required">
+          Este campo es obligatorio
+        </div>
+        <div class="container-error-message" *ngIf="emailUser.errors.email">
+          Ingresar un correo válido
+        </div>
       </div>
     </div>
-  </div>
-  <div class="form-group col-6 col-md-3">
-    <label>Año de expiración</label>
-    <select class="custom-select" name="" id="" formControlName="yearCard" data-culqi="card[exp_year]" id="card[exp_year]">
-      <option *ngFor ="let year of yearArray" value={{year}} >{{year}}</option>
-    </select>
-    <div class="alert-danger" *ngIf="yearCard.invalid && (yearCard.dirty || yearCard.touched)">
-      <div class="container-error-message" *ngIf="yearCard.errors.required">
-        Este campo es obligatorio
+    <div class="form-group col-12 col-md-6">
+      <label>Número de tarjeta</label>
+      <input class="form-control" maxlength="19" (keypress)="validateCard($event)" formControlName="numberCard" type="text" size="20" data-culqi="card[number]" id="card[number]">
+      <div class="alert-danger" *ngIf="numberCard.invalid && (numberCard.dirty || numberCard.touched)">
+        <div class="container-error-message" *ngIf="numberCard.errors.required">
+          Este campo es obligatorio
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn" id="btn_pagar">Pagar</button>
-  </div>
-</form>
+    <div class="form-group col-12 col-md-6">
+      <label>CVV</label>
+      <input class="form-control" formControlName="cvvCard" type="text" size="4" data-culqi="card[cvv]" id="card[cvv]">
+      <div class="alert-danger" *ngIf="cvvCard.invalid && (cvvCard.dirty || cvvCard.touched)">
+        <div class="container-error-message" *ngIf="cvvCard.errors.required">
+          Este campo es obligatorio
+        </div>
+        <div class="container-error-message" *ngIf="cvvCard.errors.pattern">
+          Ingresar solo números
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-6 col-md-3">
+      <label>Mes de expiración</label>
+      <select class="custom-select" name="" id="" formControlName="monthCard" data-culqi="card[exp_month]" id="card[exp_month]">
+        <option *ngFor ="let month of monthArray" value={{month}} >{{month}}</option>
+      </select>
+      <div class="alert-danger" *ngIf="monthCard.invalid && (monthCard.dirty || monthCard.touched)">
+        <div class="container-error-message" *ngIf="monthCard.errors.required">
+          Este campo es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-6 col-md-3">
+      <label>Año de expiración</label>
+      <select class="custom-select" name="" id="" formControlName="yearCard" data-culqi="card[exp_year]" id="card[exp_year]">
+        <option *ngFor ="let year of yearArray" value={{year}} >{{year}}</option>
+      </select>
+      <div class="alert-danger" *ngIf="yearCard.invalid && (yearCard.dirty || yearCard.touched)">
+        <div class="container-error-message" *ngIf="yearCard.errors.required">
+          Este campo es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn" id="btn_pagar">Pagar</button>
+    </div>
+  </form>
+</div>
+</div>
+
 
