@@ -13,23 +13,31 @@
     </script>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="styles.d46f91504915f524f1f0.css"></head>
+<link rel="stylesheet" href="styles.e6956fe25fe05de481c0.css"></head>
 <body class="mat-typography">
   <app-root></app-root>
 
- <!-- Incluyendo .js de Culqi JS -->
- <script src="https://checkout.culqi.com/js/v3"></script>
- <script>
-   function culqi(){
-     if(Culqi.token) {
-       var token = Culqi.token.id;
-       var payment_event = new CustomEvent ('payment_event', {detail: token});
-       document.dispatchEvent (payment_event);
-     }
-   };
-     </script>
-
-
-  
-<script src="runtime-es2015.0811dcefd377500b5b1a.js" type="module"></script><script src="runtime-es5.0811dcefd377500b5b1a.js" nomodule defer></script><script src="polyfills-es5.ed1a8cb4226298e3d7f3.js" nomodule defer></script><script src="polyfills-es2015.8f923187dfaf414181e5.js" type="module"></script><script src="scripts.9cebaee71c6a248e3324.js" defer></script><script src="main-es2015.2c9fdc1f064abac2d997.js" type="module"></script><script src="main-es5.2c9fdc1f064abac2d997.js" nomodule defer></script></body>
+  <!-- Incluyendo .js de Culqi JS -->
+  <script src="https://checkout.culqi.com/js/v3"></script>
+  <!-- Incluyendo .js de Culqi JS -->
+<script src="https://checkout.culqi.com/v2"></script>
+  <script>
+    function culqi(){
+      if (Culqi.token) { // ¡Objeto Token creado exitosamente!
+        var token = Culqi.token.id;
+        alert('Se ha creado un token:' + token);
+        //En esta linea de codigo debemos enviar el "Culqi.token.id"
+        //hacia tu servidor con Ajax
+    } else { // ¡Hubo algún problema!
+        // Mostramos JSON de objeto error en consola
+        console.log(Culqi.error);
+        alert(Culqi.error.user_message);
+    }
+    };
+  </script>
+  <script>
+    Culqi.publicKey  = 'pk_test_WkOlOvuX4C3asoLB';
+    Culqi.init();
+  </script>
+<script src="runtime-es2015.0811dcefd377500b5b1a.js" type="module"></script><script src="runtime-es5.0811dcefd377500b5b1a.js" nomodule defer></script><script src="polyfills-es5.ed1a8cb4226298e3d7f3.js" nomodule defer></script><script src="polyfills-es2015.8f923187dfaf414181e5.js" type="module"></script><script src="scripts.9cebaee71c6a248e3324.js" defer></script><script src="main-es2015.c09a35f8d8524177ef0b.js" type="module"></script><script src="main-es5.c09a35f8d8524177ef0b.js" nomodule defer></script></body>
 </html>
