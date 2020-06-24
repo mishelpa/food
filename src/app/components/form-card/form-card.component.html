@@ -1,11 +1,15 @@
 <div class="container">
   <h2>MIS TARJETAS GUARDADAS</h2>
 <hr>
-<div *ngIf="numCard>0">
+<div *ngIf="numCard>0" class="mb-3">
   <app-card-cards></app-card-cards>
+  <button class="btn" (click)="addCard()">Agregar tarjeta</button>
 </div>
-<button class="btn" (click)="addCard()">Agregar tarjeta</button>
 <div *ngIf="numCard === 0">
+  <div class="d-flex justify-content-between">
+    <h2 class="text-small">Agregar una tarjeta de crédito o débito</h2>
+    <button class="btn showCards mb-3" *ngIf="saveCard>0" (click)="showCards()">Ver tarjetas guardadas</button>
+  </div>
   <form action="" [formGroup]="cardForm" (ngSubmit)="createTokenOrder(cardForm.value)" class="row">
     <div class="form-group col-12 col-md-6">
       <label>Nombres del Titular</label>
@@ -81,7 +85,7 @@
       </div>
     </div>
     <div class="col-12">
-      <button type="submit" class="btn" id="btn_pagar">Pagar</button>
+      <button type="submit" class="btn" id="btn_pagar">Agregar Tarjeta</button>
     </div>
   </form>
 </div>

@@ -1,8 +1,8 @@
 import { ProductsService } from './../../services/products/products.service';
 import { Component, OnInit } from '@angular/core';
 import { CulqiService } from '../../services/integration/culqi.service';
-import { from } from 'rxjs';
-// import { CulqiService } from 'ng-culqi';
+import { UserService } from 'src/app/services/user/user.service';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 declare var $: any;
 
 @Component({
@@ -14,32 +14,67 @@ export class PaymentComponent implements OnInit {
 
   products: any;
   totalCart: any;
-  product = [{
-  description : 'FOOD PERÚ',
-  amount: 100
-  }];
-  constructor( private productsService: ProductsService, private culqi: CulqiService) {
+  user: any;
+  address: any;
+  card: any;
+  cardMain: any;
+  addressMain: any;
+
+  constructor( private productsService: ProductsService, private culqi: CulqiService, private userService: UserService) {
       this.products = this.productsService.products;
       this.totalCart = localStorage.getItem('amount');
+      this.userService.getUserProfile(JSON.parse(localStorage.getItem('email')) ).subscribe((response) => {
+        this.user = response;
+      });
+      this.userService.getAddress().subscribe((response) => {
+        this.address = response['address'].filter((ele) => ele.userDNI === localStorage.getItem('dni'));
+      });
+      this.userService.currentCards.subscribe((response) => {
+        this.card = response;
+      });
     }
+
+    cardForm = new FormGroup({
+      emailUser: new FormControl('', [Validators.required, Validators.email]),
+      nameTitular: new FormControl('', [Validators.required]),
+      lastNameTitular: new FormControl('', [Validators.required]),
+      numberCard: new FormControl ('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+      cvvCard: new FormControl ('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+      monthCard: new FormControl('', [Validators.required]),
+      yearCard: new FormControl ('', [Validators.required]),
+    });
 
   ngOnInit(): void {
 
   }
 
-  payment() {
-    this.culqi.payorder(this.product[0].description, this.product[0].amount);
+  saveAddress(index) {
+    console.log(index);
   }
 
-  createChargeCart() {
-      const obj = {
-        amount: JSON.parse(localStorage.getItem('amount')) * 100,
-        currency_code: 'PEN',
-        email: JSON.parse(localStorage.getItem('email')),
-        source_id: JSON.parse(localStorage.getItem('token'))
-      };
-
-      this.culqi.createCharge(obj).subscribe();
+  saveCard(card) {
+    console.log(card);
+    this.addressMain = {
+      card_number: card.numberCard,
+      cvv: card.cvv,
+      expiration_month: card.monthCard,
+      expiration_year: card.yearCard,
+      email: card.emailUser
+    };
+    this.emailUser.setValue(card.emailUser);
+    this.numberCard.setValue(card.numberCard);
+    this.monthCard.setValue(card.monthCard);
+    this.yearCard.setValue(card.yearCard);
+    // this.culqi.createOrder();
   }
 
+  createTokenOrder() {
+    this.culqi.createOrder();
+  }
+
+  get emailUser() { return this.cardForm.get('emailUser'); }
+  get numberCard() { return this.cardForm.get('numberCard'); }
+  get cvvCard() { return this.cardForm.get('cvvCard'); }
+  get monthCard() { return this.cardForm.get('monthCard'); }
+  get yearCard() { return this.cardForm.get('yearCard'); }
 }

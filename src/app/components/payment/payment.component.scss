@@ -17,3 +17,26 @@
   color: white;
   background-color: #CC4400;
 }
+
+.address:hover .card, .cards:hover .card{
+  color: #6FA00A;
+  border: #6FA00A solid 1pt;
+}
+
+button{
+  background-color: #FF5500;
+  color: white;
+  width: 40%;
+}
+
+button:hover{
+  color: white;
+  background-color: #CC4400;
+}
+
+.card-header{
+  background-color: white !important;
+  color: #FF5500;
+}
+
+
