@@ -2,16 +2,24 @@
   <h2>MIS DIRECCIONES</h2>
   <hr>
   <div *ngIf="cardAddress"class="container" >
-    <div class="card text-white  mb-3" style="max-width: 18rem;" *ngFor="let item of addresses">
+    <div class="d-flex">
+    <div class="card text-white  mb-3"  *ngFor="let item of addresses">
         <div class="card-body">
-          <p class="card-text">{{item.streetTypeCode}}</p>
-          <p class="card-text">{{item.streetName}}</p>
-          <p class="card-text">{{item.streetNumber}}</p>
-          <p class="card-text">{{item.buildingType}}</p>
-          <p class="card-text">{{item.urbanizationName}}</p>
+          <p class="card-text">{{item.streetTypeCode}}. {{item.streetName}} Nro. {{item.streetNumber}}</p>
+          <p class="card-text">{{item.buildingType}},{{item.buildingNumber}},{{item.blockCode}}</p>
+          <p class="card-text">{{item.lotNumber}}</p>
+          <p class="card-text">{{item.urbanizationTypeCode}} {{item.urbanizationName}}</p>
+          <p class="card-text">{{item.zoneName}}</p>  
+        </div>
+        <div class="d-flex">
+          <label id="deleteAddress" class="form-text text-muted mb-3 ml-3 pointer" style="text-decoration: underline;" >Editar</label>
+          <label id="updateAddress" class="form-text text-muted mb-3 ml-3 pointer" style="text-decoration: underline;" >Eliminar</label>
         </div>
     </div>
+  </div>
+  <div class="d-flex justify-content-end mt-5">
     <button type="submit" (click)="addNewAddress()" class="btn btn-orange">Agregar</button>
+  </div>
   </div>
   
   <div class="mt-1 container" *ngIf="addAddress">

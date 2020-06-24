@@ -23,21 +23,21 @@ export class UserService {
     });
   }
 
-addAddres(obj) {
-  // return this.allAddress.next(obj);
-// this.allAddress.next(obj)
+// addAddres(obj) {
+//   // return this.allAddress.next(obj);
+// // this.allAddress.next(obj)
 
-const itemObj = {
-  ...obj
-};
+// const itemObj = {
+//   ...obj
+// };
 
-const newArrObj = [
-  ...this.allAddress.value,
-  itemObj
-];
+// const newArrObj = [
+//   ...this.allAddress.value,
+//   itemObj
+// ];
 
-this.allAddress.next(newArrObj);
-  }
+// this.allAddress.next(newArrObj);
+//   }
 
 postUser(obj) {
   return this.http.post(`${this.url}/foodperu-user`, obj);
