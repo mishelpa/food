@@ -125,11 +125,18 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .card{
-  border-color: rgb(32, 36, 32);
+  margin-top: 30px;
+ cursor: pointer;
+  margin-right: 13px;
+  width: 23.33333%;
   p{
   color: rgb(160, 150, 150);
   }
 }
-.card:hover{
-  border-color: rgb(73, 197, 104);
+.card:hover  {
+  color: #45a00a;
+  border-color: #45a00a;
+}
+.card-body{
+  color: #45a00a;
 }
