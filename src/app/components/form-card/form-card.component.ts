@@ -61,6 +61,10 @@ export class FormCardComponent implements OnInit {
     this.numCard = 0;
   }
 
+  showCards() {
+    this.numCard = this.saveCard;
+  }
+
   get emailUser() { return this.cardForm.get('emailUser'); }
   get nameTitular() { return this.cardForm.get('nameTitular'); }
   get lastNameTitular() { return this.cardForm.get('lastNameTitular'); }

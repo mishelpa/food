@@ -19,8 +19,6 @@ export class CardCardsComponent implements OnInit {
     const email = JSON.parse(localStorage.getItem('email'));
     this.userService.getCard().subscribe((response) => {
       this.cards = response['cards'].filter((ele) => ele.emailUser === email);
-      console.log(this.cards);
-      console.log(email);
     });
   }
 

@@ -42,16 +42,14 @@ export class FormAddressComponent implements OnInit {
   getAddressesUser() {
     const dni = localStorage.getItem('dni');
     this.userService.getAddress().subscribe((response) => {
-      if(response){
+      if (response) {
         this.addresses = response['address'].filter((ele) => ele.userDNI === dni);
-        if(this.addresses.length===0){
-          // console.log("NADA");
+        if (this.addresses.length === 0) {
           this.addAddress = true;
           this.cardAddress = false;
         } else {
           this.cardAddress = true;
           this.addAddress = false;
-          // console.log(this.addresses);
         }
       }
     });
