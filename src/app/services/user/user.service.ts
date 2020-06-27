@@ -40,7 +40,7 @@ export class UserService {
 //   }
 
 postUser(obj) {
-  return this.http.post(`${this.url}/foodperu-user`, obj);
+  return this.http.post(`${this.url}/dev/foodperu-user`, obj);
 }
 
 getUserProfile(email) {
@@ -52,7 +52,7 @@ putUser(email, obj) {
 }
 
 postAddress(obj) {
-  return this.http.post(`${this.url}/foodperu-user/foodperu-useraddress`, obj);
+  return this.http.post(`${this.url}/dev/foodperu-user/foodperu-useraddress`, obj);
 }
 
 getAddress() {

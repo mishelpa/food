@@ -42,12 +42,13 @@ export class FormProfileComponent implements OnInit {
     }
   }
 
-  save(a) {
-    console.log(a);
-    this.userService.postUser(a).subscribe(() => {
+  save(user) {
+    this.userService.postUser(user).subscribe(() => {
       console.log('user creado');
     });
   }
+
+
   get names() {return this.profileForm.get('names'); }
   get lastName() {return this.profileForm.get('lastName'); }
   get dni() {return this.profileForm.get('dni'); }
