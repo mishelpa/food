@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
- // apiUrl: 'https://5nvu4eewpd.execute-api.us-east-2.amazonaws.com/dev'
- apiUrl:'https://5nvu4eewpd.execute-api.us-east-2.amazonaws.com/cer/'
+  apiUrl: 'https://5nvu4eewpd.execute-api.us-east-2.amazonaws.com'
   // apiUrl: 'http://localhost:3001'
 };
 
