@@ -14,7 +14,7 @@
             <mat-icon class="icon">person</mat-icon>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" *ngIf="!userName" routerLink="/login">Mi cuenta</a>
+            <a class="dropdown-item" *ngIf="!userName" routerLink="/login">Iniciar sesión</a>
             <a class="dropdown-item" *ngIf="userName" routerLink="/account">Completar datos</a>
             <a class="dropdown-item pointer" *ngIf="userName" (click)="logOutSession()">
               Cerrar sesión

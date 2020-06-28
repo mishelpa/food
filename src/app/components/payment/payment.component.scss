@@ -1,21 +1,12 @@
-.btn-payment{
-  border: #FF5500 solid 1pt;
-  color: #FF5500 ;
-}
-.btn-payment:hover{
-  color: white;
-  background-color: rgb(255, 85, 0,0.5);
-}
 
 .btn-end{
-  background-color: #FF5500;
+  background-color: #45A00A;
   color: white;
-  width: 40%;
 }
 
 .btn-end:hover{
   color: white;
-  background-color: #CC4400;
+  background-color: #307007;
 }
 
 .address:hover .card, .cards:hover .card{
@@ -27,6 +18,10 @@ button{
   background-color: #FF5500;
   color: white;
   width: 40%;
+}
+
+.disabled, .disabled:hover {
+  background-color: #A0A6AB;
 }
 
 button:hover{

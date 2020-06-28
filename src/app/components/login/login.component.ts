@@ -39,7 +39,7 @@ export class LoginComponent  implements OnInit{
 
   registerForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    lastName: new FormControl(''),
+    lastName: new FormControl('',[Validators.required] ),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     dni: new FormControl('', [Validators.minLength(8)]),
@@ -144,6 +144,7 @@ export class LoginComponent  implements OnInit{
   }
 
   get name() {return this.registerForm.get('name'); }
+  get lastName() {return this.registerForm.get('lastName'); }
   get dni() {return this.registerForm.get('dni'); }
   get email() {return this.registerForm.get('email'); }
   get password() {return this.registerForm.get('password'); }

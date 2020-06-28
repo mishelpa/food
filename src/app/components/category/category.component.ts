@@ -28,7 +28,7 @@ export class CategoryComponent implements OnInit {
     console.log(value);
     this.subCategory = this.allSubCategory.filter((element) => element.category === value)
   }
-  product(value) { 
+  product(value) {
     this.arrayProduct = this.newArray.filter(element => element.subCategory === value)
     console.log(this.arrayProduct);
     this.productsService.getproduct(value)
