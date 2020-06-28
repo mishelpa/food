@@ -39,6 +39,7 @@ import {FormsModule} from '@angular/forms';
 import { from } from 'rxjs';
 import { SearchPipe } from './pipes/search.pipe';
 import { CardCardsComponent } from './components/card-cards/card-cards.component';
+import { CategoryComponent } from './components/category/category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +63,7 @@ import { CardCardsComponent } from './components/card-cards/card-cards.component
     CardAddressComponent,
     SearchPipe,
     CardCardsComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

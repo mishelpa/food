@@ -1,8 +1,12 @@
 <nav class="navbar navbar-expand" [ngClass]="{'mb-4':!userName}" style="background-color: #1b222c;">
-  <div class="container">
-    <a class="navbar-brand logo">
-      <img class="pointer" src="assets/logo.PNG" width="150px" routerLink="" alt="logo">
-    </a>
+  <div class="container d-flex">
+    <div class="row">
+      <app-category></app-category>
+      <a class="navbar-brand logo">
+        <img class="pointer" src="assets/logo.PNG" width="150px" routerLink="" alt="logo">
+      </a>
+    </div>
+   <div>
     <a class="navbar-brand">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
@@ -24,6 +28,8 @@
         </li>
       </ul>
     </a>
+   </div>
+
   </div>
 </nav>
 <div *ngIf="userName" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4 py-1">¡Hola {{userName}}!</div>
