@@ -65,12 +65,10 @@ export class LoginComponent  implements OnInit{
   }
 
   singUpToAWS(value) {
-  console.log(value);
   this.userEmail = value.email;
   const user = {
       username: value.email,
       password: value.password,
-
       attributes: {
           name:  value.name,
           email: value.email,
@@ -85,7 +83,6 @@ export class LoginComponent  implements OnInit{
       })
       .catch(err => {
         this.displayFailedEmail = true;
-        console.log(err);
       });
   }
 
@@ -96,7 +93,6 @@ export class LoginComponent  implements OnInit{
     };
 
     Auth.signIn(authInfo).then(user => {
-      this.userName = user.attributes.name;
       this.router.navigate(['/']);
     })
       .catch(err => {
@@ -124,8 +120,6 @@ export class LoginComponent  implements OnInit{
   }
 
   onVerify(verifycode) {
-    console.log(verifycode, this.userEmail);
-
     Auth.confirmSignUp(this.userEmail, verifycode.verifyEmail, {
       forceAliasCreation: true
       }).then(() => {
@@ -144,6 +138,7 @@ export class LoginComponent  implements OnInit{
   forgotPassword() {
     this.router.navigate(['/resetPassword']);
   }
+
   closeFailedEmail() {
     this.displayFailedEmail = false;
   }

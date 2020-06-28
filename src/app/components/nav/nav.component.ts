@@ -9,14 +9,11 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-userName: string;
+userName: any;
   constructor(private router: Router, public authService: AuthService) {
 
     this.authService.currentUserOb.subscribe((data) => {
       this.userName = data;
-      if (this.userName === null) {
-        this.userName = '';
-      }
     });
   }
 
