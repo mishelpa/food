@@ -46,23 +46,23 @@ export class ProductsService {
   }
 
   getListProducts(): Observable<any> {
-    return this.http.get(`${this.url}/foodperu-products`);
+    return this.http.get(`${this.url}/dev/foodperu-products`);
   }
 
   getProduct(idProduct): Observable<any> {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('code', idProduct);
-    return this.http.get(`${this.url}/foodperu-products/${idProduct}`);
+    return this.http.get(`${this.url}/cer/foodperu-products/?code=${idProduct}`);
   }
   getCategoryProducts(): Observable<any> {
-    return this.http.get(`${this.url}foodperu-category`)
+    return this.http.get(`${this.url}/cer/foodperu-category`)
   }
 
   getSubCategories(): Observable<any> {
-    return this.http.get(`${this.url}foodperu-category/foodperu-subcategory`)
+    return this.http.get(`${this.url}/cer/foodperu-category/foodperu-subcategory`)
   }
   getproductSubCategory(): Observable<any> {
-    return this.http.get(`${this.url}foodperu-category/foodperu-subcategory/foodperu-product`)
+    return this.http.get(`${this.url}/cer/foodperu-category/foodperu-subcategory/foodperu-product`)
   }
 
   // category(value){
