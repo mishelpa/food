@@ -22,6 +22,13 @@ export class ProductsService {
 
   public cartProducts = new BehaviorSubject(0);
   public currentCartProducts = this.cartProducts.asObservable();
+  public subCategoryProduct = new BehaviorSubject([])
+  public productSubCategory = this.subCategoryProduct.asObservable();
+  getproduct(value) {
+    this.subCategoryProduct.next(value);
+
+  }
+
 
   updateCartProduct(qty) {
     return this.cartProducts.next(qty);
@@ -30,8 +37,8 @@ export class ProductsService {
   addListProducts(objProduct, qtyProduct) {
     const indexProduct = this.products.findIndex(product => product.name === objProduct.name);
 
-    if (indexProduct < 0 ) {
-      const newOrder = {...objProduct, quantity: qtyProduct};
+    if (indexProduct < 0) {
+      const newOrder = { ...objProduct, quantity: qtyProduct };
       this.products.push(newOrder);
     } else {
       this.products[indexProduct].quantity += qtyProduct;
@@ -47,4 +54,19 @@ export class ProductsService {
     headers = headers.append('code', idProduct);
     return this.http.get(`${this.url}/foodperu-products/${idProduct}`);
   }
+  getCategoryProducts(): Observable<any> {
+    return this.http.get(`${this.url}foodperu-category`)
+  }
+
+  getSubCategories(): Observable<any> {
+    return this.http.get(`${this.url}foodperu-category/foodperu-subcategory`)
+  }
+  getproductSubCategory(): Observable<any> {
+    return this.http.get(`${this.url}foodperu-category/foodperu-subcategory/foodperu-product`)
+  }
+
+  // category(value){
+  //   console.log(value);
+
+  // }
 }

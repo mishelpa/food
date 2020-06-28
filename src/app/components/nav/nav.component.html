@@ -1,12 +1,7 @@
 <nav class="navbar navbar-expand" [ngClass]="{'mb-4':userName===''}" style="background-color: #1b222c;">
   <div class="container d-flex">
     <div class="row">
-      <div class="lateral-menu">
-        <div class="" id="open-left-menu" data-horizontal-menu data-target="#navbarToggleExternalContent" data-toggle="collapse">
-          <span>&#9776;</span>
-          <div class="navbar-title hidden-md-down">Categorías</div>
-        </div>
-      </div>
+      <app-category></app-category>
       <a class="navbar-brand logo">
         <img class="pointer" src="assets/logo.PNG" width="150px" routerLink="" alt="logo">
       </a>

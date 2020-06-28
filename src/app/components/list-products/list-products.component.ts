@@ -3,6 +3,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder, FormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-list-products',
@@ -21,6 +22,8 @@ export class ListProductsComponent implements OnInit {
   filtroValue = '';
 
   ngOnInit(): void {
+    // this.productsService.productSubCategory.subscribe(element => console.log(element)
+    // )
     this.getAllProducts();
     this.search.valueChanges
     .pipe(
@@ -41,6 +44,7 @@ export class ListProductsComponent implements OnInit {
 
       }
     );
+    
   }
 
   getCode(code) {
