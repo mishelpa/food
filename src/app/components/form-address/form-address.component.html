@@ -2,8 +2,8 @@
   <h2>MIS DIRECCIONES</h2>
   <hr>
   <div *ngIf="cardAddress" class="container">
-    <div class="d-flex">
-      <div class="card text-white  mb-3" *ngFor="let item of addresses">
+    <div class="d-flex row">
+      <div class="card text-white col-5 mb-3" (click)="saveAddress(item)" *ngFor="let item of addresses">
         <div class="card-body">
           <p class="card-text">{{item.streetTypeCode}}. {{item.streetName}} Nro. {{item.streetNumber}}</p>
           <p class="card-text">{{item.buildingType}},{{item.buildingNumber}},{{item.blockCode}}</p>

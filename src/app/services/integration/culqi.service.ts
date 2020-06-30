@@ -58,6 +58,13 @@ export class CulqiService {
       return this.http.post('https://api.culqi.com/v2/charges', obj, {headers});
     }
 
+    createClient(obj) {
+      let headers: HttpHeaders = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      headers = headers.append('Authorization', 'Bearer ' + 'sk_test_3mWmJRwXPw7OfJJq');
+      return this.http.post('https://api.culqi.com/v2/customers', obj, {headers});
+    }
+
     createOrder() {
       Culqi.createToken();
     }

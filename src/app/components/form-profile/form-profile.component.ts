@@ -68,7 +68,11 @@ export class FormProfileComponent implements OnInit {
 
     // Autocompletar datos del formulario cuando el cliente se loguea por segunda vez
     getDataUser() {
+      console.log('hi');
+
       return this.userService.getUserProfile(JSON.parse(localStorage.getItem('email'))).subscribe((user) => {
+        console.log(user);
+
         this.firstTime = false;
         this.dni.setValue(user['dni']);
         this.names.setValue(user['names']);
