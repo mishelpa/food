@@ -32,7 +32,10 @@ export class ListProductsComponent implements OnInit {
     .subscribe(value => this.filtroValue = value
     );
   }
-
+  mostrar(){
+    this.productsService.productSubCategory.subscribe( e => console.log(e[0].description + 'aqui')
+    )
+  }
 
   getAllProducts() {
     this.productsService.getListProducts().subscribe(
