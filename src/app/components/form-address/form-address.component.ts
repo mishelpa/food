@@ -54,6 +54,13 @@ export class FormAddressComponent implements OnInit {
       }
     });
   }
+
+  saveAddress(address) {
+    this.userService.chooseAddress(address);
+    console.log(address);
+
+  }
+
   addNewAddress() {
     this.addAddress = true;
     this.cardAddress = false;

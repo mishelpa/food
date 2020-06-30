@@ -13,7 +13,6 @@ export class CardAddressComponent implements OnInit {
   constructor(private userService: UserService ) { }
 
   ngOnInit(): void {
-    this.userService.currentAddres.subscribe(obj => this.addresses = obj);
     this.getAddressesUser();
   }
 

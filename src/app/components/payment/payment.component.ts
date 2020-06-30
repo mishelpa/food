@@ -21,6 +21,7 @@ export class PaymentComponent implements OnInit {
   addressMain: any;
   quantityCart: any;
   endSteps = false;
+  client: any;
 
   constructor( private productsService: ProductsService, private culqi: CulqiService, private userService: UserService) {
       this.products = this.productsService.products;
@@ -28,11 +29,16 @@ export class PaymentComponent implements OnInit {
       this.userService.getUserProfile(JSON.parse(localStorage.getItem('email')) ).subscribe((response) => {
         this.user = response;
       });
-      this.userService.getAddress().subscribe((response) => {
-        this.address = response['address'].filter((ele) => ele.userDNI === localStorage.getItem('dni'));
+      this.userService.currentAddress.subscribe((response) => {
+        this.address = response;
       });
-      this.userService.currentCards.subscribe((response) => {
+      this.userService.cardRegistered.subscribe((response) => {
         this.card = response;
+        this.emailUser.setValue(this.card.emailUser);
+        this.numberCard.setValue(this.card.numberCard);
+        this.monthCard.setValue(this.card.monthCard);
+        this.yearCard.setValue(this.card.yearCard);
+        this.cvvCard.setValue(this.card.cvv);
       });
       this.quantityCart = localStorage.getItem('cart');
     }
@@ -48,32 +54,39 @@ export class PaymentComponent implements OnInit {
     });
 
   ngOnInit(): void {
-
   }
 
   saveAddress(index) {
     console.log(index);
   }
 
-  saveCard(card) {
-    console.log(card);
-    this.addressMain = {
-      card_number: card.numberCard,
-      cvv: card.cvv,
-      expiration_month: card.monthCard,
-      expiration_year: card.yearCard,
-      email: card.emailUser
-    };
-    this.emailUser.setValue(card.emailUser);
-    this.numberCard.setValue(card.numberCard);
-    this.monthCard.setValue(card.monthCard);
-    this.yearCard.setValue(card.yearCard);
-    // this.culqi.createOrder();
+  confirmClient() {
+    this.client = {
+      first_name: this.user['names'],
+      last_name: this.user['lastName'],
+      email: this.user['userEmail'],
+      country_code: 'US',
+      address: `${this.address['streetTypeCode']}. ${this.address['streetName']} ${this.address['streetNumber']}`,
+      address_city: this.address['urbanizationName'],
+      phone_number: '111111'};
+    this.culqi.createClient(this.client).subscribe((response) => console.log(response));
   }
+
 
   createTokenOrder() {
     this.culqi.createOrder();
     this.endSteps = true;
+  }
+
+  endBuy() {
+    const buy = {
+      amount: localStorage.getItem('amount'),
+      currency_code: 'PEN',
+      email: localStorage.getItem('email'),
+      source_id: localStorage.getItem('token')
+    };
+
+    this.culqi.createCharge(buy);
   }
 
   get emailUser() { return this.cardForm.get('emailUser'); }
