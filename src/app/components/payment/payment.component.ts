@@ -19,6 +19,8 @@ export class PaymentComponent implements OnInit {
   card: any;
   cardMain: any;
   addressMain: any;
+  quantityCart: any;
+  endSteps = false;
 
   constructor( private productsService: ProductsService, private culqi: CulqiService, private userService: UserService) {
       this.products = this.productsService.products;
@@ -32,6 +34,7 @@ export class PaymentComponent implements OnInit {
       this.userService.currentCards.subscribe((response) => {
         this.card = response;
       });
+      this.quantityCart = localStorage.getItem('cart');
     }
 
     cardForm = new FormGroup({
@@ -70,6 +73,7 @@ export class PaymentComponent implements OnInit {
 
   createTokenOrder() {
     this.culqi.createOrder();
+    this.endSteps = true;
   }
 
   get emailUser() { return this.cardForm.get('emailUser'); }

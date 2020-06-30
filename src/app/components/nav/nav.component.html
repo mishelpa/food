@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand" [ngClass]="{'mb-4':userName===''}" style="background-color: #1b222c;">
+<nav class="navbar navbar-expand" [ngClass]="{'mb-4':!userName}" style="background-color: #1b222c;">
   <div class="container d-flex">
     <div class="row">
       <app-category></app-category>
@@ -9,16 +9,14 @@
    <div>
     <a class="navbar-brand">
       <ul class="navbar-nav mr-auto">
-        <!-- <li *ngIf="this.authService.getSessionUserName() !== null">{{this.authService.getSessionUserName()}}</li> -->
         <li class="nav-item dropdown">
           <a class="nav-link main-icon pointer" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <mat-icon class="icon">person</mat-icon>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" *ngIf="userName===''" routerLink="/login">Mi cuenta</a>
-            <a class="dropdown-item" *ngIf="userName!==''" routerLink="/account">Completar datos</a>
-            <a class="dropdown-item">Mis pedidos</a>
-            <a class="dropdown-item pointer" *ngIf="userName!==''" (click)="logOutSession()">
+            <a class="dropdown-item" *ngIf="!userName" routerLink="/login">Iniciar sesión</a>
+            <a class="dropdown-item" *ngIf="userName" routerLink="/account">Completar datos</a>
+            <a class="dropdown-item pointer" *ngIf="userName" (click)="logOutSession()">
               Cerrar sesión
             </a>
           </div>
@@ -31,7 +29,7 @@
       </ul>
     </a>
    </div>
-    
+
   </div>
 </nav>
-<div *ngIf="userName!==''" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4 py-1">¡Hola {{userName}}!</div>
+<div *ngIf="userName" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4 py-1">¡Hola {{userName}}!</div>

@@ -29,7 +29,7 @@
       </div>
       <div class="form-group col-xs-6 col-md-3">
         <label for="dni"><span>*</span> DNI</label>
-        <input class="form-control cursor" type="number" id="dni" formControlName = "dni">
+        <input class="form-control cursor" type="number" maxlength="8" id="dni" formControlName = "dni">
         <div class="alert-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
           <div class="container-error-message" *ngIf="dni.errors.required">
             Este campo es obligatorio
@@ -58,10 +58,11 @@
       </div>
       <div class="form-check form-check-inline col-12 m-3 checkbox">
         <input class="form-check-input mr-2 " type="checkbox" id="agreeTermsAndConditions" formControlName = "agreeTermsAndConditions">
-        <label class="form-check-label" for="agreeTermsAndConditions">Declaro que he leído y acepto la nueva Política de Privacidad y los Términos y Condiciones de Linio.</label>
+        <label class="form-check-label" for="agreeTermsAndConditions">Declaro que he leído y acepto la nueva Política de Privacidad y los Términos y Condiciones de FoodPerú.</label>
       </div>
       <div class="col-md-12 text-right">
-        <button type="submit" [disabled]="profileForm.invalid" class="btn btn-orange">Guardar datos</button>
+        <button *ngIf="firstTime" type="submit" [disabled]="profileForm.invalid" class="btn btn-orange">Guardar datos</button>
+        <button *ngIf="!firstTime" type="submit" [disabled]="profileForm.invalid" class="btn btn-orange">Actualizar datos</button>
       </div>
     </form>
   </div>

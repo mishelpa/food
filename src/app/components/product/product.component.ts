@@ -14,6 +14,7 @@ export class ProductComponent implements OnInit {
   qtyProduct: number[] = [1, 2, 3, 4, 5, 6];
   product: any;
   displayAddProductModal: boolean = false;
+  quantityCart: any;
 
   constructor(
     private routerActive: ActivatedRoute,
@@ -27,8 +28,6 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.routerActive.snapshot.params['id'];
-    console.log(id);
-
     this.getProductById(id);
   }
 
@@ -37,15 +36,13 @@ export class ProductComponent implements OnInit {
       response => {
         // this.product = JSON.parse(response.body);
         this.product = response[0];
-        console.log(response);
       }
     );
   }
 
   addToCart(product) {
-    // product.quantity = this.qtyForm.value;
     this.displayAddProductModal = true;
-    this.productsService.addListProducts(product, parseInt(this.qtyForm.value.qtySelected));
+    this.productsService.addListProducts(product, parseInt(this.qtyForm.value.qtySelected, 10));
   }
 
   goToCart() {
@@ -54,5 +51,11 @@ export class ProductComponent implements OnInit {
 
   closeAddProductModal() {
     this.displayAddProductModal = false;
+    this.quantityCart = 0;
+    this.qtyForm.reset();
+    this.productsService.products.forEach(product => {
+      this.quantityCart += product.quantity;
+    });
+    localStorage.setItem('cart', JSON.stringify(this.quantityCart));
   }
 }

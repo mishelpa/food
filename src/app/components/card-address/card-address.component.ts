@@ -21,8 +21,6 @@ export class CardAddressComponent implements OnInit {
     const dni = localStorage.getItem('dni');
     this.userService.getAddress().subscribe((response) => {
       this.addresses = response['address'].filter((ele) => ele.userDNI === dni);
-      console.log(this.addresses);
-
     });
   }
 }

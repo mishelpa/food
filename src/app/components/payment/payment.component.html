@@ -2,7 +2,7 @@
   <h2>DETALLES DE LA COMPRA</h2>
   <hr>
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
       <div class="card mb-2">
         <h3 class="card-header">DIRECCIÓN DE ENVÍO</h3>
         <h3 class="card-title container">Datos del cliente: {{user?.names}} {{user?.lastName}}</h3>
@@ -47,7 +47,7 @@
                 <input class="form-control" formControlName="cvvCard" type="text" size="4" data-culqi="card[cvv]" id="card[cvv]">
               </div>
               <div class="col-12">
-                <button type="submit" class="btn" id="btn_pagar">Guardar y aceptar</button>
+                <button type="submit" class="btn pointer" id="btn_pagar">Guardar y aceptar</button>
               </div>
             </form>
           </div>
@@ -71,9 +71,25 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      compra
-    </div>
+      <div class="col-12 col-md-4">
+        <div class="brief-box border py-3 px-4">
+          <button type="submit" [ngClass] = "{'disabled' : !endSteps}" class="btn w-100 mb-4 disabled btn-end" >Finalizar compra</button>
+          <div class="d-flex justify-content-between">
+            <p class="fs-14">Subtotal({{quantityCart}})</p>
+            <p class="font-large text-danger font-weight-bold">S/ {{totalCart | number: '0.2'}}</p>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <p class="fs-14">Envio</p>
+            <p>total </p>
+          </div>
+          <hr>
+          <div class="font-large font-weight-bold d-flex justify-content-between">
+            <p>TOTAL</p>
+            <p class="text-danger">S/ {{totalCart | number: '0.2' }}</p>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
 
