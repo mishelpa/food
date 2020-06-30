@@ -17,7 +17,7 @@ export class FormAddressComponent implements OnInit {
 
   constructor( private userService: UserService, private router: Router) { }
   userAddres = new FormGroup({
-    userDNI: new FormControl ('', [Validators.required]),
+    userDNI: new FormControl (localStorage.getItem('dni'), [Validators.required]),
     streetTypeCode: new FormControl ('', [Validators.required]),
     streetName: new FormControl ('', [Validators.required]),
     streetNumber: new FormControl ('', [Validators.required]),
@@ -54,7 +54,7 @@ export class FormAddressComponent implements OnInit {
       }
     });
   }
-  addNewAddress(){
+  addNewAddress() {
     this.addAddress = true;
     this.cardAddress = false;
   }
