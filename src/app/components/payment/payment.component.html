@@ -68,8 +68,8 @@
       </div>
     </div>
       <div class="col-12 col-md-4">
-        <div class="brief-box border py-3 px-4">
-          <button type="submit" [ngClass] = "{'disabled' : !endSteps}" class="btn w-100 mb-4 btn-end" (click)="endBuy()" >Finalizar compra</button>
+        <div *ngIf="!endSteps" class="brief-box border py-3 px-4">
+          <button type="submit" class="btn w-100 mb-4 btn-end" (click)="endBuy()" >Finalizar compra</button>
           <div class="d-flex justify-content-between">
             <p class="fs-14">Subtotal({{quantityCart}})</p>
             <p class="font-large text-danger font-weight-bold">S/ {{totalCart | number: '0.2'}}</p>
@@ -84,6 +84,12 @@
             <p>TOTAL</p>
             <p class="text-danger">S/ {{totalCart | number: '0.2' }}</p>
           </div>
+        </div>
+        <div *ngIf="endSteps">
+          <div  class="alert alert-success text-center" role="alert">
+          {{message}}
+          </div>
+          <button type="submit" class="btn w-100 mb-4 btn-end" (click)="goStart()" >Ir al Inicio</button>
         </div>
       </div>
   </div>

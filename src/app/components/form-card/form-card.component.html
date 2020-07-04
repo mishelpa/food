@@ -7,24 +7,6 @@
   </div>
   <form action="" [formGroup]="cardForm" (ngSubmit)="createTokenOrder(cardForm.value)" class="row">
     <div class="form-group col-12 col-md-6">
-      <label>Nombres del Titular</label>
-      <input class="form-control" formControlName="nameTitular" type="text" placeholder="Como aparece en la tarjeta">
-      <div class="alert-danger" *ngIf="nameTitular.invalid && (nameTitular.dirty || nameTitular.touched)">
-        <div class="container-error-message" *ngIf="nameTitular.errors.required">
-          Este campo es obligatorio
-        </div>
-      </div>
-    </div>
-    <div class="form-group col-12 col-md-6">
-      <label>Apellidos del Titular</label>
-      <input class="form-control" formControlName="lastNameTitular" type="text" placeholder="Como aparece en la tarjeta">
-      <div class="alert-danger" *ngIf="lastNameTitular.invalid && (lastNameTitular.dirty || lastNameTitular.touched)">
-        <div class="container-error-message" *ngIf="lastNameTitular.errors.required">
-          Este campo es obligatorio
-        </div>
-      </div>
-    </div>
-    <div class="form-group col-12 col-md-6">
       <label>Correo Electrónico</label>
       <input class="form-control" formControlName="emailUser" type="email" data-culqi="card[email]" id="card[email]">
       <div class="alert-danger" *ngIf="emailUser.invalid && (emailUser.dirty || emailUser.touched)">
