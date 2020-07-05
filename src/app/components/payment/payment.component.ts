@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CulqiService } from '../../services/integration/culqi.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -22,8 +23,10 @@ export class PaymentComponent implements OnInit {
   quantityCart: any;
   endSteps = false;
   client: any;
+  message: string;
 
-  constructor( private productsService: ProductsService, private culqi: CulqiService, private userService: UserService) {
+  constructor( private productsService: ProductsService, private culqi: CulqiService,
+               private userService: UserService, private router: Router) {
       this.products = this.productsService.products;
       this.totalCart = localStorage.getItem('amount');
       this.userService.getUserProfile(JSON.parse(localStorage.getItem('email')) ).subscribe((response) => {
@@ -38,7 +41,7 @@ export class PaymentComponent implements OnInit {
         this.numberCard.setValue(this.card.numberCard);
         this.monthCard.setValue(this.card.monthCard);
         this.yearCard.setValue(this.card.yearCard);
-        this.cvvCard.setValue(this.card.cvv);
+        this.cvvCard.setValue(this.card.cvvCard);
       });
       this.quantityCart = localStorage.getItem('cart');
     }
@@ -56,10 +59,6 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveAddress(index) {
-    console.log(index);
-  }
-
   confirmClient() {
     this.client = {
       first_name: this.user['names'],
@@ -72,21 +71,28 @@ export class PaymentComponent implements OnInit {
     this.culqi.createClient(this.client).subscribe((response) => console.log(response));
   }
 
-
-  createTokenOrder() {
-    this.culqi.createOrder();
-    this.endSteps = true;
-  }
-
   endBuy() {
     const buy = {
-      amount: localStorage.getItem('amount'),
+      amount: JSON.stringify((JSON.parse(localStorage.getItem('amount')) * 100)),
       currency_code: 'PEN',
-      email: localStorage.getItem('email'),
+      email: JSON.parse(localStorage.getItem('email')) ,
       source_id: localStorage.getItem('token')
     };
 
-    this.culqi.createCharge(buy);
+    this.culqi.createCharge(buy).subscribe((response) => {
+      this.message = 'COMPRA EXITOSA !!!';
+      this.endSteps = true;
+    },
+    (error) => {
+      this.message = error.user_message;
+    });
+  }
+
+  goStart() {
+    this.userService.chooseAddress([]);
+    this.userService.chooseCard('');
+    localStorage.setItem('product', '');
+    this.router.navigate(['/']);
   }
 
   get emailUser() { return this.cardForm.get('emailUser'); }

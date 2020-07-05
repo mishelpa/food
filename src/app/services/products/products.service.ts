@@ -9,11 +9,12 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class ProductsService {
 
   private url: string;
-  products: any[] = JSON.parse(localStorage.getItem('product'));
+
+  products: any;
 
   constructor(private http: HttpClient) {
     this.url = environment.apiUrl;
-    if (JSON.parse(localStorage.getItem('product'))) {
+    if (localStorage.getItem('product') !== '') {
       this.products = JSON.parse(localStorage.getItem('product'));
     } else {
       this.products = [];
