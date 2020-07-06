@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import {UserService} from 'src/app/services/user/user.service';
 import { from } from 'rxjs';
 import { Router } from '@angular/router';
-
+declare var $:any
 @Component({
   selector: 'app-form-address',
   templateUrl: './form-address.component.html',
@@ -36,6 +36,7 @@ export class FormAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAddressesUser();
+   
   }
 
 

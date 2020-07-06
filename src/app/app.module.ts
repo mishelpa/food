@@ -40,6 +40,9 @@ import { from } from 'rxjs';
 import { SearchPipe } from './pipes/search.pipe';
 import { CardCardsComponent } from './components/card-cards/card-cards.component';
 import { CategoryComponent } from './components/category/category.component';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +87,7 @@ import { CategoryComponent } from './components/category/category.component';
     MatStepperModule,
     MatCardModule,
     FormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,22 +1,23 @@
 
 <ul class="main-navigation">
 
-  <li class="lateral-menu">
-    <div >
-      <mat-icon aria-hidden="false" aria-label="Example menu icon" style="color: aliceblue;">menu</mat-icon>
-      <p class="navbar-title hidden-md-down">Categorías</p>
-    </div>
-    <ul>
-
-      <li *ngFor="let item of allCategories"><a  (mouseover)="category(item.name)" href="#">{{item.name}}</a>
-
-        <ul>
-          <li *ngFor="let item of subCategory" (click)="product(item.name)"> <a>{{item.name}}</a></li>
-
-        </ul>
-      </li>
-
-    </ul>
-  </li>
-
-</ul>
+    <li class="lateral-menu">
+      <div >
+        <mat-icon aria-hidden="false" aria-label="Example menu icon" style="color: aliceblue;">menu</mat-icon>
+        <p class="navbar-title hidden-md-down">Categorías</p>
+      </div>
+      <ul>
+  
+        <li *ngFor="let item of allCategories"><a  (mouseover)="category(item.name)" href="#">{{item.name}}</a>
+  
+          <ul>
+            <li *ngFor="let item of subCategory" (click)="product(item.name)"> <a>{{item.name}}</a></li>
+  
+          </ul>
+        </li>
+  
+      </ul>
+    </li>
+  
+  </ul>
+  

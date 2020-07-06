@@ -2,27 +2,71 @@
   <h2>MIS DIRECCIONES</h2>
   <hr>
   <div *ngIf="cardAddress" class="container">
-    <div class="d-flex row">
-      <div class="card text-white col-5 mb-3" (click)="saveAddress(item)" *ngFor="let item of addresses">
-        <div class="card-body">
+    <!-- <div class=" row">
+      <div class="card text-white col-5 mb-3 col-xs-12" (click)="saveAddress(item)" *ngFor="let item of addresses">
+       <div class="option-card option-card-deck col-xs-12 col-sm-6 col-md-4">
+        <label class="card-body " >
+          
           <p class="card-text">{{item.streetTypeCode}}. {{item.streetName}} Nro. {{item.streetNumber}}</p>
           <p class="card-text">{{item.buildingType}},{{item.buildingNumber}},{{item.blockCode}}</p>
           <p class="card-text">{{item.lotNumber}}</p>
           <p class="card-text">{{item.urbanizationTypeCode}} {{item.urbanizationName}}</p>
           <p class="card-text">{{item.zoneName}}</p>
-        </div>
-        <div class="d-flex">
+          <label class="d-flex">
+            <mat-radio-button class="mr-2 mt-1">
+            </mat-radio-button>
+           <p> Direccion predeterminada</p>
+          </label>
+        </label>
+
+        <div class="d-flex  box">
           <label id="deleteAddress" class="form-text text-muted mb-3 ml-3 pointer"
             style="text-decoration: underline;">Editar</label>
           <label id="updateAddress" class="form-text text-muted mb-3 ml-3 pointer"
             style="text-decoration: underline;">Eliminar</label>
         </div>
       </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end mt-5">
+      <button type="button" (click)="addNewAddress()" class="btn btn-orange">Agregar</button>
+    </div> -->
+    <div class=" row">
+      <div class="text-white col-5 mb-3 col-xs-12" (click)="saveAddress(item)" *ngFor="let item of addresses">
+        <div class="card pointer" style="width: 15rem;"  ng-click="">
+          <div class="card-body pointer">
+
+            <label class="card-body pointer">
+              <address>
+                <p class="card-text">{{item.streetTypeCode}}. {{item.streetName}} Nro. {{item.streetNumber}}</p>
+                <p class="card-text">{{item.buildingType}},{{item.buildingNumber}},{{item.blockCode}}</p>
+                <p class="card-text">{{item.lotNumber}}</p>
+                <p class="card-text">{{item.urbanizationTypeCode}} {{item.urbanizationName}}</p>
+                <p class="card-text">{{item.zoneName}}</p>
+                <label class="d-flex pointer">
+                  <mat-radio-button class="mr-2 mt-1">
+                  </mat-radio-button>
+                  <p class="unset"> Direccion predeterminada</p>
+                </label>
+              </address>
+            </label>
+              <div class="option-card-footer">
+                <a class=" link-low-sm mb-3 ml-3 pointer">Editar</a>
+                <a class="link-low-sm mb-3 ml-3 pointer">Eliminar</a>
+              </div>
+           
+          </div>
+         
+        </div>
+      </div>
     </div>
     <div class="d-flex justify-content-end mt-5">
       <button type="button" (click)="addNewAddress()" class="btn btn-orange">Agregar</button>
     </div>
+ 
+
   </div>
+
 
   <div class="mt-1 container" *ngIf="addAddress">
     <form action="" [formGroup]="userAddres" (ngSubmit)="save(userAddres.value)" class="row">

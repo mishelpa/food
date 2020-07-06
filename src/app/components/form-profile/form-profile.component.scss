@@ -102,3 +102,8 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.card:checked+label {
+  
+  color: #45a00a;
+  border-color: #45a00a;
+}

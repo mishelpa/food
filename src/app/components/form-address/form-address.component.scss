@@ -126,9 +126,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .card{
   margin-top: 30px;
- cursor: pointer;
-  margin-right: 13px;
-  width: 23.33333%;
+  cursor: pointer;
+  
   p{
   color: rgb(160, 150, 150);
   }
@@ -137,6 +136,43 @@ input[type=number]::-webkit-outer-spin-button {
   color: #45a00a;
   border-color: #45a00a;
 }
+.card:focus{
+  border-color: #45a00a;
+}
 .card-body{
   color: #45a00a;
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:#45a00a !important; 
+}
+
+::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:#45a00a !important;
+  background-color: #45a00a !important;
+}
+
+::ng-deep.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:#45a00a !important;
+}
+
+.option-card input[type=radio]:checked+label {
+
+  color: #45a00a;
+  border-color: #45a00a;
+}
+
+.option-card-footer a{
+  color: #666;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    text-decoration: underline;
+    a{
+      cursor: pointer;
+    }
+}
+.option-card-footer a:hover{
+  color: #f50;
+  text-decoration: underline;
 }
