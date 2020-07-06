@@ -1,9 +1,16 @@
+
+.addresses{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
 input, select{
   background-color: #FDF7ED;
   border: solid #F0AD4E 1pt;
 }
 
-input:focus{
+input:focus, select:focus{
   border: solid #939393 1pt;
   background-color: white;
 }
@@ -19,9 +26,22 @@ button:hover{
   background-color: #CC4400;
 }
 
-.radioBtn{
-  display: flex;
-  flex-direction: row;
+.toggle-checkbox-row .form-label {
+  bottom: 4px;
+  margin-right: 8px;
+  position: relative;
+}
+
+.toggle-checkbox-row label {
+    margin-bottom: 0;
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
 }
 
 $color-orange:  #FF5500;
@@ -38,6 +58,7 @@ $color-orange:  #FF5500;
         margin-bottom: 0;
         font-weight: normal;
         cursor: pointer;
+
         &:before {
             content: '';
             position: absolute;
@@ -86,6 +107,12 @@ $color-orange:  #FF5500;
 span{
   color: #DC143C;
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .alert-danger{
   color: #721c24;
   border-color: #f5c6cb;
@@ -97,13 +124,55 @@ span{
   text-align: center;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.card:checked+label {
+.card{
+  margin-top: 30px;
+  cursor: pointer;
   
+  p{
+  color: rgb(160, 150, 150);
+  }
+}
+.card:hover  {
   color: #45a00a;
   border-color: #45a00a;
+}
+.card:focus{
+  border-color: #45a00a;
+}
+.card-body{
+  color: #45a00a;
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:#45a00a !important; 
+}
+
+::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:#45a00a !important;
+  background-color: #45a00a !important;
+}
+
+::ng-deep.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:#45a00a !important;
+}
+
+.option-card input[type=radio]:checked+label {
+
+  color: #45a00a;
+  border-color: #45a00a;
+}
+
+.option-card-footer a{
+  color: #666;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    text-decoration: underline;
+    a{
+      cursor: pointer;
+    }
+}
+.option-card-footer a:hover{
+  color: #f50;
+  text-decoration: underline;
 }

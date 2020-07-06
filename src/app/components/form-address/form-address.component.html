@@ -1,0 +1,156 @@
+<div class="container">
+  <h2>MIS DIRECCIONES</h2>
+  <hr>
+  <div *ngIf="cardAddress" class="container">
+    <!-- <div class=" row">
+      <div class="card text-white col-5 mb-3 col-xs-12" (click)="saveAddress(item)" *ngFor="let item of addresses">
+       <div class="option-card option-card-deck col-xs-12 col-sm-6 col-md-4">
+        <label class="card-body " >
+          
+          <p class="card-text">{{item.streetTypeCode}}. {{item.streetName}} Nro. {{item.streetNumber}}</p>
+          <p class="card-text">{{item.buildingType}},{{item.buildingNumber}},{{item.blockCode}}</p>
+          <p class="card-text">{{item.lotNumber}}</p>
+          <p class="card-text">{{item.urbanizationTypeCode}} {{item.urbanizationName}}</p>
+          <p class="card-text">{{item.zoneName}}</p>
+          <label class="d-flex">
+            <mat-radio-button class="mr-2 mt-1">
+            </mat-radio-button>
+           <p> Direccion predeterminada</p>
+          </label>
+        </label>
+
+        <div class="d-flex  box">
+          <label id="deleteAddress" class="form-text text-muted mb-3 ml-3 pointer"
+            style="text-decoration: underline;">Editar</label>
+          <label id="updateAddress" class="form-text text-muted mb-3 ml-3 pointer"
+            style="text-decoration: underline;">Eliminar</label>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end mt-5">
+      <button type="button" (click)="addNewAddress()" class="btn btn-orange">Agregar</button>
+    </div> -->
+    <div class=" row">
+      <div class="text-white col-5 mb-3 col-xs-12" (click)="saveAddress(item)" *ngFor="let item of addresses">
+        <div class="card pointer" style="width: 15rem;"  ng-click="">
+          <div class="card-body pointer">
+
+            <label class="card-body pointer">
+              <address>
+                <p class="card-text">{{item.streetTypeCode}}. {{item.streetName}} Nro. {{item.streetNumber}}</p>
+                <p class="card-text">{{item.buildingType}},{{item.buildingNumber}},{{item.blockCode}}</p>
+                <p class="card-text">{{item.lotNumber}}</p>
+                <p class="card-text">{{item.urbanizationTypeCode}} {{item.urbanizationName}}</p>
+                <p class="card-text">{{item.zoneName}}</p>
+                <label class="d-flex pointer">
+                  <mat-radio-button class="mr-2 mt-1">
+                  </mat-radio-button>
+                  <p class="unset"> Direccion predeterminada</p>
+                </label>
+              </address>
+            </label>
+              <div class="option-card-footer">
+                <a class=" link-low-sm mb-3 ml-3 pointer">Editar</a>
+                <a class="link-low-sm mb-3 ml-3 pointer">Eliminar</a>
+              </div>
+           
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end mt-5">
+      <button type="button" (click)="addNewAddress()" class="btn btn-orange">Agregar</button>
+    </div>
+ 
+
+  </div>
+
+
+  <div class="mt-1 container" *ngIf="addAddress">
+    <form action="" [formGroup]="userAddres" (ngSubmit)="save(userAddres.value)" class="row">
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="streetTypeCode"><span>*</span> Tipo/Calle</label>
+        <select class="custom-select" name="" id="" formControlName="streetTypeCode">
+          <option *ngFor="let street of streetArray" value={{street}}>{{street}}</option>
+        </select>
+        <div class="alert-danger" *ngIf="streetTypeCode.invalid && (streetTypeCode.dirty || streetTypeCode.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="streetName"><span>*</span> Calle</label>
+        <input type="text" formControlName="streetName" class="form-control" id="streetName">
+        <div class="alert-danger" *ngIf="streetName.invalid && (streetName.dirty || streetName.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-xs-12 col-md-3">
+        <label for="streetNumber"><span>*</span> Nro/Calle</label>
+        <input type="number" formControlName="streetNumber" class="form-control" id="streetNumber">
+        <div class="alert-danger" *ngIf="streetNumber.invalid && (streetNumber.dirty || streetNumber.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="buildingType">Tipo/Edificio</label>
+        <input type="text" formControlName="buildingType" class="form-control" id="buildingType" #lote>
+      </div>
+      <div class="form-group col-xs-12 col-md-3">
+        <label for="buildingNumber">Nro/Edificio</label>
+        <input type="number" formControlName="buildingNumber" class="form-control" id="buildingNumber" #lote>
+      </div>
+
+      <div class="form-group col-xs-12 col-md-3">
+        <label for="blockCode">Bloque</label>
+        <input type="text" formControlName="blockCode" class="form-control" id="blockCode" #dpto>
+      </div>
+
+      <div class="form-group col-xs-12 col-md-3">
+        <label for="lotNumber">Nro/Lote</label>
+        <input type="number" formControlName="lotNumber" class="form-control" id="lotNumber" #dpto>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="urbanizationName"><span>*</span> Urbanizacion</label>
+        <input type="text" formControlName="urbanizationName" class="form-control" id="urbanizationName">
+        <div class="alert-danger"
+          *ngIf="urbanizationName.invalid && (urbanizationName.dirty || urbanizationName.touched)">
+          <div class="container-error-message">
+            Este campo es obligatorio
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="urbanizationTypeCode">Tipo/Urbanizacion</label>
+        <input type="text" formControlName="urbanizationTypeCode" class="form-control" id="urbanizationTypeCode" #dpto>
+      </div>
+
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="zoneName">Zona</label>
+        <input type="text" formControlName="zoneName" class="form-control" id="zoneName" #dpto>
+      </div>
+      <div class="form-check form-check-inline col-12 col-md-4 checkbox">
+        <input class="form-check-input mr-2" type="checkbox" id="addresspred" formControlName="addresspred">
+        <label class="form-check-label" for="addresspred">Usar como dirección predeterminada</label>
+      </div>
+      <div class="form-check form-check-inline col-12 col-md-4 checkbox">
+        <input class="form-check-input mr-2" type="checkbox" id="active" formControlName="active">
+        <label class="form-check-label" for="active">Activo</label>
+      </div>
+      <div class="form-check form-check-inline col-12 col-md-4 checkbox">
+        <input class="form-check-input mr-2" type="checkbox" id="mainAddress" formControlName="mainAddress">
+        <label class="form-check-label" for="mainAddress">Dirección principal</label>
+      </div>
+      <div class="col-md-12 text-right">
+        <button type="submit" [disabled]="userAddres.invalid" class="btn btn-orange">Agregar</button>
+      </div>
+    </form>
+  </div>
+</div>
