@@ -34,8 +34,14 @@ export class ProductComponent implements OnInit {
   getProductById(code) {
     this.productsService.getProduct(code).subscribe(
       response => {
+
+         this.product = JSON.parse(response.body);
+        //this.product = response;
+        console.log(response);
         // this.product = JSON.parse(response.body);
-        this.product = response[0];
+        
+        // this.product = response[0];
+
       }
     );
   }

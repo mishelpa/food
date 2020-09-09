@@ -31,6 +31,7 @@ export class UserService {
   }
 
 postUser(obj) {
+
   return this.http.post(`${this.url}/dev/foodperu-user`, obj);
 }
 
@@ -45,6 +46,7 @@ chooseAddress(address) {
 
 chooseCard(card) {
   this.card.next(card);
+
 }
 
 putUser(email, obj) {
@@ -52,7 +54,9 @@ putUser(email, obj) {
 }
 
 postAddress(obj) {
+
   return this.http.post(`${this.url}/dev/foodperu-user/foodperu-useraddress`, obj);
+
 }
 
 getAddress() {
