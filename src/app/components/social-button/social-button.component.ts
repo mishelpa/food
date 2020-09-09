@@ -14,9 +14,13 @@ export class SocialButtonComponent {
   }
 
   async signInWithGoogle() {
-    await this.auth.socialSignIn(AuthService.GOOGLE); }
+    await this.auth.socialSignIn(AuthService.GOOGLE);
+    await this.router.navigate(['/']);
+  }
 
   async signInWithFacebook() {
-    await this.auth.socialSignIn(AuthService.FACEBOOK); }
+    await this.auth.socialSignIn(AuthService.FACEBOOK);
+    await this.router.navigate(['/']);
+  }
 
 }

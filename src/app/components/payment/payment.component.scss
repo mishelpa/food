@@ -1,19 +1,39 @@
-.btn-payment{
-  border: #FF5500 solid 1pt;
-  color: #FF5500 ;
-}
-.btn-payment:hover{
-  color: white;
-  background-color: rgb(255, 85, 0,0.5);
-}
 
 .btn-end{
+  background-color: #45A00A;
+  color: white;
+}
+
+.btn-end:hover{
+  color: white;
+  background-color: #307007;
+}
+
+.address:hover .card, .cards:hover .card{
+  color: #6FA00A;
+  border: #6FA00A solid 1pt;
+}
+
+button{
   background-color: #FF5500;
   color: white;
   width: 40%;
 }
 
-.btn-end:hover{
+.disabled, .disabled:hover {
+  background-color: #A0A6AB;
+}
+
+button:hover{
   color: white;
   background-color: #CC4400;
 }
+
+.card-header{
+  background-color: white !important;
+  color: #FF5500;
+  border-bottom: none;
+  margin-bottom: 0% !important;
+}
+
+

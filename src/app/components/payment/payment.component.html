@@ -1,29 +1,98 @@
 <div >
-  <h2>PAGO CON CULQI</h2>
+  <h2>DETALLES DE LA COMPRA</h2>
   <hr>
-  <div class="">
-    <div class="">
-      <h3 class="card-title pt-3 text-center font-weight-normal">RESUMEN DE COMPRA</h3>
-      <div class="row container pb-2" *ngFor="let item of products">
-        <div class="col-3 text-center ">
-          <span>{{item.quantity}}</span>
-        </div>
-        <div class="col-6">
-          <span>{{item.name}}</span>
-        </div>
-        <div class="col-3 text-center">
-          <span>S/.{{item.price}} x unidad</span>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card mb-2">
+        <h3 class="card-header"><mat-icon> local_shipping</mat-icon>  Dirección de envío</h3>
+        <div class="card-body row">
+          <div class="col-md-6 pb-2 address">
+            <div class="card">
+              <div class="card-body row">
+                <mat-icon class="col-2"> place</mat-icon>
+                <div class="col-10">
+                  <p class="card-text"><strong>Dirección de envío (Entregas de Lun a Sáb de 8am-10pm)</strong></p>
+                  <p class="card-text">{{user?.names}} {{user?.lastName}}</p>
+                  <p class="card-text"> {{address?.streetTypeCode}} {{address?.streetName}} {{address?.streetNumber}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <section class="text-center pb-3">
-        <button (click)="payment()" class="btn btn-payment font-weight-bold">Ingresar datos de la tarjeta</button>
-      </section>
+      <div class="card mb-2">
+        <h3 class="card-header"><mat-icon>credit_card</mat-icon>  Método de pago</h3>
+        <div class="card-body row">
+          <div class="container">
+            <form action="" [formGroup]="cardForm" class="row">
+              <div class="form-group col-12 col-md-6">
+                <label>Correo Electrónico</label>
+                <input class="form-control" disabled formControlName="emailUser" type="email" data-culqi="card[email]" id="card[email]">
+              </div>
+              <div class="form-group col-12 col-md-6">
+                <label>Número de tarjeta</label>
+                <input class="form-control" maxlength="19" disabled formControlName="numberCard" type="text" size="20" data-culqi="card[number]" id="card[number]">
+              </div>
+              <div class="form-group col-6 col-md-3">
+                <label>Mes de expiración</label>
+                <input class="form-control" name="" id="" disabled formControlName="monthCard" data-culqi="card[exp_month]" id="card[exp_month]">
+              </div>
+              <div class="form-group col-6 col-md-3">
+                <label>Año de expiración</label>
+                <input class="form-control" name="" id="" disabled formControlName="yearCard" data-culqi="card[exp_year]" id="card[exp_year]">
+              </div>
+              <div class="form-group col-12 col-md-6">
+                <label>CVV</label>
+                <input class="form-control" formControlName="cvvCard" disabled type="text" size="4" data-culqi="card[cvv]" id="card[cvv]">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-2">
+        <h3 class="card-header"><mat-icon>shopping_basket</mat-icon> Tus productos</h3>
+        <div class="card-body">
+          <div class="row container pb-2" *ngFor="let item of products">
+            <div class="col-3 text-center ">
+              <img class="img-fluid" src="{{item.image}}" alt="">
+            </div>
+            <div class="col-6">
+              <p class="font-weight-bold">{{item.name}}</p>
+              <span class="text-danger font-large font-weight-bold">S/.{{item.price}} x unidad</span>
+            </div>
+            <div class="col-3 text-center">
+              <span>Cantidad: {{item.quantity}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+      <div class="col-12 col-md-4">
+        <div *ngIf="!endSteps" class="brief-box border py-3 px-4">
+          <button type="submit" class="btn w-100 mb-4 btn-end" (click)="endBuy()" >Finalizar compra</button>
+          <div class="d-flex justify-content-between">
+            <p class="fs-14">Subtotal({{quantityCart}})</p>
+            <p class="font-large text-danger font-weight-bold">S/ {{totalCart | number: '0.2'}}</p>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <p class="fs-14">Envio</p>
+            <p>total </p>
+          </div>
+          <hr>
+          <div class="font-large font-weight-bold d-flex justify-content-between">
+            <p>TOTAL</p>
+            <p class="text-danger">S/ {{totalCart | number: '0.2' }}</p>
+          </div>
+        </div>
+        <div *ngIf="endSteps">
+          <div  class="alert alert-success text-center" role="alert">
+          {{message}}
+          </div>
+          <button type="submit" class="btn w-100 mb-4 btn-end" (click)="goStart()" >Ir al Inicio</button>
+        </div>
+      </div>
   </div>
 </div>
 
-<mat-card class="text-center pb-3">
-  <p class="font-weight-bold text-danger">S/. {{totalCart}}</p>
-  <button class="btn btn-end w-100" (click)="createChargeCart()">Finalizar compra</button>
-</mat-card>
 

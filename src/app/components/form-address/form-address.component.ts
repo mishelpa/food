@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import {UserService} from 'src/app/services/user/user.service';
 import { from } from 'rxjs';
 import { Router } from '@angular/router';
-
+declare var $:any
 @Component({
   selector: 'app-form-address',
   templateUrl: './form-address.component.html',
@@ -17,7 +17,7 @@ export class FormAddressComponent implements OnInit {
 
   constructor( private userService: UserService, private router: Router) { }
   userAddres = new FormGroup({
-    userDNI: new FormControl ('', [Validators.required]),
+    userDNI: new FormControl (localStorage.getItem('dni'), [Validators.required]),
     streetTypeCode: new FormControl ('', [Validators.required]),
     streetName: new FormControl ('', [Validators.required]),
     streetNumber: new FormControl ('', [Validators.required]),
@@ -36,27 +36,33 @@ export class FormAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAddressesUser();
+   
   }
 
 
   getAddressesUser() {
     const dni = localStorage.getItem('dni');
     this.userService.getAddress().subscribe((response) => {
-      if(response){
+      if (response) {
         this.addresses = response['address'].filter((ele) => ele.userDNI === dni);
-        if(this.addresses.length===0){
-          // console.log("NADA");
+        if (this.addresses.length === 0) {
           this.addAddress = true;
           this.cardAddress = false;
         } else {
           this.cardAddress = true;
           this.addAddress = false;
-          // console.log(this.addresses);
         }
       }
     });
   }
-  addNewAddress(){
+
+  saveAddress(address) {
+    this.userService.chooseAddress(address);
+    console.log(address);
+
+  }
+
+  addNewAddress() {
     this.addAddress = true;
     this.cardAddress = false;
   }

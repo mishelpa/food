@@ -20,7 +20,6 @@ export class FormCardComponent implements OnInit {
     this.userService.currentCards.subscribe((response) => {
       this.saveCard = response.length;
       this.numCard = this.saveCard;
-      console.log(this.numCard);
     });
   }
 
@@ -42,12 +41,9 @@ export class FormCardComponent implements OnInit {
     }
   }
 
-  createTokenOrder(a) {
-    // this.culqi.createOrder();
-    this.userService.postCard(a).subscribe((response) => {
-      console.log(response);
-    });
-    this.numCard = this.saveCard;
+  createTokenOrder(card) {
+    this.culqi.createOrder();
+    this.userService.chooseCard(card);
   }
 
   validateCard(e) {
@@ -59,6 +55,10 @@ export class FormCardComponent implements OnInit {
 
   addCard() {
     this.numCard = 0;
+  }
+
+  showCards() {
+    this.numCard = this.saveCard;
   }
 
   get emailUser() { return this.cardForm.get('emailUser'); }

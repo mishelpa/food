@@ -13,7 +13,6 @@ export class CardAddressComponent implements OnInit {
   constructor(private userService: UserService ) { }
 
   ngOnInit(): void {
-    this.userService.currentAddres.subscribe(obj => this.addresses = obj);
     this.getAddressesUser();
   }
 
@@ -21,8 +20,6 @@ export class CardAddressComponent implements OnInit {
     const dni = localStorage.getItem('dni');
     this.userService.getAddress().subscribe((response) => {
       this.addresses = response['address'].filter((ele) => ele.userDNI === dni);
-      console.log(this.addresses);
-
     });
   }
 }

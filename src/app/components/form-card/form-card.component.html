@@ -1,30 +1,11 @@
 <div class="container">
-  <h2>MIS TARJETAS GUARDADAS</h2>
+  <h2>MI TARJETA</h2>
 <hr>
-<div *ngIf="numCard>0">
-  <app-card-cards></app-card-cards>
-</div>
-<button class="btn" (click)="addCard()">Agregar tarjeta</button>
-<div *ngIf="numCard === 0">
+<div>
+  <div class="d-flex justify-content-between">
+    <h2 class="text-small">Agregar una tarjeta de crédito o débito</h2>
+  </div>
   <form action="" [formGroup]="cardForm" (ngSubmit)="createTokenOrder(cardForm.value)" class="row">
-    <div class="form-group col-12 col-md-6">
-      <label>Nombres del Titular</label>
-      <input class="form-control" formControlName="nameTitular" type="text" placeholder="Como aparece en la tarjeta">
-      <div class="alert-danger" *ngIf="nameTitular.invalid && (nameTitular.dirty || nameTitular.touched)">
-        <div class="container-error-message" *ngIf="nameTitular.errors.required">
-          Este campo es obligatorio
-        </div>
-      </div>
-    </div>
-    <div class="form-group col-12 col-md-6">
-      <label>Apellidos del Titular</label>
-      <input class="form-control" formControlName="lastNameTitular" type="text" placeholder="Como aparece en la tarjeta">
-      <div class="alert-danger" *ngIf="lastNameTitular.invalid && (lastNameTitular.dirty || lastNameTitular.touched)">
-        <div class="container-error-message" *ngIf="lastNameTitular.errors.required">
-          Este campo es obligatorio
-        </div>
-      </div>
-    </div>
     <div class="form-group col-12 col-md-6">
       <label>Correo Electrónico</label>
       <input class="form-control" formControlName="emailUser" type="email" data-culqi="card[email]" id="card[email]">
@@ -81,7 +62,7 @@
       </div>
     </div>
     <div class="col-12">
-      <button type="submit" class="btn" id="btn_pagar">Pagar</button>
+      <button type="submit" class="btn" id="btn_pagar">Agregar Tarjeta</button>
     </div>
   </form>
 </div>

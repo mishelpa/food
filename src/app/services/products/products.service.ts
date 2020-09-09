@@ -9,11 +9,12 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class ProductsService {
 
   private url: string;
-  products: any[] = JSON.parse(localStorage.getItem('product'));
+
+  products: any;
 
   constructor(private http: HttpClient) {
     this.url = environment.apiUrl;
-    if (JSON.parse(localStorage.getItem('product'))) {
+    if (localStorage.getItem('product') !== '') {
       this.products = JSON.parse(localStorage.getItem('product'));
     } else {
       this.products = [];
@@ -22,6 +23,13 @@ export class ProductsService {
 
   public cartProducts = new BehaviorSubject(0);
   public currentCartProducts = this.cartProducts.asObservable();
+  public subCategoryProduct = new BehaviorSubject([])
+  public productSubCategory = this.subCategoryProduct.asObservable();
+  getproduct(value) {
+    this.subCategoryProduct.next(value);
+
+  }
+
 
   updateCartProduct(qty) {
     return this.cartProducts.next(qty);
@@ -30,8 +38,8 @@ export class ProductsService {
   addListProducts(objProduct, qtyProduct) {
     const indexProduct = this.products.findIndex(product => product.name === objProduct.name);
 
-    if (indexProduct < 0 ) {
-      const newOrder = {...objProduct, quantity: qtyProduct};
+    if (indexProduct < 0) {
+      const newOrder = { ...objProduct, quantity: qtyProduct };
       this.products.push(newOrder);
     } else {
       this.products[indexProduct].quantity += qtyProduct;
@@ -39,12 +47,27 @@ export class ProductsService {
   }
 
   getListProducts(): Observable<any> {
-    return this.http.get(`${this.url}/foodperu-products`);
+    return this.http.get(`${this.url}/dev/foodperu-products`);
   }
 
   getProduct(idProduct): Observable<any> {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('code', idProduct);
-    return this.http.get(`${this.url}/foodperu-products/${idProduct}`);
+    return this.http.get(`${this.url}/cer/foodperu-products/?code=${idProduct}`);
   }
+  getCategoryProducts(): Observable<any> {
+    return this.http.get(`${this.url}/cer/foodperu-category`)
+  }
+
+  getSubCategories(): Observable<any> {
+    return this.http.get(`${this.url}/cer/foodperu-category/foodperu-subcategory`)
+  }
+  getproductSubCategory(): Observable<any> {
+    return this.http.get(`${this.url}/cer/foodperu-category/foodperu-subcategory/foodperu-product`)
+  }
+
+  // category(value){
+  //   console.log(value);
+
+  // }
 }
