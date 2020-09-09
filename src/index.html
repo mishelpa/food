@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FoodPeruWeb</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    if(global === undefined) {
+        var global=window
+    }
+    </script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+
+  <!-- Incluyendo .js de Culqi JS -->
+  <script src="https://checkout.culqi.com/js/v3"></script>
+  <!-- Incluyendo .js de Culqi JS -->
+<script src="https://checkout.culqi.com/v2"></script>
+  <script>
+    function culqi(){
+      if (Culqi.token) { // ¡Objeto Token creado exitosamente!
+        var token = Culqi.token.id;
+        localStorage.setItem('token', token)
+        //En esta linea de codigo debemos enviar el "Culqi.token.id"
+        //hacia tu servidor con Ajax
+    } else { // ¡Hubo algún problema!
+        // Mostramos JSON de objeto error en consola
+        alert(Culqi.error.user_message);
+    }
+    };
+  </script>
+  <script>
+    Culqi.publicKey  = 'pk_test_WkOlOvuX4C3asoLB';
+    Culqi.init();
+  </script>
+</body>
+</html>

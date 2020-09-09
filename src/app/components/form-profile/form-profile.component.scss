@@ -1,0 +1,109 @@
+input, select{
+  background-color: #FDF7ED;
+  border: solid #F0AD4E 1pt;
+}
+
+input:focus{
+  border: solid #939393 1pt;
+  background-color: white;
+}
+
+button{
+  background-color: #FF5500;
+  color: white;
+  width: 40%;
+}
+
+button:hover{
+  color: white;
+  background-color: #CC4400;
+}
+
+.radioBtn{
+  display: flex;
+  flex-direction: row;
+}
+
+$color-orange:  #FF5500;
+.checkbox {
+    width: 100%;
+    margin: 15px auto;
+    position: relative;
+    display: block;
+    label {
+        position: relative;
+        min-height: 34px;
+        display: block;
+        padding-left: 40px;
+        margin-bottom: 0;
+        font-weight: normal;
+        cursor: pointer;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 4px;
+            width: 22px;
+            height: 22px;
+            transition: transform 0.28s ease;
+            border-radius: 3px;
+            border: 2px solid $color-orange;
+        }
+        &:after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 5px;
+            border-bottom: 2px solid $color-orange;
+            border-left: 2px solid $color-orange;
+            transform: rotate(-45deg) scale(0);
+            transition: transform ease 0.25s;
+            position: absolute;
+            top: 12px;
+            left: 10px;
+        }
+    }
+    input[type="checkbox"] {
+        width: auto;
+        opacity: 0.00000001;
+        position: absolute;
+        left: 0;
+        margin-left: -20px;
+        &:checked ~ label{
+            &:before {
+                border: 2px solid $color-orange;
+            }
+            &:after {
+                transform: rotate(-45deg) scale(1);
+            }
+        }
+        &:focus + label::before {
+            outline: 0;
+        }
+    }
+}
+span{
+  color: #DC143C;
+}
+.alert-danger{
+  color: #721c24;
+  border-color: #f5c6cb;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+.container-error-message{
+  padding: 8px;
+  text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.card:checked+label {
+  
+  color: #45a00a;
+  border-color: #45a00a;
+}

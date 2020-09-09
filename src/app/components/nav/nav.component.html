@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand" [ngClass]="{'mb-4':!userName}" style="background-color: #1b222c;">
+  <div class="container d-flex">
+    <div class="row">
+      <app-category></app-category>
+      <a class="navbar-brand logo">
+        <img class="pointer" src="assets/logo.PNG" width="150px" routerLink="" alt="logo">
+      </a>
+    </div>
+   <div>
+    <a class="navbar-brand">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link main-icon pointer" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <mat-icon class="icon">person</mat-icon>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" *ngIf="!userName" routerLink="/login">Iniciar sesión</a>
+            <a class="dropdown-item" *ngIf="userName" routerLink="/account">Completar datos</a>
+            <a class="dropdown-item pointer" *ngIf="userName" (click)="logOutSession()">
+              Cerrar sesión
+            </a>
+          </div>
+        </li>
+        <li class="nav-item cart">
+          <a class="nav-link main-icon" routerLink="/cart">
+            <mat-icon class="icon" matBadgeSize="medium" matBadge="{{this.authService.getQtyOfCart()}}" matBadgeColor="warn">shopping_cart</mat-icon>
+          </a>
+        </li>
+      </ul>
+    </a>
+   </div>
+
+  </div>
+</nav>
+<div *ngIf="userName" style="background-color: #F2F2F2;" class="text-right pr-5 mb-4 py-1">¡Hola {{userName}}!</div>

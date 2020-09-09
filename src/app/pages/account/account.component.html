@@ -1,0 +1,24 @@
+<mat-horizontal-stepper class="container" linear #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Datos personales</ng-template>
+      <app-form-profile></app-form-profile>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Dirección</ng-template>
+      <app-form-address></app-form-address>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Método de pago</ng-template>
+    <app-form-card></app-form-card>
+    <button mat-button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Finalizar compra</ng-template>
+    <app-payment></app-payment>
+  </mat-step>
+</mat-horizontal-stepper>
+

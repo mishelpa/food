@@ -1,0 +1,22 @@
+
+
+<mat-form-field>
+  <mat-label>Busca productos</mat-label>
+  <input [formControl]="search" spellcheck="false" matInput placeholder="Buscar Producto" >
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+
+<div class="listProduct">
+  <div class="product border" *ngFor="let product of products | search:filtroValue">
+    <div class="" (click)="getCode(product.code)">
+      <div class ="img-product">
+        <img src="{{product.image}}"class="card-img-top" alt="40">
+      </div>
+      <div class="description-product">
+        <p class="card-text">{{product.name}}</p>
+        <span class="price-text">S/. {{product.price}}</span>
+      </div>
+    </div>
+  </div>
+</div>

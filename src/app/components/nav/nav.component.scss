@@ -1,0 +1,48 @@
+nav{
+  width: 100%;
+  display: flex;
+
+  .logo{
+    display: flex;
+  }
+
+}
+.icon{
+  color: white;
+  font-size: xx-large;
+}
+.navbar, .navbar-brand{
+  padding: 0% !important;
+}
+.main-icon{
+  margin: 0%;
+  width: 60px;
+  text-align: center;
+  padding-top: 15px;
+}
+.main-icon:hover{
+  background-color: white;
+  }
+.main-icon:hover .icon{
+color: #FF5500;
+}
+.dropdown-item{
+  color:#666666;
+  font-size: small;
+}
+.dropdown-item:hover{
+  color: #FF5500;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  img{
+    width: 100px;
+  }
+}
+
+.lateral-menu{
+  background-color: #4c4c4c;
+  color: #fff;
+  cursor: pointer;
+}
